@@ -6,19 +6,30 @@ var Updater = (function() {
       socket.send("subscribe");
     },
 
-    updatePlugin: function(name, content) {
+    updatePlugin: function(name, data) {
+      var template = $("#" + data.type + "-template");
+      var content = $.mustache(template.html(), data)
       if ($("div#" + name).length == 0) {
         var plugin = $('<div/>', {'id': name, 'class': 'plugin'}).html(content);
         $("#plugins").append(plugin);
+        Updater.attachWidget(template, plugin);
       } else {
-        $("div#" + name).html(content);
+        var plugin = $("div#" + name)
+        plugin.html(content);
+        Updater.attachWidget(template, plugin);
+      }
+    },
+
+    attachWidget: function(template, plugin) {
+      var widget = template.data('widget');
+      if (widget) {
+        Widgets[widget](plugin);
       }
     },
 
     update: function(event) {
       var data = JSON.parse(event.data);
-      var template = $("#" + data.type + "-template").html();
-      Updater.updatePlugin(data.name, $.mustache(template, data));
+      Updater.updatePlugin(data.name, data);
     },
 
     subscribe: function() {
