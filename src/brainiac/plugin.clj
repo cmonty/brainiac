@@ -33,7 +33,7 @@
       websocket/broadcast)))
 
 (defn simple-http-plugin [request transformer]
-  (munge-request request (agent-handler transformer)))
+  (fn [] (munge-request request (agent-handler transformer))))
 
 (defn schedule [interval method]
   (at-at/every interval method))

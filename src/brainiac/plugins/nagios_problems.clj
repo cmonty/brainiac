@@ -29,6 +29,6 @@
   (binding [brainiac/*debug* true]
     (brainiac/schedule
       5000
-      #(brainiac/simple-http-plugin
+      (brainiac/simple-http-plugin
          {:method :get :url (nagios-url host) :basic-auth [username password]}
          transform))))

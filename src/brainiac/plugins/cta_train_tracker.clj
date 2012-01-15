@@ -35,7 +35,7 @@
 (defn configure [{:keys [map-id api-key]}]
   (brainiac/schedule
     5000
-    #(brainiac/simple-http-plugin
+    (brainiac/simple-http-plugin
       {:method :get :url (tracker-url map-id api-key)}
       transform)))
 

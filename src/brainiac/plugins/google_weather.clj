@@ -24,6 +24,6 @@
 (defn configure [{:keys [city]}]
   (brainiac/schedule
     5000
-    #(brainiac/simple-http-plugin
+    (brainiac/simple-http-plugin
        {:url (weather-url city)}
        transform)))

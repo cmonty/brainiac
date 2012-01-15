@@ -19,6 +19,6 @@
 (defn configure [{:keys [term]}]
   (brainiac/schedule
     30000
-    #(brainiac/simple-http-plugin
+    (brainiac/simple-http-plugin
        {:url (search-url term)}
        transform)))
