@@ -1,0 +1,4 @@
+brainiac.plugins.nagios-problems:
+  host: http://foo.bar.com
+  username: user
+  password: secret
