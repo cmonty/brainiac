@@ -18,13 +18,13 @@
   (let [calendar (Calendar/getInstance)]
     (.setTimeZone calendar (TimeZone/getTimeZone "America/Chicago"))
     (.setTime calendar arrival-time)
-    (prn str("Arrival: " (.getTimeInMillis calendar)))
     (.getTimeInMillis calendar)))
 
 (defn parse-eta [node]
   (let [arrival-time (.parse time-format (zf/xml1-> node :arrT zf/text))
         due-in-millis (- (arrival-in-central arrival-time) (now))
         destination (zf/xml1-> node :destNm zf/text)]
+    (prn (arrival-in-central arrival-time))
     (str destination " " (due-in-minutes due-in-millis))))
 
 (defn transform [stream]
