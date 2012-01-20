@@ -18,6 +18,7 @@
   (let [calendar (Calendar/getInstance)]
     (.setTimeZone calendar (TimeZone/getTimeZone "America/Chicago"))
     (.setTime calendar arrival-time)
+    (prn str("Arrival: " (.getTimeInMillis calendar)))
     (.getTimeInMillis calendar)))
 
 (defn parse-eta [node]
