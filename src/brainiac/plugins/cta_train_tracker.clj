@@ -17,6 +17,8 @@
   (let [arrival (.parse time-format (zf/xml1-> node :arrT zf/text))
         due-in-millis (- (.getTime arrival) (now))
         destination (zf/xml1-> node :destNm zf/text)]
+    (prn (str "Arrival:" (.getTime arrival)))
+    (prn (str "Now: " (now)))
     (str destination " " (due-in-minutes due-in-millis))))
 
 (defn transform [stream]
