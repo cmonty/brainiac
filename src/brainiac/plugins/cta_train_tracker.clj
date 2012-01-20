@@ -1,5 +1,6 @@
 (ns brainiac.plugins.cta-train-tracker
-  (:import [java.text SimpleDateFormat])
+  (:import [java.text SimpleDateFormat]
+           [java.util Calendar TimeZone])
   (:require [brainiac.plugin :as brainiac]
             [brainiac.xml-utils :as xml]
             [clojure.contrib.zip-filter.xml :as zf]))
@@ -13,12 +14,16 @@
     "due"
     (str (int (/ due-in-millis (* 60 1000))) " min")))
 
+(defn arrival-in-central [arrival-time]
+  (let [calendar (Calendar/getInstance)]
+    (.setTimeZone calendar (TimeZone/getTimeZone "America/Chicago"))
+    (.setTime calendar arrival-time)
+    (.getTimeInMillis calendar)))
+
 (defn parse-eta [node]
-  (let [arrival (.parse time-format (zf/xml1-> node :arrT zf/text))
-        due-in-millis (- (.getTime arrival) (now))
+  (let [arrival-time (.parse time-format (zf/xml1-> node :arrT zf/text))
+        due-in-millis (- (arrival-in-central arrival-time) (now))
         destination (zf/xml1-> node :destNm zf/text)]
-    (prn (str "Arrival:" (.getTime arrival)))
-    (prn (str "Now: " (now)))
     (str destination " " (due-in-minutes due-in-millis))))
 
 (defn transform [stream]
