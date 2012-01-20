@@ -6,7 +6,7 @@
 (deftest test-read-config-file
   (testing "reading a config file"
     (let [config (read-config-file "test/brainiac/test/config.yml")]
-      (is (= (-> config :brainiac.plugins.nagios-problems :host) "http://foo.bar.com"))))
+      (is (= (-> config :nagios-problems :host) "http://foo.bar.com"))))
 
     (testing "registering plugins"
       (let [registered (atom false)]

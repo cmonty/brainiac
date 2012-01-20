@@ -5,7 +5,7 @@
   (yaml/parse-string (slurp file)))
 
 (defn register [plugin]
-  (let [namespace (name (key plugin))
+  (let [namespace (str "brainiac.plugins." (name (key plugin)))
         options (val plugin)]
     (require (symbol namespace))
     (eval (list (symbol namespace "configure") options))))
