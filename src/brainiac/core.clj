@@ -11,8 +11,8 @@
 (defn -main [& args]
   (cli/with-command-line args
     "Brainiac: An Awesome HUD"
-    [[port p "the port to listen on" 8080]
+    [[port p "the port to listen on" "8080"]
      [file f "the config file" "config.yml"]]
     (websocket/setup-sink)
     (plugin-loader/register-plugins file)
-    (aleph/start-http-server (aleph/wrap-ring-handler handler) {:port (Integer/parseInt port) :websocket true})))
+    (aleph/start-http-server (aleph/wrap-ring-handler handler) {:port (read-string port) :websocket true})))

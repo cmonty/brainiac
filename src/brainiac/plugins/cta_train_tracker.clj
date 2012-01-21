@@ -5,7 +5,6 @@
             [brainiac.xml-utils :as xml]
             [clojure.contrib.zip-filter.xml :as zf]))
 
-;20120109 20:27:56
 (def time-format
   (let [date-format (SimpleDateFormat. "yyyyMMDD HH:mm:ss")]
     (.setTimeZone date-format (TimeZone/getTimeZone "America/Chicago"))
