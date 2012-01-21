@@ -1,1 +1,36 @@
-body { background-color: black; color: white; }
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
+
+body {
+  background-color: black;
+  color: white;
+
+  font-family: Open Sans, sans-serif;
+
+  background: url(/images/background.png);
+}
+
+div#plugins > div {
+  width: auto;
+  display: block;
+  float: left;
+  background: #333;
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin: 10px;
+  border: 2px solid #444;
+  box-shadow: 5px 5px 10px black;
+  -moz-box-shadow: 5px 5px 10px black;
+  -webkit-box-shadow: 5px 5px 10px black;
+}
+
+div#plugins > div h3 {
+  margin: 0;
+  color: orange;
+}
+
+div#plugins ul {
+  margin: 5px;
+  list-style: square;
+  list-style-position: inside;
+  padding: 0;
+}
