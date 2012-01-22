@@ -1,0 +1,128 @@
+[
+  {
+    "author": {
+      "gravatar_id": "cbd2d6788fd936e192f6cea750bbd22b",
+      "avatar_url": "https://secure.gravatar.com/avatar/cbd2d6788fd936e192f6cea750bbd22b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "mikepilat",
+      "url": "https://api.github.com/users/mikepilat",
+      "id": 190178
+    },
+    "parents": [
+      {
+        "sha": "e4a51c916b7c47a42ac66f08f5855740b290ad74",
+        "url": "https://api.github.com/repos/cmonty/brainiac/commits/e4a51c916b7c47a42ac66f08f5855740b290ad74"
+      }
+    ],
+    "sha": "4e48424030f655510c58c6bb230dbc357745e03f",
+    "committer": {
+      "gravatar_id": "cbd2d6788fd936e192f6cea750bbd22b",
+      "avatar_url": "https://secure.gravatar.com/avatar/cbd2d6788fd936e192f6cea750bbd22b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "mikepilat",
+      "url": "https://api.github.com/users/mikepilat",
+      "id": 190178
+    },
+    "url": "https://api.github.com/repos/cmonty/brainiac/commits/4e48424030f655510c58c6bb230dbc357745e03f",
+    "commit": {
+      "author": {
+        "email": "mike@mikepilat.com",
+        "date": "2012-01-21T12:31:36-08:00",
+        "name": "Michael Pilat"
+      },
+      "tree": {
+        "sha": "5c71accef182cec29a6b6ee9f867dda9117d42a1",
+        "url": "https://api.github.com/repos/cmonty/brainiac/git/trees/5c71accef182cec29a6b6ee9f867dda9117d42a1"
+      },
+      "message": "Forgot to add test file for cta-bus-tracker plugin in previous commit",
+      "committer": {
+        "email": "mike@mikepilat.com",
+        "date": "2012-01-21T12:31:36-08:00",
+        "name": "Michael Pilat"
+      },
+      "url": "https://api.github.com/repos/cmonty/brainiac/git/commits/4e48424030f655510c58c6bb230dbc357745e03f"
+    }
+  },
+  {
+    "author": {
+      "gravatar_id": "cbd2d6788fd936e192f6cea750bbd22b",
+      "avatar_url": "https://secure.gravatar.com/avatar/cbd2d6788fd936e192f6cea750bbd22b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "mikepilat",
+      "url": "https://api.github.com/users/mikepilat",
+      "id": 190178
+    },
+    "parents": [
+      {
+        "sha": "4109c70b35c8d2518bee52912098900923bc5909",
+        "url": "https://api.github.com/repos/cmonty/brainiac/commits/4109c70b35c8d2518bee52912098900923bc5909"
+      }
+    ],
+    "sha": "e4a51c916b7c47a42ac66f08f5855740b290ad74",
+    "committer": {
+      "gravatar_id": "cbd2d6788fd936e192f6cea750bbd22b",
+      "avatar_url": "https://secure.gravatar.com/avatar/cbd2d6788fd936e192f6cea750bbd22b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "mikepilat",
+      "url": "https://api.github.com/users/mikepilat",
+      "id": 190178
+    },
+    "url": "https://api.github.com/repos/cmonty/brainiac/commits/e4a51c916b7c47a42ac66f08f5855740b290ad74",
+    "commit": {
+      "author": {
+        "email": "mike@mikepilat.com",
+        "date": "2012-01-20T22:11:14-08:00",
+        "name": "Michael Pilat"
+      },
+      "tree": {
+        "sha": "c96ba35ac936bfeb08b44d203a82d3248ed4e489",
+        "url": "https://api.github.com/repos/cmonty/brainiac/git/trees/c96ba35ac936bfeb08b44d203a82d3248ed4e489"
+      },
+      "message": "Add initial pass of plugin for CTA bus tracker",
+      "committer": {
+        "email": "mike@mikepilat.com",
+        "date": "2012-01-20T22:11:14-08:00",
+        "name": "Michael Pilat"
+      },
+      "url": "https://api.github.com/repos/cmonty/brainiac/git/commits/e4a51c916b7c47a42ac66f08f5855740b290ad74"
+    }
+  },
+  {
+    "author": {
+      "gravatar_id": "dfe3aaef39e42a63c1ba51765339890b",
+      "avatar_url": "https://secure.gravatar.com/avatar/dfe3aaef39e42a63c1ba51765339890b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "cmonty",
+      "url": "https://api.github.com/users/cmonty",
+      "id": 225319
+    },
+    "parents": [
+      {
+        "sha": "2f49718ea6b7e54b7dc576bdda3fcc5791251ee5",
+        "url": "https://api.github.com/repos/cmonty/brainiac/commits/2f49718ea6b7e54b7dc576bdda3fcc5791251ee5"
+      }
+    ],
+    "sha": "4109c70b35c8d2518bee52912098900923bc5909",
+    "committer": {
+      "gravatar_id": "dfe3aaef39e42a63c1ba51765339890b",
+      "avatar_url": "https://secure.gravatar.com/avatar/dfe3aaef39e42a63c1ba51765339890b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "cmonty",
+      "url": "https://api.github.com/users/cmonty",
+      "id": 225319
+    },
+    "url": "https://api.github.com/repos/cmonty/brainiac/commits/4109c70b35c8d2518bee52912098900923bc5909",
+    "commit": {
+      "author": {
+        "email": "cory.monty@gmail.com",
+        "date": "2012-01-20T17:45:07-08:00",
+        "name": "Cory Monty"
+      },
+      "tree": {
+        "sha": "081a294917c787002ddfb2f4fb4dfc7510c33cd7",
+        "url": "https://api.github.com/repos/cmonty/brainiac/git/trees/081a294917c787002ddfb2f4fb4dfc7510c33cd7"
+      },
+      "message": "Fixes running brainiac without port",
+      "committer": {
+        "email": "cory.monty@gmail.com",
+        "date": "2012-01-20T17:45:07-08:00",
+        "name": "Cory Monty"
+      },
+      "url": "https://api.github.com/repos/cmonty/brainiac/git/commits/4109c70b35c8d2518bee52912098900923bc5909"
+    }
+  }
+]
