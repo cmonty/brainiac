@@ -23,6 +23,8 @@
        "<div class=\"ticker\"><ul class=\"ticker\"> {{#data}}<li>{{.}}</li>{{/data}} </ul></ticker>"]
       [:script#nagios-problems-template {:type "text/mustache"}
        "<h3>{{title}}</h3> <ul> {{#data}}<li>{{service}} ({{host}})</li>{{/data}} </ul>"]
+      [:script#content-template {:type "text/mustache"}
+       "<h3>{{title}}</h3> {{#data}}<h5>{{title}}<article>{{&content}}</article>{{/data}}"]
       [:script#list-template {:type "text/mustache"}
        "<h3>{{title}}</h3> <ul> {{#data}}<li>{{.}}</li>{{/data}} </ul>"]]]))
 
