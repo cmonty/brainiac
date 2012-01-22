@@ -2,7 +2,7 @@
   (:use [brainiac.plugins.twitter-search]
         [clojure.test]))
 
-(def twitter-json (java.io.ByteArrayInputStream. (.getBytes (slurp "test/brainiac/test/plugins/twitter.json"))))
+(def twitter-json (java.io.ByteArrayInputStream. (.getBytes (slurp "test/brainiac/test/data/twitter.json"))))
 
 (deftest test-transform
   (let [result (transform twitter-json)]

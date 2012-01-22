@@ -2,7 +2,7 @@
   (:use [brainiac.plugins.github-commits]
         [clojure.test]))
 
-(def github-json (java.io.ByteArrayInputStream. (.getBytes (slurp "test/brainiac/test/plugins/github_commits.json"))))
+(def github-json (java.io.ByteArrayInputStream. (.getBytes (slurp "test/brainiac/test/data/github_commits.json"))))
 
 (deftest test-transform
   (let [result (transform "cmonty" "brainiac" github-json)]
