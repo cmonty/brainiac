@@ -30,7 +30,7 @@
       tap
       formats/encode-json->string
       tap
-      websocket/broadcast)))
+      websocket/broadcast-json)))
 
 (defn simple-http-plugin [request transformer]
   (fn [] (munge-request request (agent-handler transformer))))
