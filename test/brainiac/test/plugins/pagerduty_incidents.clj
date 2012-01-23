@@ -3,7 +3,7 @@
         [clojure.test]
         [clojure.contrib.mock]))
 
-(def incidents-json (java.io.ByteArrayInputStream. (.getBytes (slurp "test/brainiac/test/plugins/pagerduty_incidents.json"))))
+(def incidents-json (java.io.ByteArrayInputStream. (.getBytes (slurp "test/brainiac/test/data/pagerduty_incidents.json"))))
 
 (deftest test-transform
   (let [parsed-result (transform incidents-json)]
