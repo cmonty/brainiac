@@ -25,6 +25,8 @@
        "<h3>{{title}}</h3> <ul> {{#data}}<li>{{service}} ({{host}})</li>{{/data}} </ul>"]
       [:script#content-template {:type "text/mustache"}
        "<h3>{{title}}</h3> {{#data}}<h5>{{title}}<article>{{&content}}</article>{{/data}}"]
+      [:script#pagerduty-incident-template {:type "text/mustache"}
+       "<h3>{{data[0].service.name}}</h3><p>{{data[0].trigger_summary_data.subject}}</p>"]
       [:script#list-template {:type "text/mustache"}
        "<h3>{{title}}</h3> <ul> {{#data}}<li>{{.}}</li>{{/data}} </ul>"]]]))
 
