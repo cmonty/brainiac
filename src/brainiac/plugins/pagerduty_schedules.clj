@@ -14,7 +14,7 @@
 
 (defn schedule-url [schedule]
   (let [current-time (date-formatter (now))]
-    (format "https://braintree.pagerduty.com/api/v1/schedules/%s/entries?since=%s&until=%s" schedule current-time current-time)))
+    (format "https://braintree.pagerduty.com/api/v1/schedules/%s/entries?since=%s&until=%s&overflow=true" schedule current-time current-time)))
 
 (defn transform [stream]
   (let [json (read-json (reader stream))]
