@@ -12,4 +12,4 @@
     (testing "sets data"
       (is (= "Ali Aghareza" (:name (:user (first (:data parsed-result)))))))
     (testing "sets type"
-      (is (= "list" (:type parsed-result))))))
+      (is (= "schedule" (:type parsed-result))))))
