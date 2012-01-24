@@ -25,8 +25,10 @@
        "<h3>{{title}}</h3> <ul> {{#data}}<li>{{service}} ({{host}})</li>{{/data}} </ul>"]
       [:script#content-template {:type "text/mustache"}
        "<h3>{{title}}</h3> {{#data}}<h5>{{title}}<article>{{&content}}</article>{{/data}}"]
-      [:script#pagerduty-incident-template {:type "text/mustache"}
-       "<h3>{{data[0].service.name}}</h3><p>{{data[0].trigger_summary_data.subject}}</p>"]
+      [:script#schedule-template {:type "text/mustache"}
+       "<h3>On Call Now</h3>{{#data}}<p>{{ user.name }}</p>{{/data}}"]
+      [:script#alert-template {:type "text/mustache"}
+       "<h3>Alert</h3>{{#data}}<p>{{trigger_summary_data.subject}}</p>{{/data}}"]
       [:script#list-template {:type "text/mustache"}
        "<h3>{{title}}</h3> <ul> {{#data}}<li>{{.}}</li>{{/data}} </ul>"]]]))
 

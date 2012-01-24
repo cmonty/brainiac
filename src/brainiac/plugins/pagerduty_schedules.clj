@@ -20,11 +20,10 @@
   (let [json (read-json (reader stream))]
     (assoc {}
       :name "pagerduty-schedule"
-      :type "list"
+      :type "schedule"
       :data (:entries json))))
 
 (defn configure [{:keys [username password schedule_ids]}]
-  (prn (schedule-url schedule_ids))
   (brainiac/schedule
     5000
     (brainiac/simple-http-plugin
