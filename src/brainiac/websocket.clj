@@ -2,7 +2,6 @@
   (:use [clojure.contrib.json :only (read-json)])
   (:require [lamina.core :as lamina]))
 
-(def websocket-channel (lamina/channel))
 (def recent-updates (atom {}))
 
 (defn store-recent-update! [json-message]
@@ -10,15 +9,15 @@
     (swap! recent-updates assoc (:name message) json-message))
   json-message)
 
-(defn setup-sink []
-  (lamina/receive-all websocket-channel (fn [_])))
+(defn websocket-for-program [program-name]
+  (lamina/named-channel program-name))
 
-(defn broadcast-json [json-message]
+(defn broadcast-json [json-message program-name]
   (store-recent-update! json-message)
-  (lamina/enqueue websocket-channel json-message))
+  (lamina/enqueue (websocket-for-program program-name) json-message))
 
 (defn subscribe-to-updates [channel]
   (lamina/receive channel
-    (fn [_]
-      (lamina/siphon websocket-channel channel)
-      (doseq [m (vals @recent-updates)] (broadcast-json m)))))
+    (fn [program]
+      (lamina/siphon (websocket-for-program program) channel)
+      (doseq [m (vals @recent-updates)] (broadcast-json m program)))))

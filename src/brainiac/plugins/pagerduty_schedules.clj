@@ -23,9 +23,9 @@
       :type "schedule"
       :data (:entries json))))
 
-(defn configure [{:keys [username password schedule_ids]}]
+(defn configure [{:keys [program-name username password schedule_ids]}]
   (brainiac/schedule
     5000
     (brainiac/simple-http-plugin
       {:method :get :url (schedule-url schedule_ids) :basic-auth [username password]}
-      transform)))
+      transform program-name)))

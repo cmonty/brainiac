@@ -22,18 +22,19 @@
         headers (merge {} (build-basic-auth request))]
     (http-agent url :headers headers :handler handler)))
 
-(defn agent-handler [transformer]
-  (fn [agnt]
-    (-> (stream agnt)
-      tap
-      transformer
-      tap
-      formats/encode-json->string
-      tap
-      websocket/broadcast-json)))
+(defn jsonify [agnt transformer]
+  (-> (stream agnt)
+    tap
+    transformer
+    tap
+    formats/encode-json->string))
 
-(defn simple-http-plugin [request transformer]
-  (fn [] (munge-request request (agent-handler transformer))))
+(defn agent-handler [transformer program-name]
+  (fn [agnt]
+    (websocket/broadcast-json (jsonify agnt transformer) program-name)))
+
+(defn simple-http-plugin [request transformer program-name]
+  (fn [] (munge-request request (agent-handler transformer program-name))))
 
 (defn schedule [interval method]
   (at-at/every interval method))

@@ -25,10 +25,10 @@
       :title "Nagios Problems"
       :data (remove empty? (map map-row (rest status-rows))))))
 
-(defn configure [{:keys [host username password]}]
+(defn configure [{:keys [host username password program-name]}]
   (binding [brainiac/*debug* true]
     (brainiac/schedule
       5000
       (brainiac/simple-http-plugin
          {:method :get :url (nagios-url host) :basic-auth [username password]}
-         transform))))
+         transform program-name))))

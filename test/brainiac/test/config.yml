@@ -1,4 +1,7 @@
-nagios-problems:
-  host: http://foo.bar.com
-  username: user
-  password: secret
+test:
+  nagios-problems:
+    host: http://foo.bar.com
+    username: user
+    password: secret
+  google-weather:
+    city: chicago

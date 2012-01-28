@@ -3,7 +3,7 @@ var Updater = (function() {
 
   return {
     connect: function() {
-      socket.send("subscribe");
+      socket.send("devs");
     },
 
     updatePlugin: function(name, data) {

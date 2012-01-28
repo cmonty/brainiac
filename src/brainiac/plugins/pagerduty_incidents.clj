@@ -15,9 +15,9 @@
       :type "alert"
       :data (:incidents json))))
 
-(defn configure [{:keys [username password service_ids schedule]}]
+(defn configure [{:keys [program-name username password service_ids schedule]}]
   (brainiac/schedule
     2000
     (brainiac/simple-http-plugin
       {:method :get :url (incidents-url service_ids) :basic-auth [username password]}
-      transform)))
+      transform program-name)))
