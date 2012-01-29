@@ -15,18 +15,9 @@
 
 (defn create [program]
   (let [program-name (name (key program))
-        plugins (last program)]
-    (loop [plugin (first plugins)
-           remaining (rest plugins)]
-      (when-not (nil? plugin)
-        (register plugin program-name)
-        (recur (first remaining) (rest remaining))))))
+        plugins (val program)]
+    (doseq [plugin plugins] (register plugin program-name))))
 
 (defn load-programs [file]
   (let [configuration (read-config-file file)]
-    (loop [program (first configuration)
-           remaining (rest configuration)]
-      (when-not (nil? program)
-        (create program)
-        (recur (first remaining) (rest remaining))))))
-
+    (doseq [program configuration] (create program))))
