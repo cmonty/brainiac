@@ -25,10 +25,10 @@
 
 (defn html [] (templates/unordered-list))
 
-(defn configure [{:keys [route-number stop-id]}]
+(defn configure [{:keys [route-number stop-id program-name]}]
   (brainiac/schedule
     20000
     (brainiac/simple-http-plugin
       {:method :get :url (tracker-url route-number stop-id)}
-      transform)))
+      transform program-name)))
 

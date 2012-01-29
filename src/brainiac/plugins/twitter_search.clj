@@ -21,9 +21,9 @@
 (defn search-url [term]
   (format "http://search.twitter.com/search.json?q=%s" term))
 
-(defn configure [{:keys [term]}]
+(defn configure [{:keys [term program-name]}]
   (brainiac/schedule
     30000
     (brainiac/simple-http-plugin
        {:url (search-url term)}
-       transform)))
+       transform program-name)))

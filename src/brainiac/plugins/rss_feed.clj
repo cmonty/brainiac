@@ -20,9 +20,9 @@
 
 (defn html [] (templates/content))
 
-(defn configure [{:keys [url]}]
+(defn configure [{:keys [url program-name]}]
   (brainiac/schedule
     5000
     (brainiac/simple-http-plugin
       {:url url}
-      transform)))
+      transform program-name)))

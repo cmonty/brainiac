@@ -29,10 +29,10 @@
       :title (str "Jenkins: " (build-status-string build-data))
       :data (map #(:name %) (filter-status build-data "Failure")))))
 
-(defn configure [{:keys [url username password]}]
+(defn configure [{:keys [url username password program-name]}]
   (brainiac/schedule
     60000
     (brainiac/simple-http-plugin
       {:method :get :url url :basic-auth [username password]}
-      transform)))
+      transform program-name)))
 
