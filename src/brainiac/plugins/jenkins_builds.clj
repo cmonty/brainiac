@@ -1,5 +1,6 @@
 (ns brainiac.plugins.jenkins-builds
   (:require [brainiac.plugin :as brainiac]
+            [brainiac.pages.templates :as templates]
             [clojure.xml :as xml]
             [clojure.zip :as zip]
             [clojure.contrib.zip-filter.xml :as zf]))
@@ -28,6 +29,8 @@
       :type "list"
       :title (str "Jenkins: " (build-status-string build-data))
       :data (map #(:name %) (filter-status build-data "Failure")))))
+
+(defn html [] (templates/unordered-list))
 
 (defn configure [{:keys [url username password program-name]}]
   (brainiac/schedule
