@@ -29,6 +29,11 @@
     tap
     formats/encode-json->string))
 
+(defn render [plugin]
+  (let [namespace (name (key plugin))]
+    (require (symbol namespace))
+    (eval (list (symbol namespace "html")))))
+
 (defn agent-handler [transformer program-name]
   (fn [agnt]
     (websocket/broadcast-json (jsonify agnt transformer) program-name)))

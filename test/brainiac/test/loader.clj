@@ -8,8 +8,6 @@
     (let [config (read-config-file "test/brainiac/test/config.yml")]
       (is (= (-> config :test :nagios-problems :host) "http://foo.bar.com"))))
 
-    (testing "registering plugins"
-      (let [registered (atom false)]
-        (binding [brainiac.plugins.nagios-problems/configure (fn [_] (reset! registered true))]
-          (load-programs "test/brainiac/test/config.yml")
-          (is @registered)))))
+    (testing "loading plugins"
+      (load-programs "test/brainiac/test/config.yml")
+      (is (contains? @loaded "brainiac.plugins.nagios-problems"))))

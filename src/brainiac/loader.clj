@@ -1,6 +1,8 @@
 (ns brainiac.loader
   (:require [clj-yaml.core :as yaml]))
 
+(def loaded (atom {}))
+
 (defn read-config-file [file]
   (yaml/parse-string (slurp file)))
 
@@ -8,7 +10,8 @@
   (let [namespace (str "brainiac.plugins." (name (key plugin)))
         options (merge (val plugin) {:program-name program-name})]
     (require (symbol namespace))
-    (eval (list (symbol namespace "configure") options))))
+    (eval (list (symbol namespace "configure") options))
+    (swap! loaded assoc (str namespace) true)))
 
 (defn create [program]
   (let [program-name (name (key program))

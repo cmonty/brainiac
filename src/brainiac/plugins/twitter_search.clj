@@ -13,6 +13,11 @@
     :type "ticker"
     :data (map format-tweet (:results json)))))
 
+(defn html []
+  [:script#ticker-template {:type "text/mustache" :data-widget "ticker"}
+   "<div class=\"ticker\"><ul class=\"ticker\"> {{#data}}<li>{{.}}</li>{{/data}} </ul></ticker>"])
+
+
 (defn search-url [term]
   (format "http://search.twitter.com/search.json?q=%s" term))
 

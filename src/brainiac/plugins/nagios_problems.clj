@@ -25,6 +25,10 @@
       :title "Nagios Problems"
       :data (remove empty? (map map-row (rest status-rows))))))
 
+(defn html []
+  [:script#nagios-problems-template {:type "text/mustache"}
+   "<h3>{{title}}</h3> <ul> {{#data}}<li>{{service}} ({{host}})</li>{{/data}} </ul>"])
+
 (defn configure [{:keys [host username password program-name]}]
   (binding [brainiac/*debug* true]
     (brainiac/schedule

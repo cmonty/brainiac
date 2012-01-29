@@ -4,7 +4,6 @@
             [aleph.http :as aleph]
             [noir.server :as server]))
 
-(server/load-views "src/brainiac/pages")
 (def handler (server/gen-handler))
 
 (defn -main [& args]
@@ -13,4 +12,5 @@
     [[port p "the port to listen on" "8080"]
      [file f "the config file" "config.yml"]]
     (loader/load-programs file)
+    (server/load-views "src/brainiac/pages")
     (aleph/start-http-server (aleph/wrap-ring-handler handler) {:port (read-string port) :websocket true})))

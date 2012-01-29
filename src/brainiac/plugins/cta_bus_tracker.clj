@@ -1,5 +1,6 @@
 (ns brainiac.plugins.cta-bus-tracker
   (:require [brainiac.plugin :as brainiac]
+            [brainiac.pages.templates :as templates]
             [brainiac.xml-utils :as xml]
             [clojure.contrib.zip-filter.xml :as zf]))
 
@@ -21,6 +22,8 @@
 
 (defn tracker-url [route-number stop-id]
   (format "http://ctabustracker.com/bustime/map/getStopPredictions.jsp?route=%s&stop=%s" route-number stop-id))
+
+(defn html [] (templates/unordered-list))
 
 (defn configure [{:keys [route-number stop-id]}]
   (brainiac/schedule

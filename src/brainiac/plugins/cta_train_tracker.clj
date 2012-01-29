@@ -2,6 +2,7 @@
   (:import [java.text SimpleDateFormat]
            [java.util TimeZone])
   (:require [brainiac.plugin :as brainiac]
+            [brainiac.pages.templates :as templates]
             [brainiac.xml-utils :as xml]
             [clojure.contrib.zip-filter.xml :as zf]))
 
@@ -32,6 +33,8 @@
       :type "list"
       :title (format "%s (%s)" stop route)
       :data (zf/xml-> xml-zipper :eta parse-eta))))
+
+(defn html [] (templates/unordered-list))
 
 (defn tracker-url [map-id api-key]
   (format "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?mapid=%s&key=%s&max=4" map-id api-key))

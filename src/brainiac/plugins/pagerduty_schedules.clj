@@ -16,6 +16,10 @@
   (let [current-time (date-formatter (now))]
     (format "https://braintree.pagerduty.com/api/v1/schedules/%s/entries?since=%s&until=%s&overflow=true" schedule current-time current-time)))
 
+(defn html []
+  [:script#schedule-template {:type "text/mustache"}
+   "<h3>On Call Now</h3>{{#data}}<p>{{ user.name }}</p>{{/data}}"])
+
 (defn transform [stream]
   (let [json (read-json (reader stream))]
     (assoc {}

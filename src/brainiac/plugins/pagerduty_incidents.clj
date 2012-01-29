@@ -15,6 +15,10 @@
       :type "alert"
       :data (:incidents json))))
 
+(defn html []
+  [:script#alert-template {:type "text/mustache"}
+   "<h3>Alert</h3>{{#data}}<p>{{trigger_summary_data.subject}}</p>{{/data}}"])
+
 (defn configure [{:keys [program-name username password service_ids schedule]}]
   (brainiac/schedule
     2000
