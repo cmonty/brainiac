@@ -3,9 +3,9 @@
         [clojure.java.io :only (reader)])
   (:require [brainiac.plugin :as brainiac]))
 
-(defn incidents-url [service_ids]
+(defn incidents-url [organization service_ids]
   (let [status "triggered,acknowledged"
-        base-url "https://braintree.pagerduty.com/api/v1/incidents"]
+        base-url (format "https://%s.pagerduty.com/api/v1/incidents" organization)]
     (format "%s?status=%s&service=%s&sort_by=created_on:desc" base-url status service_ids)))
 
 (defn transform [stream]
@@ -19,9 +19,9 @@
   [:script#alert-template {:type "text/mustache"}
    "<h3>Alert</h3>{{#data}}<p>{{trigger_summary_data.subject}}</p>{{/data}}"])
 
-(defn configure [{:keys [program-name username password service_ids schedule]}]
+(defn configure [{:keys [program-name username password organization service_ids schedule]}]
   (brainiac/schedule
     2000
     (brainiac/simple-http-plugin
-      {:method :get :url (incidents-url service_ids) :basic-auth [username password]}
+      {:method :get :url (incidents-url organization service_ids) :basic-auth [username password]}
       transform program-name)))

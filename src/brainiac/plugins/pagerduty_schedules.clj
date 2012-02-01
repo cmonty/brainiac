@@ -12,9 +12,9 @@
   (let [date-formatter (SimpleDateFormat. "yyyy-MM-dd'T'HH:mmZ")]
     (.format date-formatter date)))
 
-(defn schedule-url [schedule]
+(defn schedule-url [organization schedule]
   (let [current-time (date-formatter (now))]
-    (format "https://braintree.pagerduty.com/api/v1/schedules/%s/entries?since=%s&until=%s&overflow=true" schedule current-time current-time)))
+    (format "https://%s.pagerduty.com/api/v1/schedules/%s/entries?since=%s&until=%s&overflow=true" organization schedule current-time current-time)))
 
 (defn html []
   [:script#schedule-template {:type "text/mustache"}
@@ -27,9 +27,9 @@
       :type "schedule"
       :data (:entries json))))
 
-(defn configure [{:keys [program-name username password schedule_ids]}]
+(defn configure [{:keys [program-name organization username password schedule_ids]}]
   (brainiac/schedule
     5000
     (brainiac/simple-http-plugin
-      {:method :get :url (schedule-url schedule_ids) :basic-auth [username password]}
+      {:method :get :url (schedule-url organization schedule_ids) :basic-auth [username password]}
       transform program-name)))
