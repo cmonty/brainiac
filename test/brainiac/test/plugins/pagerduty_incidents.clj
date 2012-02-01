@@ -10,6 +10,6 @@
     (testing "sets name"
       (is (= "pagerduty-incident" (:name parsed-result))))
     (testing "sets data"
-      (is (= "Production Exception" (:name (:service (first (:data parsed-result)))))))
+      (is (= "Exceptions" (:name (:service (first (:data parsed-result)))))))
     (testing "sets type"
       (is (= "alert" (:type parsed-result))))))

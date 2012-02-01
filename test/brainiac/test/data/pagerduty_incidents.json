@@ -1,1 +1,21 @@
-{"total":121,"incidents":[{"last_status_change_on":"2012-01-20T16:20:52Z","assigned_to_user":null,"trigger_summary_data":{"subject":"[Error -- production] settlement_batch_reports#run (ActionView::MissingTemplate) \"Missing template settlement_batch_reports/run.erb in view path app/views\""},"trigger_details_html_url":"http://braintree.pagerduty.com/incidents/PJ0R5W9/log_entries/PLHU4QN","created_on":"2012-01-20T16:20:12Z","service":{"name":"Production Exception","id":"PXYTP5R","html_url":"http://braintree.pagerduty.com/services/PXYTP5R"},"last_status_change_by":{"name":"Ali Aghareza","id":"PAVOS91","html_url":"http://braintree.pagerduty.com/users/PAVOS91","email":"ali@getbraintree.com"},"status":"resolved","incident_number":2607,"html_url":"http://braintree.pagerduty.com/incidents/PJ0R5W9","incident_key":"__TRIGGERED_VIA_EMAIL__"}],"limit":1}
+{"total":121,
+  "incidents": [{
+    "last_status_change_on":"2012-01-20T16:20:52Z",
+    "assigned_to_user":null,
+    "trigger_summary_data": {"subject":"An Exception!"},
+    "trigger_details_html_url":"http://organization.pagerduty.com/incidents/PJ0R5W9/log_entries/PLHU4QN",
+    "created_on":"2012-01-20T16:20:12Z",
+    "service":{
+      "name":"Exceptions",
+      "id":"PXTRDZ",
+      "html_url":"http://organization.pagerduty.com/services/PXTRDZ"},
+    "last_status_change_by":{
+      "name":"Brainiac",
+      "id":"BRAINIAC",
+      "html_url":"http://organization.pagerduty.com/users/BRAINIAC",
+      "email":"brainiac@getbraintree.com"},
+    "status":"resolved",
+    "incident_number":0000,
+    "html_url":"http://organization.pagerduty.com/incidents/ID",
+    "incident_key":"__TRIGGERED_VIA_EMAIL__"}],
+  "limit":1}
