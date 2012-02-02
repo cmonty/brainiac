@@ -18,12 +18,12 @@
    "<div class=\"ticker\"><ul class=\"ticker\"> {{#data}}<li>{{.}}</li>{{/data}} </ul></ticker>"])
 
 
-(defn search-url [term]
+(defn url [term]
   (format "http://search.twitter.com/search.json?q=%s" term))
 
 (defn configure [{:keys [term program-name]}]
   (brainiac/schedule
     30000
     (brainiac/simple-http-plugin
-       {:url (search-url term)}
+       {:url (url term)}
        transform program-name)))

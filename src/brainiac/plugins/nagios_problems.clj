@@ -3,7 +3,7 @@
   (:require [brainiac.plugin :as brainiac]
             [brainiac.html-utils :as html]))
 
-(defn nagios-url [host]
+(defn url [host]
   (format "%s/cgi-bin/nagios3/status.cgi?hostgroup=all&style=detail&servicestatustypes=28&hoststatustypes=15" host))
 
 (defn map-row [row]
@@ -34,5 +34,5 @@
     (brainiac/schedule
       5000
       (brainiac/simple-http-plugin
-         {:method :get :url (nagios-url host) :basic-auth [username password]}
+         {:method :get :url (url host) :basic-auth [username password]}
          transform program-name))))

@@ -18,7 +18,8 @@
     {}))
 
 (defn munge-request [request handler]
-  (let [url (:url request)
+  (let [url-callback (:url-callback request)
+        url (if (nil? url-callback) (:url request) (url-callback))
         headers (merge {} (build-basic-auth request))]
     (http-agent url :headers headers :handler handler)))
 

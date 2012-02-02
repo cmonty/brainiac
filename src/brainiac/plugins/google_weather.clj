@@ -22,12 +22,12 @@
   [:script#weather-template {:type "text/mustache"}
    "<h3>{{title}}</h3> <h2>{{data.temp}}</h2> <p><img src={{data.icon}}><br>{{data.current-conditions}}</p>"])
 
-(defn weather-url [city]
+(defn url [city]
   (format "http://www.google.com/ig/api?weather=%s" city))
 
 (defn configure [{:keys [city program-name]}]
   (brainiac/schedule
     5000
     (brainiac/simple-http-plugin
-       {:url (weather-url city)}
+       {:url (url city)}
        transform program-name)))

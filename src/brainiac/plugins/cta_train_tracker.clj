@@ -36,13 +36,13 @@
 
 (defn html [] (templates/unordered-list))
 
-(defn tracker-url [map-id api-key]
+(defn url [map-id api-key]
   (format "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?mapid=%s&key=%s&max=4" map-id api-key))
 
 (defn configure [{:keys [program-name map-id api-key]}]
   (brainiac/schedule
     5000
     (brainiac/simple-http-plugin
-      {:method :get :url (tracker-url map-id api-key)}
+      {:method :get :url (url map-id api-key)}
       transform program-name)))
 

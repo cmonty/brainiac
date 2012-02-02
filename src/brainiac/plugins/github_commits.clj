@@ -15,7 +15,7 @@
     :title (format "Recent commits to %s/%s" username repository)
     :data (map format-commit (take 5 json)))))
 
-(defn search-url [username repository]
+(defn url [username repository]
   (format "https://api.github.com/repos/%s/%s/commits" username repository))
 
 (defn html [] (templates/unordered-list))
@@ -24,5 +24,5 @@
   (brainiac/schedule
     15000
     (brainiac/simple-http-plugin
-      {:url (search-url username repository)}
+      {:url (url username repository)}
       (fn [stream] (transform username repository stream)) program-name)))

@@ -20,7 +20,7 @@
       :title (format "CTA #%s Bus (%s) - %s" route direction stop)
       :data (zf/xml-> xml-zipper :pre parse-prediction))))
 
-(defn tracker-url [route-number stop-id]
+(defn url [route-number stop-id]
   (format "http://ctabustracker.com/bustime/map/getStopPredictions.jsp?route=%s&stop=%s" route-number stop-id))
 
 (defn html [] (templates/unordered-list))
@@ -29,6 +29,6 @@
   (brainiac/schedule
     20000
     (brainiac/simple-http-plugin
-      {:method :get :url (tracker-url route-number stop-id)}
+      {:method :get :url (url route-number stop-id)}
       transform program-name)))
 

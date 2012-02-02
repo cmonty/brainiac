@@ -3,7 +3,7 @@
         [clojure.java.io :only (reader)])
   (:require [brainiac.plugin :as brainiac]))
 
-(defn incidents-url [organization service_ids]
+(defn url [organization service_ids]
   (let [status "triggered,acknowledged"
         base-url (format "https://%s.pagerduty.com/api/v1/incidents" organization)]
     (format "%s?status=%s&service=%s&sort_by=created_on:desc" base-url status service_ids)))
@@ -23,5 +23,5 @@
   (brainiac/schedule
     2000
     (brainiac/simple-http-plugin
-      {:method :get :url (incidents-url organization service_ids) :basic-auth [username password]}
+      {:method :get :url (url organization service_ids) :basic-auth [username password]}
       transform program-name)))
