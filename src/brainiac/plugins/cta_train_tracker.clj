@@ -7,7 +7,7 @@
             [clojure.contrib.zip-filter.xml :as zf]))
 
 (def time-format
-  (let [date-format (SimpleDateFormat. "yyyyMMDD HH:mm:ss")]
+  (let [date-format (SimpleDateFormat. "yyyyMMdd HH:mm:ss")]
     (.setTimeZone date-format (TimeZone/getTimeZone "America/Chicago"))
     date-format))
 
