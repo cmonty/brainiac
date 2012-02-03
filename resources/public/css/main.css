@@ -1,31 +1,38 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600italic,600,800);
 
 body {
   background-color: black;
   color: white;
-
+  margin:0; 
+  padding:0;
   font-family: Open Sans, sans-serif;
-
+  font-size: 20px;
   background: url(/images/background.png);
 }
 
 div#plugins > div {
-  width: auto;
+  width: 28%;
+  height: 400px;
   display: block;
   float: left;
-  background: #333;
-  border-radius: 10px;
+  border-radius: 15px 0;
   padding: 5px 15px;
   margin: 10px;
   border: 2px solid #444;
   box-shadow: 5px 5px 10px black;
   -moz-box-shadow: 5px 5px 10px black;
   -webkit-box-shadow: 5px 5px 10px black;
+  overflow: hidden;
+  background: -moz-linear-gradient(top, #444444 0%, #262626 100%); /* FF3.6+ */
+  background: -webkit-linear-gradient(top, #444444 0%,#262626 100%); /* Chrome10+,Safari5.1+ */
+  background: -ms-linear-gradient(top, #444444 0%,#262626 100%); /* IE10+ */
+  background: linear-gradient(top, #444444 0%,#262626 100%); /* W3C */
 }
 
 div#plugins > div h3 {
   margin: 0;
   color: orange;
+  font-size: 25px;
 }
 
 div#plugins ul {
