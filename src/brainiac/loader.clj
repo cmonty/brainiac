@@ -1,5 +1,6 @@
 (ns brainiac.loader
-  (:require [clj-yaml.core :as yaml]))
+  (:require [clj-yaml.core :as yaml]
+            [brainiac.plugin :as brainiac]))
 
 (def loaded (atom {}))
 
@@ -7,7 +8,7 @@
   (yaml/parse-string (slurp file)))
 
 (defn register [plugin program-name]
-  (let [namespace (str "brainiac.plugins." (name (key plugin)))
+  (let [namespace (brainiac/fullname (key plugin))
         options (merge (val plugin) {:program-name program-name})]
     (require (symbol namespace))
     (eval (list (symbol namespace "configure") options))

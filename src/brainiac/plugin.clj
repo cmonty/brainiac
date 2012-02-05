@@ -10,6 +10,9 @@
 (def *debug* false)
 (defn tap [s] (if *debug* (prn s)) s)
 
+(defn fullname [plugin]
+  (str "brainiac.plugins." (name plugin)))
+
 (defn build-basic-auth [request]
   (if (:basic-auth request)
     (assoc {}
@@ -23,12 +26,19 @@
         headers (merge {} (build-basic-auth request))]
     (http-agent url :headers headers :handler handler)))
 
-(defn jsonify [agnt transformer]
+(defn transform [agnt transformer]
   (-> (stream agnt)
     tap
     transformer
-    tap
-    formats/encode-json->string))
+    tap))
+
+(defn send-message [message program]
+  (let [json-message (formats/encode-json->string message)]
+    (websocket/broadcast-json json-message program)))
+
+(defn receive-message [program plugin content]
+  (let [namespace (fullname plugin)]
+    (send-message (eval (list (symbol namespace "message") {:message content})) program)))
 
 (defn render [plugin]
   (let [namespace (name (key plugin))]
@@ -37,7 +47,7 @@
 
 (defn agent-handler [transformer program-name]
   (fn [agnt]
-    (websocket/broadcast-json (jsonify agnt transformer) program-name)))
+    (send-message (transform agnt transformer) program-name)))
 
 (defn simple-http-plugin [request transformer program-name]
   (fn [] (munge-request request (agent-handler transformer program-name))))
