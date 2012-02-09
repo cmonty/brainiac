@@ -1,14 +1,31 @@
 (ns brainiac.plugins.elovation-game
+  (:import [java.text SimpleDateFormat]
+           [java.util TimeZone])
   (:use [clojure.contrib.json :only (read-json)]
         [clojure.java.io :only (reader)])
   (:require [brainiac.plugin :as brainiac]
             [brainiac.pages.templates :as templates]))
 
+(def parse-time-format
+  (let [date-format (SimpleDateFormat. "yyyy-MM-dd HH:mm:ss zzz")]
+    (.setTimeZone date-format (TimeZone/getTimeZone "America/Chicago"))
+    date-format))
+
+(def display-time-format
+  (let [date-format (SimpleDateFormat. "h:mmaa 'on' M/d")]
+    (.setTimeZone date-format (TimeZone/getTimeZone "America/Chicago"))
+    date-format))
+
+(defn format-time-string [timestamp]
+  (let [game-time (.parse parse-time-format timestamp)]
+    (.format display-time-format game-time)))
+
 (defn format-rating [rating]
   (format "%s - %s" (:value rating) (:player rating)))
 
 (defn format-result [result]
-  (format "%s beat %s" (:winner result) (:loser result)))
+  (let [time-string (format-time-string (:created_at result))]
+  (format "%s beat %s at %s" (:winner result) (:loser result) time-string)))
 
 (defn transform [stream]
   (let [json (read-json (reader stream))
