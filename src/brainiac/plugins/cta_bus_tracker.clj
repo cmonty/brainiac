@@ -15,7 +15,7 @@
         route (zf/xml1-> xml-zipper :sri :rt zf/text)
         direction (zf/xml1-> xml-zipper :sri :dd zf/text)]
     (assoc {}
-      :name "cta-bus-tracker"
+      :name (format "cta-bus-tracker-%s-%s" stop route)
       :type "list"
       :title (format "CTA #%s Bus (%s) - %s" route direction stop)
       :data (zf/xml-> xml-zipper :pre parse-prediction))))

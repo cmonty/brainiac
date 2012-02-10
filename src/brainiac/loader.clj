@@ -7,11 +7,15 @@
 (defn read-config-file [file]
   (yaml/parse-string (slurp file)))
 
+(defn load-from-options [namespace program-name options]
+  (let [merged-options (merge options {:program-name program-name})]
+    (eval (list (symbol namespace "configure") merged-options))))
+
 (defn register [plugin program-name]
   (let [namespace (brainiac/fullname (key plugin))
-        options (merge (val plugin) {:program-name program-name})]
+        options-list (flatten (list (val plugin)))]
     (require (symbol namespace))
-    (eval (list (symbol namespace "configure") options))
+    (doseq [options options-list] (load-from-options namespace program-name options))
     (swap! loaded assoc (str namespace) true)))
 
 (defn create [program]
