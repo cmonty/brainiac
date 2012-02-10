@@ -10,7 +10,7 @@ var Updater = (function() {
       var template = $("#" + data.type + "-template");
       var content = $.mustache(template.html(), data)
       if ($("div#" + name).length == 0) {
-        var plugin = $('<div/>', {'id': name, 'class': 'plugin'}).html(content);
+        var plugin = $('<div/>', {'id': name, 'class': Updater.classFor(template)}).html(content);
         $("#plugins").append(plugin);
         Updater.attachWidget(template, plugin);
       } else {
@@ -18,6 +18,14 @@ var Updater = (function() {
         plugin.html(content);
         Updater.attachWidget(template, plugin);
       }
+    },
+
+    classFor: function(template) {
+      var classes = "plugin";
+      if ($(template.data('class'))) {
+        classes = classes + " " + template.data('class');
+      }
+      return classes;
     },
 
     attachWidget: function(template, plugin) {
