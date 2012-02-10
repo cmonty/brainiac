@@ -1,5 +1,5 @@
 (ns brainiac.plugin
-  (:use [clojure.contrib.http.agent :only (error? http-agent stream)])
+  (:use [clojure.contrib.http.agent :only (success? status http-agent stream)])
   (:require [brainiac.websocket :as websocket]
             [aleph.formats :as formats]
             [lamina.core :as lamina]
@@ -20,11 +20,15 @@
       (str "Basic "(base64/encode-str (s/str-join ":" (:basic-auth request)))))
     {}))
 
-(defn munge-request [request handler]
+(defn munge-request [request]
   (let [url-callback (:url-callback request)
         url (if (nil? url-callback) (:url request) (url-callback))
         headers (merge {} (build-basic-auth request))]
-    (http-agent url :headers headers :handler handler)))
+    [url :headers headers]))
+
+(defn build-url [request]
+  (let [url-callback (:url-callback request)]
+    (if (nil? url-callback) (:url request) (url-callback))))
 
 (defn transform [agnt transformer]
   (-> (stream agnt)
@@ -50,7 +54,16 @@
     (send-message (transform agnt transformer) program-name)))
 
 (defn simple-http-plugin [request transformer program-name]
-  (fn [] (munge-request request (agent-handler transformer program-name))))
+  (fn []
+    (try
+      (let [url (build-url request)
+            agnt (http-agent url :headers (build-basic-auth request))]
+        (println "fetching" url)
+        (await-for 60000 agnt)
+        (if (success? agnt)
+          (send-message (transform agnt transformer) program-name)
+          (println "URL " url "failed with" (status agnt))))
+      (catch Exception e (println "caught exception " (.getMessage e))))))
 
 (defn schedule [interval method]
   (at-at/every interval method))

@@ -14,4 +14,3 @@
 (defpartial unordered-list []
   [:script#list-template {:type "text/mustache"}
    "<h3>{{title}}</h3> <ul> {{#data}}<li>{{.}}</li>{{/data}} </ul>"])
-
