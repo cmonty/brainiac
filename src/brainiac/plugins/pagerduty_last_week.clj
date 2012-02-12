@@ -23,7 +23,7 @@
     [(.get calendar Calendar/YEAR) (.get calendar Calendar/MONTH) (.get calendar Calendar/DAY_OF_MONTH)]))
 
 (defn- hour-of-day-part [date]
-  (.get (doto (Calendar/getInstance) (.setTime date)) Calendar/HOUR_OF_DAY))
+  (.get (doto (Calendar/getInstance) (.setTime date) (.setTimeZone (TimeZone/getTimeZone "America/Chicago"))) Calendar/HOUR_OF_DAY))
 
 (defn- outside-business-hours? [date]
   (not (contains? business-hours (hour-of-day-part date))))
