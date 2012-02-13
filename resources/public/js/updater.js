@@ -10,7 +10,7 @@ var Updater = (function() {
       var template = $("#" + data.type + "-template");
       var content = $.mustache(template.html(), data)
       if ($("div#" + name).length == 0) {
-        var plugin = $('<div/>', {'id': name, 'class': Updater.classFor(template)}).html(content);
+        var plugin = $('<div/>', {'id': name}).html(content);
         $("#plugins").append(plugin);
         Updater.attachWidget(template, plugin);
       } else {

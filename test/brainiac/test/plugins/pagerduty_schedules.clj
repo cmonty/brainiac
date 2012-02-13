@@ -8,7 +8,7 @@
 (deftest test-transform
   (let [parsed-result (transform schedules-json)]
     (testing "sets name"
-      (is (= "pagerduty-schedule" (:name parsed-result))))
+      (is (= "pagerduty-schedules" (:name parsed-result))))
     (testing "sets data"
       (is (= "Ali Aghareza" (:name (:user (first (:data parsed-result)))))))
     (testing "sets type"

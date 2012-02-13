@@ -6,6 +6,9 @@
         hiccup.page-helpers
         brainiac.loader))
 
+(defpartial plugins []
+  (map plugin/render @loaded))
+
 (defpartial main-layout [& content]
   (html5
     [:head
@@ -18,5 +21,5 @@
      (include-css "/css/main.css")]
     [:body
      content
-     [:div.templates (map plugin/render @loaded)]]))
+     [:div.templates (map plugin/render-template @loaded)]]))
 

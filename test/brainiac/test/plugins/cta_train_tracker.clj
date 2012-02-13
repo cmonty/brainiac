@@ -12,7 +12,7 @@
         (is (= "list" (:type parse-result))))
 
         (testing "sets name"
-          (is (="train-tracker" (:name parse-result))))
+          (is (="cta-train-tracker" (:name parse-result))))
 
         (testing "sets title"
           (is (= "UIC-Halsted (Blue)" (:title parse-result))))

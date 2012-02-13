@@ -8,7 +8,7 @@
 (deftest test-transform
   (let [parsed-result (transform incidents-json)]
     (testing "sets name"
-      (is (= "pagerduty-incident" (:name parsed-result))))
+      (is (= "pagerduty-incidents" (:name parsed-result))))
     (testing "sets data"
       (is (= "Exceptions" (:name (:service (first (:data parsed-result)))))))
     (testing "sets type"

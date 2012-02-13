@@ -1,5 +1,6 @@
 (ns brainiac.plugin
-  (:use [clojure.contrib.http.agent :only (success? status http-agent stream)])
+  (:use [clojure.contrib.http.agent :only (success? status http-agent stream)]
+        [clojure.contrib.string :only (replace-str)])
   (:require [brainiac.websocket :as websocket]
             [aleph.formats :as formats]
             [lamina.core :as lamina]
@@ -12,6 +13,9 @@
 
 (defn fullname [plugin]
   (str "brainiac.plugins." (name plugin)))
+
+(defn shortname [plugin]
+  (replace-str "brainiac.plugins." "" plugin))
 
 (defn build-basic-auth [request]
   (if (:basic-auth request)
@@ -45,6 +49,10 @@
     (send-message (eval (list (symbol namespace "message") {:message content})) program)))
 
 (defn render [plugin]
+  (let [id (shortname (key plugin))]
+    [:div {:id id} ""]))
+
+(defn render-template [plugin]
   (let [namespace (name (key plugin))]
     (require (symbol namespace))
     (eval (list (symbol namespace "html")))))

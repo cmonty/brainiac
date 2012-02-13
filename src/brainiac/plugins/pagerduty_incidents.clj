@@ -11,7 +11,7 @@
 (defn transform [stream]
   (let [json (read-json (reader stream))]
     (assoc {}
-      :name "pagerduty-incident"
+      :name "pagerduty-incidents"
       :type "alert"
       :data (:incidents json))))
 

@@ -29,7 +29,7 @@
         stop (zf/xml1-> xml-zipper :eta :staNm zf/text)
         route (zf/xml1-> xml-zipper :eta :rt zf/text)]
     (assoc {}
-      :name "train-tracker"
+      :name "cta-train-tracker"
       :type "list"
       :title (format "%s (%s)" stop route)
       :data (zf/xml-> xml-zipper :eta parse-eta))))

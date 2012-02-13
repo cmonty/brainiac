@@ -24,7 +24,7 @@
 (defn transform [stream]
   (let [json (read-json (reader stream))]
     (assoc {}
-      :name "pagerduty-schedule"
+      :name "pagerduty-schedules"
       :type "schedule"
       :data (:entries json))))
 
