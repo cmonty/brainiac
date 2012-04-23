@@ -87,3 +87,15 @@ div#plugins ul {
   list-style-position: inside;
   padding: 0;
 }
+
+.temperature {
+	font-size: 10.5em;
+	margin: 0px;
+	text-align: center;
+}
+
+.conditions {
+	font-size: 2.8em;
+	margin: 0;
+	text-align: center;
+}
