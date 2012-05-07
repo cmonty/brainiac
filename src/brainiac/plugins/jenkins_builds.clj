@@ -26,11 +26,19 @@
         build-data (zf/xml-> xml :Project parse-project)]
     (assoc {}
       :name "jenkins-builds"
-      :type "list"
+      :type "jenkins"
       :title (str "Jenkins: " (build-status-string build-data))
+			:fail_count (count (filter-status build-data "Failure"))
       :data (map #(:name %) (filter-status build-data "Failure")))))
 
-(defn html [] (templates/unordered-list))
+(defn html [] 
+[:script#jenkins-template {:type "text/mustache"}
+  "<div class='jenkins'>
+		<h3>Oh, dear</h3>
+		<h2 class='builds'>{{fail_count}}<br />
+		<span class='fail-text'>failing builds</span></h2>
+		<ul class='fail-list'> {{#data}}<li>{{.}}</li>{{/data}} </ul>
+		</div>"])
 
 (defn configure [{:keys [url username password program-name]}]
   (brainiac/schedule
