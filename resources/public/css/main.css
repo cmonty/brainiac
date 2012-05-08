@@ -102,11 +102,9 @@ div#plugins ul {
 }
 
 /* Jenkins Styles */
-.jenkins {
+div#plugins > #jenkins-builds {
 	background:url(/images/jenkins.png) bottom left no-repeat #fff;
-	padding: 20px 20px 20px 233px;
-	margin: -5px -15px;
-	height:370px;
+	
 }
 .builds {
 	font-size: 250px;
@@ -123,4 +121,24 @@ div#plugins ul {
 .fail-list {
 	color: #D33833;
 	margin: 0px 20px;
+}
+
+/*Twitter Styles */
+div#plugins > #twitter-search {
+	color: black;
+	background: url(/images/twitter-bird.png) bottom right no-repeat #a3d8fe; /* Old browsers */
+	background: url(/images/twitter-bird.png) bottom right no-repeat,  -moz-linear-gradient(top, #a3d8fe 0%, #2b7db7 100%); /* FF3.6+ */
+	background: url(/images/twitter-bird.png) bottom right no-repeat,  -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3d8fe), color-stop(100%,#2b7db7)); /* Chrome,Safari4+ */
+	background: url(/images/twitter-bird.png) bottom right no-repeat, -webkit-linear-gradient(top, #a3d8fe 0%,#2b7db7 100%); /* Chrome10+,Safari5.1+ */
+	background: url(/images/twitter-bird.png) bottom right no-repeat,  -o-linear-gradient(top, #a3d8fe 0%,#2b7db7 100%); /* Opera 11.10+ */
+	background: url(/images/twitter-bird.png) bottom right no-repeat,  -ms-linear-gradient(top, #a3d8fe 0%,#2b7db7 100%); /* IE10+ */
+	background: url(/images/twitter-bird.png) bottom right no-repeat,  linear-gradient(top, #a3d8fe 0%,#2b7db7 100%); /* W3C */
+}
+
+.ticker {
+	font-size: 30px;
+}
+
+div#plugins ul.ticker {
+	list-style-type: none;	
 }

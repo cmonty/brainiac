@@ -33,12 +33,10 @@
 
 (defn html [] 
 [:script#jenkins-template {:type "text/mustache"}
-  "<div class='jenkins'>
-		<h3>Oh, dear</h3>
+  "<h3>Oh, dear</h3>
 		<h2 class='builds'>{{fail_count}}<br />
 		<span class='fail-text'>failing builds</span></h2>
-		<ul class='fail-list'> {{#data}}<li>{{.}}</li>{{/data}} </ul>
-		</div>"])
+		<ul class='fail-list'> {{#data}}<li>{{.}}</li>{{/data}} </ul>"])
 
 (defn configure [{:keys [url username password program-name]}]
   (brainiac/schedule

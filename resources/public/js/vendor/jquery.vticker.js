@@ -7,8 +7,8 @@
 $.fn.vTicker = function(options) {
 	var defaults = {
 		speed: 700,
-		pause: 4000,
-		showItems: 3,
+		pause: 7000,
+		showItems: 10,
 		animation: '',
 		mousePause: true,
 		isPaused: false,
