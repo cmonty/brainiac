@@ -11,7 +11,7 @@
     (testing "sets name"
       (is (= "jenkins-builds" (:name result))))
     (testing "sets type"
-      (is (= "list" (:type result))))
+      (is (= "jenkins" (:type result))))
     (testing "sets title"
       (is (= "Jenkins: 2 Failing Builds" (:title result))))
     (testing "sets data"
@@ -22,7 +22,7 @@
     (testing "sets name"
       (is (= "jenkins-builds" (:name result))))
     (testing "sets type"
-      (is (= "list" (:type result))))
+      (is (= "jenkins" (:type result))))
     (testing "sets title"
       (is (= "Jenkins: All builds passing" (:title result))))
     (testing "sets data"

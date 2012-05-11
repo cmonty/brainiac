@@ -33,9 +33,8 @@
 
 (defn html [] 
 [:script#jenkins-template {:type "text/mustache"}
-  "<h3>Oh, dear</h3>
-		<h2 class='builds'>{{fail_count}}<br />
-		<span class='fail-text'>failing builds</span></h2>
+  "<p class='builds'>{{fail_count}}<p>
+		<p class='fail-text'>failing builds</p>
 		<ul class='fail-list'> {{#data}}<li>{{.}}</li>{{/data}} </ul>"])
 
 (defn configure [{:keys [url username password program-name]}]
