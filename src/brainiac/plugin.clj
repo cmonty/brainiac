@@ -1,16 +1,13 @@
 (ns brainiac.plugin
   (:use [clojure.contrib.http.agent :only (success? status http-agent stream)]
         [clojure.contrib.string :only (replace-str)]
-        [clojure.tools.logging :only (info)]
-        clj-logging-config.log4j)
+        [clojure.tools.logging :only (info)])
   (:require [brainiac.websocket :as websocket]
             [aleph.formats :as formats]
             [lamina.core :as lamina]
             [clojure.contrib.str-utils :as s]
             [clojure.contrib.base64 :as base64]
             [overtone.at-at :as at-at]))
-
-(set-logger! :pattern "[%d] %m - %r%n")
 
 (def *debug* false)
 (defn tap [s] (if *debug* (prn s)) s)
