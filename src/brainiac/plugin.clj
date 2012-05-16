@@ -1,12 +1,16 @@
 (ns brainiac.plugin
   (:use [clojure.contrib.http.agent :only (success? status http-agent stream)]
-        [clojure.contrib.string :only (replace-str)])
+        [clojure.contrib.string :only (replace-str)]
+        clj-logging-config.log4j)
   (:require [brainiac.websocket :as websocket]
             [aleph.formats :as formats]
             [lamina.core :as lamina]
             [clojure.contrib.str-utils :as s]
             [clojure.contrib.base64 :as base64]
+            [clojure.tools.logging :as log :only (info error)]
             [overtone.at-at :as at-at]))
+
+(set-logger! :pattern "[%d] %m - %r%n")
 
 (def *debug* false)
 (defn tap [s] (if *debug* (prn s)) s)
@@ -66,7 +70,7 @@
     (try
       (let [url (build-url request)
             agnt (http-agent url :headers (build-basic-auth request))]
-        (println "fetching" url)
+        (log/info "fetching" url)
         (await-for 60000 agnt)
         (if (success? agnt)
           (send-message (transform agnt transformer) program-name)
