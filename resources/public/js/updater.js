@@ -1,9 +1,13 @@
 var Updater = (function() {
-  var socket;
+  var socket, heartbeat;
 
   return {
     connect: function() {
       socket.send("devs");
+    },
+
+    socket: function() {
+      new WebSocket("ws://" + location.host + "/async");
     },
 
     updatePlugin: function(name, data) {
@@ -40,10 +44,34 @@ var Updater = (function() {
       Updater.updatePlugin(data.name, data);
     },
 
+    startTimer: function() {
+      var self = this;
+
+      clearInterval(heartbeat);
+
+      heartbeat = setInterval(function() {
+        console.log("Closing stale websocket");
+        self.subscribe();
+      }, 30000);
+    },
+
     subscribe: function() {
+      var self = this;
       socket = new WebSocket("ws://" + location.host + "/async");
-      socket.onmessage = this.update;
-      socket.onopen = this.connect;
+      socket.onmessage = function (e) {
+        self.update(e);
+        self.startTimer();
+      }
+
+      socket.onopen = function () {
+        console.log("Socket opened");
+        self.startTimer();
+        self.connect();
+      }
+
+      socket.onerror = function () {
+        console.log("Error connecting to websocket");
+      }
     }
   };
 })();
