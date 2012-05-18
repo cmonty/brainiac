@@ -149,6 +149,10 @@ div#plugins ul.ticker {
 	list-style-type: none;	
 }
 
+div#plugins > li.ticker-item {
+	margin-bottom:70px;
+}
+
 /* Pagerduty styles */
 div#plugins > #pagerduty-schedule {
 	

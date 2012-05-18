@@ -16,7 +16,7 @@
 (defn html []
   [:script#ticker-template {:type "text/mustache" :data-widget "ticker"}
 	"<div class=\"ticker\">
-		<ul class=\"ticker\"> {{#data}}<li>{{.}}</li>{{/data}} </ul>
+		<ul class=\"ticker\"> {{#data}}<li class='ticker-item'>{{.}}</li>{{/data}} </ul>
 	</div>"])
 
 (defn url [term]

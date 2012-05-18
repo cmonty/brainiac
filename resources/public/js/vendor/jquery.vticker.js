@@ -7,13 +7,13 @@
 $.fn.vTicker = function(options) {
 	var defaults = {
 		speed: 700,
-		pause: 7000,
-		showItems: 10,
+		pause: 8000,
+		showItems: 15,
 		animation: '',
 		mousePause: true,
 		isPaused: false,
 		direction: 'up',
-		height: 0
+		height: 490
 	};
 
 	var options = $.extend(defaults, options);
@@ -84,7 +84,7 @@ $.fn.vTicker = function(options) {
 
 		obj.css({overflow: 'hidden', position: 'relative'})
 			.children('ul').css({position: 'absolute', margin: 0, padding: 0})
-			.children('li').css({margin: 0, padding: 0});
+			.children('li').css({margin: 30, padding: 0});
 
 		if(options.height == 0)
 		{
