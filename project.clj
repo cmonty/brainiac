@@ -1,4 +1,4 @@
-(defproject brainiac "1.0.0-SNAPSHOT"
+(defproject brainiac "core"
   :description "An Awesome HUD"
   :dependencies [[org.clojure/clojure "1.2.1"]
                  [org.clojure/clojure-contrib "1.2.0"]
