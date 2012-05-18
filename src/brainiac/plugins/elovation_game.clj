@@ -21,7 +21,7 @@
     (.format display-time-format game-time)))
 
 (defn format-rating [rating]
-  (format "%s - %s" (:value rating) (:player rating)))
+  (format "%s - %s" (:value rating) (:name (:player rating))))
 
 (defn format-result [result]
   (let [time-string (format-time-string (:created_at result))]
