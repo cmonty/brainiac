@@ -1,4 +1,5 @@
 (ns brainiac.core
+  (:gen-class)
   (:require [clojure.contrib.command-line :as cli]
             [brainiac.loader :as loader]
             [aleph.http :as aleph]
