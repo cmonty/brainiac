@@ -1,7 +1,7 @@
 (ns brainiac.plugin
   (:use [clojure.contrib.http.agent :only (success? status http-agent stream)]
         [clojure.contrib.string :only (replace-str)]
-        [clojure.tools.logging :only (info)])
+        [clojure.tools.logging :only (info warn)])
   (:require [brainiac.websocket :as websocket]
             [aleph.formats :as formats]
             [lamina.core :as lamina]
@@ -72,8 +72,8 @@
         (await-for 60000 agnt)
         (if (success? agnt)
           (send-message (transform agnt transformer) program-name)
-          (println "URL " url "failed with" (status agnt))))
-      (catch Exception e (println "caught exception " (.getMessage e))))))
+          (warn "URL " url "failed with" (status agnt))))
+      (catch Exception e (warn "caught exception " (.getMessage e))))))
 
 (defn schedule [interval method]
   (at-at/every interval method))
