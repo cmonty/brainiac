@@ -7,10 +7,11 @@
 						[clojure.string :only replace]))
 
 (defn now []
-  (.getTime (Calendar/getInstance (TimeZone/getTimeZone "America/Chicago"))))
+  (.getTime (Calendar/getInstance)))
 
 (defn date-formatter [date]
   (let [date-formatter (SimpleDateFormat. "yyyy-MM-dd'T'HH:mmZ")]
+    (.setTimeZone date-formatter (TimeZone/getTimeZone "America/Chicago"))
     (.format date-formatter date)))
 
 (defn url [organization schedule]
