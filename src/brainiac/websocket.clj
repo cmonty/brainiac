@@ -17,5 +17,5 @@
 (defn subscribe-to-updates [ch]
   (lamina/receive ch
     (fn [program]
-      (lamina/siphon broadcast-channel ch)
+      (lamina/siphon (lamina/fork broadcast-channel) ch)
       (doseq [m (vals @recent-updates)] (broadcast-json m program)))))
