@@ -131,6 +131,13 @@ div#plugins .fail-list {
 	padding:-left: 0;
 }
 
+/* Jukebox Styles */
+
+#jukebox p {
+  text-align: center;
+  font-size: 30px;
+}
+
 /*Twitter Styles */
 div#plugins > #twitter-search {
 	color: black;

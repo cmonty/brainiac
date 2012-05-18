@@ -66,7 +66,8 @@
   (fn []
     (try
       (let [url (build-url request)
-            agnt (http-agent url :headers (build-basic-auth request))]
+            headers (merge (:headers request) (build-basic-auth request))
+            agnt (http-agent url :headers headers)]
         (info "fetching" url)
         (await-for 60000 agnt)
         (if (success? agnt)
