@@ -12,8 +12,8 @@
       (is (= "jukebox" (:type result))))
     (testing "sets artist"
       (is (= "Sufjan Stevens" (:artist result))))
-    (testing "sets track"
-      (is (= "Too Much" (:track result))))
+    (testing "sets title"
+      (is (= "Too Much" (:title result))))
     (testing "sets album"
       (is (= "The Age of Adz" (:album result))))
     (testing "sets artwork"
