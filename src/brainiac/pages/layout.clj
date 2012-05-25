@@ -6,8 +6,15 @@
         hiccup.page-helpers
         brainiac.loader))
 
+(defn build-panel [plugins]
+  [:div {:class "panel"}
+    (map #(plugin/render % %2) plugins (cycle ["front" "back"]))])
+
+(def panel-count 6)
+
 (defpartial plugins []
-  (map plugin/render @loaded))
+  (map build-panel
+    (map #(remove nil? %) (apply map vector (partition panel-count panel-count (repeat nil) @loaded)))))
 
 (defpartial main-layout [& content]
   (html5
@@ -19,6 +26,7 @@
      (include-js "/js/widgets.js")
      (include-js "/js/updater.js")
      (include-js "/js/debug.js")
+     (include-js "/js/flip.js")
      (include-css "/css/main.css")]
     [:body.nocursor
      content

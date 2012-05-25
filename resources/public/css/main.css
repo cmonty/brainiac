@@ -58,14 +58,21 @@ div#plugins table.calendar span.count {
   text-align: center;
 }
 
-div#plugins > div {
+div#plugins > div.panel {
   width: 585px;
   height: 500px;
-  display: block;
   float: left;
-  border-radius: 15px 0;
-  padding: 5px 15px;
+  position: relative;
   margin: 15px 0 0 15px;
+  padding: 0;
+}
+
+div#plugins > div.panel > div {
+  margin: 0;
+  width: 555px;
+  height: 490px;
+  padding: 5px 15px;
+  border-radius: 15px 0;
   border: 2px solid #444;
   box-shadow: 5px 5px 10px black;
   -moz-box-shadow: 5px 5px 10px black;
@@ -105,7 +112,7 @@ div#plugins ul {
 }
 
 /* Jenkins Styles */
-div#plugins > #jenkins-builds {
+div#plugins #jenkins-builds {
 	background:url(/images/jenkins_frowny.png) bottom left no-repeat #fff;
 	color:#D33833;
 }
@@ -113,7 +120,7 @@ div#plugins > #jenkins-builds {
 	font-size: 290px;
 	font-weight: bold;
 	margin: 0 0 0 140px;
-	padding:0px;	
+	padding:0px;
   line-height: 80%;
 	text-align: center;
 }
@@ -139,7 +146,7 @@ div#plugins .fail-list {
 }
 
 /*Twitter Styles */
-div#plugins > #twitter-search {
+div#plugins #twitter-search {
 	color: black;
 	background: url(/images/twitter-bird.png) bottom right no-repeat #a3d8fe; /* Old browsers */
 	background: url(/images/twitter-bird.png) bottom right no-repeat, -moz-linear-gradient(top, #a3d8fe 0%, #2b7db7 100%); /* FF3.6+ */
@@ -155,16 +162,16 @@ div#plugins > #twitter-search {
 }
 
 div#plugins ul.ticker {
-	list-style-type: none;	
+	list-style-type: none;
 }
 
-div#plugins > li.ticker-item {
+div#plugins li.ticker-item {
 	margin-bottom:70px;
 }
 
 /* Pagerduty styles */
-div#plugins > #pagerduty-schedule {
-	
+div#plugins #pagerduty-schedule {
+
 }
 
 div#plugins .on-call {
@@ -176,4 +183,42 @@ div#plugins .on-call {
 div#plugins .on-call img {
 	float:left;
 	margin-right: 15px;
+}
+
+.panel > div {
+  float: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+
+  /* -- transition is the magic sauce for animation -- */
+  -o-transition: all .4s ease-in-out;
+  -ms-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-transform-style: preserve-3d;
+  -moz-backface-visibility: hidden;
+}
+
+.panel .front {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+}
+.panel.flip .front {
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+}
+
+.panel .back {
+  -webkit-transform: rotateX(-180deg);
+  -moz-transform: rotateX(-180deg);
+}
+.panel.flip .back {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
 }
