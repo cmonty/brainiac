@@ -11,4 +11,4 @@
     (testing "sets type"
       (is (= "ticker" (:type result))))
     (testing "sets data"
-      (is (= "T A Y. R O Z A Y\u2640\u2640: I'm such a maniac let me get some brainiac" (first (:data result)))))))
+      (is (= {:name "T A Y. R O Z A Y\u2640\u2640" :text "I'm such a maniac let me get some brainiac"} (first (:data result)))))))
