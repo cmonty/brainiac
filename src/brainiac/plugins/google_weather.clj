@@ -28,7 +28,7 @@
 
 (defn configure [{:keys [city program-name]}]
   (brainiac/schedule
-    5000
+    60000
     (brainiac/simple-http-plugin
        {:url (url city)}
        transform program-name)))
