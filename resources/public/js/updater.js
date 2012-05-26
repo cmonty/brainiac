@@ -16,11 +16,17 @@ var Updater = (function() {
       var content = $.mustache(template.html(), data)
       if ($("div#" + name).length == 0) {
         var plugin = $('<div/>', {'id': name}).html(content);
+        if(data.html_class) {
+          plugin.attr('class', data.html_class);
+        }
         $("#plugins").append(plugin);
         Updater.attachWidget(template, plugin);
       } else {
         var plugin = $("div#" + name)
         plugin.html(content);
+        if(data.html_class) {
+          plugin.attr('class', data.html_class);
+        }
         Updater.attachWidget(template, plugin);
       }
     },
