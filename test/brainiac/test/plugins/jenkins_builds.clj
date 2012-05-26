@@ -14,6 +14,8 @@
       (is (= "jenkins" (:type result))))
     (testing "sets title"
       (is (= "Jenkins: 2 Failing Builds" (:title result))))
+    (testing "sets class name"
+      (is (= "jenkins-failure" (:html_class result))))
     (testing "sets data"
       (is (= ["project3" "project5"])))))
 
@@ -25,5 +27,7 @@
       (is (= "jenkins" (:type result))))
     (testing "sets title"
       (is (= "Jenkins: All builds passing" (:title result))))
+    (testing "sets class name"
+      (is (= "jenkins-success" (:html_class result))))
     (testing "sets data"
       (is (= [])))))
