@@ -24,6 +24,7 @@
    "Blue" "Blue"
    "Brn" "Brown"
    "Pink" "Pink"
+   "P" "Purple"
    "Red" "Red"})
 
 (defn parse-eta [node]
