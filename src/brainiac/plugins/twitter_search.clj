@@ -4,7 +4,7 @@
   (:require [brainiac.plugin :as brainiac]))
 
 (defn format-tweet [tweet]
-  (format "%s: %s" (:from_user_name tweet) (:text tweet)))
+  {:name (:from_user_name tweet) :text (:text tweet)})
 
 (defn transform [stream]
   (let [json (read-json (reader stream))]
@@ -16,7 +16,7 @@
 (defn html []
   [:script#ticker-template {:type "text/mustache" :data-widget "ticker"}
 	"<div class=\"ticker\">
-		<ul class=\"ticker\"> {{#data}}<li class='ticker-item'>{{.}}</li>{{/data}} </ul>
+		<ul class=\"ticker\"> {{#data}}<li class='ticker-item'>{{name}} - {{text}}</li>{{/data}} </ul>
 	</div>"])
 
 (defn url [term]
