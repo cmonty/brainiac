@@ -25,6 +25,7 @@
      (include-js "/js/vendor/jquery.vticker.js")
      (include-js "/js/widgets.js")
      (include-js "/js/updater.js")
+     (include-js "/js/jenkins.js")
      (include-js "/js/debug.js")
      (include-js "/js/flip.js")
      (include-css "/css/main.css")]

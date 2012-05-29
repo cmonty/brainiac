@@ -1,5 +1,6 @@
 var Updater = (function() {
-  var socket, heartbeat;
+  var socket, heartbeat,
+  registeredPlugins = new Array();
 
   return {
     connect: function() {
@@ -10,7 +11,7 @@ var Updater = (function() {
       new WebSocket("ws://" + location.host + "/async");
     },
 
-    updatePlugin: function(name, data) {
+    renderTemplate: function(name, data) {
       var template = $("#" + data.type + "-template");
       var content = $.mustache(template.html(), data)
       if ($("div#" + name).length == 0) {
@@ -39,9 +40,20 @@ var Updater = (function() {
       }
     },
 
+    addListener: function(pluginName, callback) {
+      registeredPlugins.push(pluginName);
+      $('#' + pluginName).bind(pluginName + ".updated", callback);
+    },
+
     update: function(event) {
-      var data = JSON.parse(event.data);
-      Updater.updatePlugin(data.name, data);
+      var data = JSON.parse(event.data),
+          name = data.name;
+
+      if ($.inArray(name, registeredPlugins) === 0) {
+        $("#" + name).trigger(name + ".updated", data);
+      } else {
+        Updater.renderTemplate(data.name, data);
+      }
     },
 
     startTimer: function() {
@@ -64,7 +76,6 @@ var Updater = (function() {
       }
 
       socket.onopen = function () {
-        console.log("Socket opened");
         self.startTimer();
         self.connect();
       }
