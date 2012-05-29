@@ -3,19 +3,23 @@
         [clojure.test]
         [clojure.contrib.mock]))
 
-(def sample-xml (java.io.ByteArrayInputStream. (.getBytes "<?xml version=\"1.0\" encoding=\"utf-8\"?><ctatt><tmst>20120109 21:18:18</tmst><errCd>0</errCd><errNm /><eta><staId>40350</staId><stpId>30069</stpId><staNm>UIC-Halsted</staNm><stpDe>Service toward Forest Park</stpDe><rn>214</rn><rt>Blue</rt><destSt>30077</destSt><destNm>Forest Park</destNm><trDr>5</trDr><prdt>20120109 21:17:54</prdt><arrT>20120109 21:23:54</arrT><isApp>0</isApp><isSch>0</isSch><isDly>0</isDly><isFlt>0</isFlt><flags /></eta><eta><staId>40350</staId><stpId>30068</stpId><staNm>UIC-Halsted</staNm><stpDe>Service toward O'Hare</stpDe><rn>223</rn><rt>Blue</rt><destSt>30171</destSt><destNm>O'Hare</destNm><trDr>1</trDr><prdt>20120109 21:17:58</prdt><arrT>20120109 21:27:58</arrT><isApp>0</isApp><isSch>0</isSch><isDly>0</isDly><isFlt>0</isFlt><flags /></eta><eta><staId>40350</staId><stpId>30069</stpId><staNm>UIC-Halsted</staNm><stpDe>Service toward Forest Park</stpDe><rn>215</rn><rt>Blue</rt><destSt>30077</destSt><destNm>Forest Park</destNm><trDr>5</trDr><prdt>20120109 21:17:39</prdt><arrT>20120109 21:36:39</arrT><isApp>0</isApp><isSch>0</isSch><isDly>0</isDly><isFlt>0</isFlt><flags /></eta><eta><staId>40350</staId><stpId>30068</stpId><staNm>UIC-Halsted</staNm><stpDe>Service toward O'Hare</stpDe><rn>129</rn><rt>Blue</rt><destSt>30171</destSt><destNm>O'Hare</destNm><trDr>1</trDr><prdt>20120109 21:17:55</prdt><arrT>20120109 21:36:55</arrT><isApp>0</isApp><isSch>0</isSch><isDly>0</isDly><isFlt>0</isFlt><flags /></eta></ctatt>")))
+(def sample-xml (java.io.ByteArrayInputStream. (.getBytes "<?xml version=\"1.0\" encoding=\"utf-8\"?><ctatt><tmst>20120529 11:56:26</tmst><errCd>0</errCd><errNm /><eta><staId>40380</staId><stpId>30074</stpId><staNm>Clark/Lake</staNm><stpDe>Service at Inner Loop platform</stpDe><rn>706</rn><rt>Org</rt><destSt>30182</destSt><destNm>Midway</destNm><trDr>5</trDr><prdt>20120529 11:56:18</prdt><arrT>20120529 11:59:18</arrT><isApp>0</isApp><isSch>0</isSch><isDly>0</isDly><isFlt>0</isFlt><flags /></eta><eta><staId>40380</staId><stpId>30374</stpId><staNm>Clark/Lake</staNm><stpDe>Subway service toward Forest Park</stpDe><rn>115</rn><rt>Blue</rt><destSt>0</destSt><destNm>Forest Park</destNm><trDr>5</trDr><prdt>20120529 11:56:11</prdt><arrT>20120529 12:00:11</arrT><isApp>0</isApp><isSch>0</isSch><isDly>0</isDly><isFlt>0</isFlt><flags /></eta><eta><staId>40380</staId><stpId>30074</stpId><staNm>Clark/Lake</staNm><stpDe>Service at Inner Loop platform</stpDe><rn>304</rn><rt>Pink</rt><destSt>0</destSt><destNm>54th/Cermak</destNm><trDr>5</trDr><prdt>20120529 11:56:08</prdt><arrT>20120529 12:00:08</arrT><isApp>0</isApp><isSch>0</isSch><isDly>0</isDly><isFlt>0</isFlt><flags /></eta><eta><staId>40380</staId><stpId>30074</stpId><staNm>Clark/Lake</staNm><stpDe>Service at Inner Loop platform</stpDe><rn>007</rn><rt>G</rt><destSt>30139</destSt><destNm>Cottage Grove</destNm><trDr>5</trDr><prdt>20120529 11:55:48</prdt><arrT>20120529 12:00:48</arrT><isApp>0</isApp><isSch>0</isSch><isDly>0</isDly><isFlt>0</isFlt><flags /></eta></ctatt>")))
 
 (deftest test-transform
-  (expect [now (returns 1326165519000)]
+  (expect [now (returns 1338310719000)]
     (let [parse-result (transform sample-xml)]
       (testing "sets type"
-        (is (= "list" (:type parse-result))))
+        (is (= "cta-train-tracker" (:type parse-result))))
 
         (testing "sets name"
           (is (="cta-train-tracker" (:name parse-result))))
 
-        (testing "sets title"
-          (is (= "UIC-Halsted (Blue)" (:title parse-result))))
+        (testing "sets station"
+          (is (= "Clark/Lake" (:station parse-result))))
 
         (testing "sets data"
-          (is (= ["Forest Park 5 min" "O'Hare 9 min" "Forest Park 18 min" "O'Hare 18 min"] (:data parse-result)))))))
+          (is (= [{:destination "Midway" :line "Orange" :arrival-time "DUE" :due-in-millis 39000}
+                  {:destination "54th/Cermak" :line "Pink" :arrival-time "1 MIN" :due-in-millis 89000}
+                  {:destination "Forest Park" :line "Blue" :arrival-time "1 MIN" :due-in-millis 92000}
+                  {:destination "Cottage Grove" :line "Green" :arrival-time "2 MIN" :due-in-millis 129000}
+                  ] (:data parse-result)))))))

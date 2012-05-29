@@ -15,14 +15,27 @@
 
 (defn due-in-minutes [due-in-millis]
   (if (< due-in-millis (* 60 1000))
-    "due"
-    (str (int (/ due-in-millis (* 60 1000))) " min")))
+    "DUE"
+    (str (int (/ due-in-millis (* 60 1000))) " MIN")))
+
+(def destination-translations
+  {"Org" "Orange"
+   "G" "Green"
+   "Blue" "Blue"
+   "Brn" "Brown"
+   "Pink" "Pink"
+   "Red" "Red"})
 
 (defn parse-eta [node]
   (let [arrival-time (.parse time-format (zf/xml1-> node :arrT zf/text))
         due-in-millis (- (.getTime arrival-time) (now))
+        line (zf/xml1-> node :rt zf/text)
         destination (zf/xml1-> node :destNm zf/text)]
-    (str destination " " (due-in-minutes due-in-millis))))
+    (assoc {}
+           :destination destination
+           :line (get destination-translations line)
+           :due-in-millis due-in-millis
+           :arrival-time (due-in-minutes due-in-millis))))
 
 (defn transform [stream]
   (let [xml-zipper (xml/parse-xml stream)
@@ -30,18 +43,20 @@
         route (zf/xml1-> xml-zipper :eta :rt zf/text)]
     (assoc {}
       :name "cta-train-tracker"
-      :type "list"
-      :title (format "%s (%s)" stop route)
-      :data (zf/xml-> xml-zipper :eta parse-eta))))
+      :type "cta-train-tracker"
+      :station stop
+      :data (vec (take 7 (sort-by :due-in-millis (zf/xml-> xml-zipper :eta parse-eta)))))))
 
-(defn html [] (templates/unordered-list))
+(defn html []
+  [:script#cta-train-tracker-template {:type "text/mustache"}
+   "<h3>CTA Trains at {{station}}</h3><ul>{{#data}}<li class=\"{{line}}\">{{destination}}<span class=\"time\">{{arrival-time}}</span></li>{{/data}}</ul>"])
 
 (defn url [map-id api-key]
-  (format "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?mapid=%s&key=%s&max=4" map-id api-key))
+  (format "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?mapid=%s&key=%s" map-id api-key))
 
 (defn configure [{:keys [program-name map-id api-key]}]
   (brainiac/schedule
-    5000
+    20000
     (brainiac/simple-http-plugin
       {:method :get :url (url map-id api-key)}
       transform program-name)))
