@@ -9,7 +9,7 @@
         destination (zf/xml1-> node :fd zf/text)]
     (assoc {}
            :destination destination
-           :arrival-time prediction)))
+           :arrival-time (clojure.string/replace prediction #"APPROACHING" "DUE"))))
 
 (defn transform [stream]
   (let [xml-zipper (xml/parse-xml stream)
