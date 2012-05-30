@@ -112,12 +112,12 @@ div#plugins ul {
 }
 
 /* Jenkins Styles */
-div#plugins > #jenkins-builds.jenkins-failure {
+.panel > #jenkins-builds.jenkins-failure {
 	background:url(/images/jenkins_frowny.png) bottom left no-repeat #fff;
 	color:#D33833;
 }
 
-div#plugins > #jenkins-builds.jenkins-success {
+.panel > #jenkins-builds.jenkins-success {
 	background:url(/images/jenkins.png) bottom left no-repeat #fff;
 	color:#0D9E00;
 }
