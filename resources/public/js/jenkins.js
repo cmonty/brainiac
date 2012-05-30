@@ -9,13 +9,14 @@ var Jenkins = (function () {
 
     render: function (e, data) {
       var content = $.mustache(template.html(), data),
-             name = data.name;
+             name = data.name,
+       html_class = data.html_class;
 
       if ($("div#" + name).length == 0) {
-        var plugin = $('<div/>', {'id': name}).html(content);
+        var plugin = $('<div/>', {'id': name, 'class': html_class}).html(content);
         $("#plugins").append(plugin);
       } else {
-        $("div#" + name).html(content);
+        $("div#" + name).attr('class', html_class).html(content);
       }
     }
   };
