@@ -8,13 +8,21 @@
 (deftest test-transform
   (let [parse-result (transform sample-xml)]
     (testing "sets type"
-      (is (= "list" (:type parse-result))))
+      (is (= "cta-bus-tracker" (:type parse-result))))
 
-      (testing "sets name"
-        (is (="cta-bus-tracker" (:name parse-result))))
+    (testing "sets name"
+      (is (= "cta-bus-tracker" (:name parse-result))))
 
-      (testing "sets title"
-        (is (= "CTA #8 Bus (North Bound) - Halsted & Jackson" (:title parse-result))))
+    (testing "sets route"
+      (is (= "8" (:route parse-result))))
 
-      (testing "sets data"
-        (is (= ["Waveland/Broadway - 9 MIN" "Waveland/Broadway - 15 MIN" "Waveland/Broadway - 28 MIN"] (:data parse-result))))))
+    (testing "sets direction"
+      (is (= "North Bound" (:direction parse-result))))
+
+    (testing "sets stop"
+      (is (= "Halsted & Jackson" (:stop parse-result))))
+
+    (testing "sets data"
+      (is (= [{:destination "Waveland/Broadway" :arrival-time "9 MIN"}
+              {:destination "Waveland/Broadway" :arrival-time "15 MIN"}
+              {:destination "Waveland/Broadway" :arrival-time "28 MIN"}] (:data parse-result))))))

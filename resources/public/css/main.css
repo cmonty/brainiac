@@ -176,9 +176,6 @@ div#plugins #pagerduty-schedule {
 
 /* CTA Train Tracker styles */
 
-div#plugins #cta-train-tracker {
-}
-
 div#plugins #cta-train-tracker ul {
   list-style-type: none;
 }
@@ -190,7 +187,7 @@ div#plugins #cta-train-tracker ul li {
   font-size: 40px;
   font-family: "Helvetica Medium", "Helvetica";
   font-weight: 900;
-  box-shadow: 5px 5px 3px #333;
+  box-shadow: 5px 5px 3px #222;
 }
 
 div#plugins #cta-train-tracker ul li span.time {
@@ -223,6 +220,27 @@ div#plugins #cta-train-tracker ul li.Brown {
 
 div#plugins #cta-train-tracker ul li.Red {
   background: rgb(192, 12, 48);
+}
+
+/* CTA Bus Tracker styles */
+
+div#plugins #cta-bus-tracker ul {
+  list-style-type: none;
+}
+
+div#plugins #cta-bus-tracker ul li {
+  border-radius: 5px;
+  margin: 12px 0;
+  padding: 3px 10px;
+  font-size: 40px;
+  font-family: "Helvetica Medium", "Helvetica";
+  font-weight: 900;
+  box-shadow: 5px 5px 3px #222;
+  background: rgb(17, 152, 17);
+}
+
+div#plugins #cta-bus-tracker ul li span.time {
+  float: right;
 }
 
 div#plugins .on-call {
