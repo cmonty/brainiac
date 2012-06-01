@@ -50,11 +50,11 @@
     (send-message (eval (list (symbol namespace "message") {:message content})) program)))
 
 (defn render [plugin side]
-  (let [id (shortname (key plugin))]
+  (let [id (shortname plugin)]
     [:div {:id id :class side} ""]))
 
 (defn render-template [plugin]
-  (let [namespace (name (key plugin))]
+  (let [namespace (name plugin)]
     (require (symbol namespace))
     (eval (list (symbol namespace "html")))))
 

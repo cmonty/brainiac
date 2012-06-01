@@ -1,7 +1,12 @@
 test:
+  google-weather:
+    order: 1
+    city: chicago
+  jenkins-builds:
+    order: 3
+    url: http://jenkins-builds.com
   nagios-problems:
-    host: http://foo.bar.com
+    order: 2
+    host: http://nagios-problems.com
     username: user
     password: secret
-  google-weather:
-    city: chicago
