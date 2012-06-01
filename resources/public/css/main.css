@@ -59,8 +59,8 @@ div#plugins table.calendar span.count {
 }
 
 div#plugins > div.panel {
-  width: 585px;
-  height: 500px;
+  width: 640px;
+  height: 517px;
   float: left;
   position: relative;
   margin: 15px 0 0 15px;
@@ -69,8 +69,8 @@ div#plugins > div.panel {
 
 div#plugins > div.panel > div {
   margin: 0;
-  width: 555px;
-  height: 490px;
+  width: 610px;
+  height: 507px;
   padding: 5px 15px;
   border-radius: 15px 0;
   border: 2px solid #444;
