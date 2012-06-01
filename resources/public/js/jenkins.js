@@ -10,7 +10,7 @@ var Jenkins = (function () {
     render: function (e, data) {
       var content = $.mustache(template.html(), data),
              name = data.name,
-       html_class = data.html_class;
+       html_class = data.fail_count > 0 ? "jenkins-failure" : "jenkins-success";
 
       if ($("div#" + name).length == 0) {
         var plugin = $('<div/>', {'id': name, 'class': html_class}).html(content);
