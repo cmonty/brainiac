@@ -1,22 +1,22 @@
 (ns brainiac.plugins.pagerduty-schedules
   (:import [java.util Calendar TimeZone]
            [java.text SimpleDateFormat])
-  (:use [clojure.contrib.json :only (read-json)]
-        [clojure.java.io :only (reader)])
   (:require [brainiac.plugin :as brainiac]
-						[clojure.string :only [replace, split]]))
+						[clojure.string :as string]
+            [clojure.contrib.json :as json]
+            [clojure.java.io :as io]))
 
 (defn now []
   (.getTime (Calendar/getInstance)))
 
-(defn date-formatter [date]
-  (let [date-formatter (SimpleDateFormat. "yyyy-MM-dd'T'HH:mmZ")]
-    (.setTimeZone date-formatter (TimeZone/getTimeZone "America/Chicago"))
+(defn format-date [date]
+  (let [date-formatter (doto (SimpleDateFormat. "yyyy-MM-dd'T'HH:mmZ")
+                         (.setTimeZone (TimeZone/getTimeZone "America/Chicago")))]
     (.format date-formatter date)))
 
 (defn url [organization schedule]
   (fn []
-    (let [current-time (date-formatter (now))]
+    (let [current-time (format-date (now))]
       (format "https://%s.pagerduty.com/api/v1/schedules/%s/entries?since=%s&until=%s&overflow=true" organization schedule current-time current-time))))
 
 (defn html []
@@ -32,15 +32,14 @@
      {{ backup_name }}
    </p>"])
 
-; {:entries [{:end 2012-06-02T12:00:00-05:00, :start 2012-05-28T10:00:00-05:00, :user {:name Ben Mills, :id PR3XPTK, :color red, :email ben.mills@getbraintree.com}}], :total 1}
 (defn- name-from-json [json]
   (-> json :entries first :user :name))
 
 (defn- image-from-name [name]
-  (clojure.string/replace name #" " "_"))
+  (string/replace name #" " "_"))
 
 (defn transform [streams]
-  (let [json-responses (map #(read-json (reader %)) streams)
+  (let [json-responses (map (comp json/read-json io/reader) streams)
         [primary-json backup-json] json-responses
         primary-name (name-from-json primary-json)
         backup-name (name-from-json backup-json)]
@@ -51,7 +50,10 @@
      :backup_name backup-name
      :backup_name_image (image-from-name backup-name)}))
 
+(defn- request [username password url]
+  {:method :get :url-callback url :basic-auth [username password]})
+
 (defn configure [{:keys [program-name organization username password schedule_ids]}]
-  (let [urls (map #(url organization %) (clojure.string/split schedule_ids #","))
-        requests (map #(hash-map :method :get :url-callback % :basic-auth [username password]) urls)]
+  (let [urls (map (partial url organization) (string/split schedule_ids #","))
+        requests (map (partial request username password) urls)]
   (brainiac/multiple-url-http-plugin requests transform program-name)))
