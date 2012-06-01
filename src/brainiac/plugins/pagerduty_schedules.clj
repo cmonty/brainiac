@@ -40,7 +40,6 @@
   (clojure.string/replace name #" " "_"))
 
 (defn transform [streams]
-  (println "in transform")
   (let [json-responses (map #(read-json (reader %)) streams)
         [primary-json backup-json] json-responses
         primary-name (name-from-json primary-json)
