@@ -21,19 +21,12 @@
       (> fail-count 0) (format "%d Failing Builds" fail-count)
       :default "All builds passing")))
 
-(defn build-status-class [build-data]
-  (let [fail-count (count (filter-status build-data "Failure"))]
-    (cond
-      (> fail-count 0) "jenkins-failure"
-      :default "jenkins-success")))
-
 (defn transform [stream]
   (let [xml (zip/xml-zip (xml/parse stream))
         build-data (zf/xml-> xml :Project parse-project)]
     (assoc {}
       :name "jenkins-builds"
       :type "jenkins"
-      :html_class (build-status-class build-data)
       :title (str "Jenkins: " (build-status-string build-data))
 			:fail_count (count (filter-status build-data "Failure"))
       :data (map #(:name %) (filter-status build-data "Failure")))))
