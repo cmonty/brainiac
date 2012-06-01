@@ -59,7 +59,7 @@ div#plugins table.calendar span.count {
 }
 
 div#plugins > div.panel {
-  width: 640px;
+  width: 620px;
   height: 517px;
   float: left;
   position: relative;
@@ -69,7 +69,7 @@ div#plugins > div.panel {
 
 div#plugins > div.panel > div {
   margin: 0;
-  width: 610px;
+  width: 590px;
   height: 507px;
   padding: 5px 15px;
   border-radius: 15px 0;
