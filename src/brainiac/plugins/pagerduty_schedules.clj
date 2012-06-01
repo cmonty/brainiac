@@ -32,26 +32,28 @@
      {{ backup_name }}
    </p>"])
 
-(defn- name-from-json [json]
+(defn- json->name [json]
   (-> json :entries first :user :name))
 
-(defn- image-from-name [name]
+(defn- name->image [name]
   (string/replace name #" " "_"))
 
 (defn transform [streams]
   (let [json-responses (map (comp json/read-json io/reader) streams)
         [primary-json backup-json] json-responses
-        primary-name (name-from-json primary-json)
-        backup-name (name-from-json backup-json)]
+        primary-name (json->name primary-json)
+        backup-name (json->name backup-json)]
     {:name "pagerduty-schedules"
      :type "schedule"
      :primary_name primary-name
-     :primary_name_image (image-from-name primary-name)
+     :primary_name_image (name->image primary-name)
      :backup_name backup-name
-     :backup_name_image (image-from-name backup-name)}))
+     :backup_name_image (name->image backup-name)}))
 
 (defn- request [username password url]
-  {:method :get :url-callback url :basic-auth [username password]})
+  {:method :get
+   :url-callback url
+   :basic-auth [username password]})
 
 (defn configure [{:keys [program-name organization username password schedule_ids]}]
   (let [urls (map (partial url organization) (string/split schedule_ids #","))
