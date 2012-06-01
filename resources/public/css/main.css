@@ -16,7 +16,6 @@ body {
 div#plugins > div.band {
   width: 80%;
   height: 200px;
-
   display: block;
   float: left;
   border-radius: 15px 0;
@@ -161,6 +160,23 @@ div#plugins #twitter-search {
 	background: url(/images/twitter-bird.png) bottom right no-repeat, -o-linear-gradient(top, #a3d8fe 0%,#2b7db7 100%); /* Opera 11.10+ */
 	background: url(/images/twitter-bird.png) bottom right no-repeat, -ms-linear-gradient(top, #a3d8fe 0%,#2b7db7 100%); /* IE10+ */
 	background: url(/images/twitter-bird.png) bottom right no-repeat, linear-gradient(top, #a3d8fe 0%,#2b7db7 100%); /* W3C */
+}
+
+div#plugins .twitter-name {
+	background-color: #D5EAF9;
+	border-radius: 7px;
+	padding:10px;
+	display:table;
+	line-height:20px;
+}
+
+div#plugins .twitter-pic {
+	float:left;
+	margin-right:10px;
+}
+
+div#plugins .twitter-handle {
+	font-size:16px;
 }
 
 .ticker {

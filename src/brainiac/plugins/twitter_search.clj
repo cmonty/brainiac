@@ -21,7 +21,12 @@
 (defn html []
   [:script#ticker-template {:type "text/mustache" :data-widget "ticker"}
 	"<div class=\"ticker\">
-		<ul class=\"ticker\"> {{#data}}<li class='ticker-item'>{{name}} - {{text}}</li>{{/data}} </ul>
+		<ul class=\"ticker\">{{#data}}
+			<li class='ticker-item'>
+			<div class='twitter-name'><img src='{{profile_image_url}}' class='twitter-pic' />{{name}}<br /><span class='twitter-handle'>@{{handle}}</span></div>
+			{{text}}
+			</li>
+		{{/data}}</ul>
 	</div>"])
 
 (defn url [term]
