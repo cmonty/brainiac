@@ -4,7 +4,7 @@
   (:use [clojure.contrib.json :only (read-json)]
         [clojure.java.io :only (reader)])
   (:require [brainiac.plugin :as brainiac]
-						[clojure.string :only replace]))
+						[clojure.string :only [replace, split]]))
 
 (defn now []
   (.getTime (Calendar/getInstance)))
@@ -21,20 +21,40 @@
 
 (defn html []
   [:script#schedule-template {:type "text/mustache"}
-   "<h3>On Call Now</h3><p class='on-call'><img src='https://www.braintreepayments.com/assets/team/{{ person_name }}.jpg'/>{{#data}}{{ user.name }}{{/data}}</p>"])
+   "<h3>On Call Now</h3>
+   <p class='on-call'>
+     <img src='https://www.braintreepayments.com/assets/team/{{ primary_name_image }}.jpg'/>
+     {{ primary_name }}
+   </p>
+   <div style='clear:both'/>
+   <p class='on-call'>
+     <img src='https://www.braintreepayments.com/assets/team/{{ backup_name_image }}.jpg'/>
+     {{ backup_name }}
+   </p>"])
 
-(defn transform [stream]
-  (let [json (read-json (reader stream))
-				person_name (clojure.string/replace (:name (:user (first (:entries json)))) #" ""_")]
-    (assoc {}
-      :name "pagerduty-schedules"
-      :type "schedule"
-			:person_name person_name
-      :data (:entries json))))
+; {:entries [{:end 2012-06-02T12:00:00-05:00, :start 2012-05-28T10:00:00-05:00, :user {:name Ben Mills, :id PR3XPTK, :color red, :email ben.mills@getbraintree.com}}], :total 1}
+(defn- name-from-json [json]
+  (-> json :entries first :user :name))
+
+(defn- image-from-name [name]
+  (clojure.string/replace name #" " "_"))
+
+(defn transform [streams]
+  (println "in transform")
+  (let [json-responses (map #(read-json (reader %)) streams)
+        [primary-json backup-json] json-responses
+        primary-name (name-from-json primary-json)
+        backup-name (name-from-json backup-json)]
+    {:name "pagerduty-schedules"
+     :type "schedule"
+     :primary_name primary-name
+     :primary_name_image (image-from-name primary-name)
+     :backup_name backup-name
+     :backup_name_image (image-from-name backup-name)}))
 
 (defn configure [{:keys [program-name organization username password schedule_ids]}]
+  (let [urls (map #(url organization %) (clojure.string/split schedule_ids #","))
+        requests (map #(hash-map :method :get :url-callback % :basic-auth [username password]) urls)]
   (brainiac/schedule
     5000
-    (brainiac/simple-http-plugin
-      {:method :get :url-callback (url organization schedule_ids) :basic-auth [username password]}
-      transform program-name)))
+    (brainiac/multiple-url-http-plugin requests transform program-name))))

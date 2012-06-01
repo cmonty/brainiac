@@ -62,17 +62,32 @@
   (fn [agnt]
     (send-message (transform agnt transformer) program-name)))
 
+(defn- http-agent-for-request [request]
+  (let [url (build-url request)
+        headers (merge (:headers request) (build-basic-auth request))]
+    (info "fetching" url)
+    (http-agent url :headers headers)))
+
 (defn simple-http-plugin [request transformer program-name]
   (fn []
     (try
       (let [url (build-url request)
-            headers (merge (:headers request) (build-basic-auth request))
-            agnt (http-agent url :headers headers)]
-        (info "fetching" url)
+            agnt (http-agent-for-request request)]
         (await-for 60000 agnt)
         (if (success? agnt)
           (send-message (transform agnt transformer) program-name)
           (warn "URL " url "failed with" (status agnt))))
+      (catch Exception e (warn "caught exception " (.getMessage e))))))
+
+(defn multiple-url-http-plugin [requests transformer program-name]
+  (fn []
+    (try
+      (let [agents (map http-agent-for-request requests)]
+        (doseq [agnt agents]
+          (await-for 60000 agnt))
+        (if (every? success? agents)
+          (send-message (transformer (map stream agents)) program-name)
+          (warn "Some URLs failed")))
       (catch Exception e (warn "caught exception " (.getMessage e))))))
 
 (defn schedule [interval method]
