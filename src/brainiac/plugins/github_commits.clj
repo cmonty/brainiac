@@ -21,8 +21,6 @@
 (defn html [] (templates/unordered-list))
 
 (defn configure [{:keys [username repository program-name]}]
-  (brainiac/schedule
-    15000
-    (brainiac/simple-http-plugin
-      {:url (url username repository)}
-      (fn [stream] (transform username repository stream)) program-name)))
+  (brainiac/simple-http-plugin
+    {:url (url username repository)}
+    (fn [stream] (transform username repository stream)) program-name))

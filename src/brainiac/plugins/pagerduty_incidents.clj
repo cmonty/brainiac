@@ -20,8 +20,6 @@
    "<h3>Alert</h3>{{#data}}<p>{{trigger_summary_data.subject}}</p>{{/data}}"])
 
 (defn configure [{:keys [program-name username password organization service_ids schedule]}]
-  (brainiac/schedule
-    2000
-    (brainiac/simple-http-plugin
-      {:method :get :url (url organization service_ids) :basic-auth [username password]}
-      transform program-name)))
+  (brainiac/simple-http-plugin
+    {:method :get :url (url organization service_ids) :basic-auth [username password]}
+    transform program-name))

@@ -31,16 +31,14 @@
 			:fail_count (count (filter-status build-data "Failure"))
       :data (map #(:name %) (filter-status build-data "Failure")))))
 
-(defn html [] 
+(defn html []
 [:script#jenkins-template {:type "text/mustache"}
   "<p class='builds'>{{fail_count}}<p>
 		<p class='fail-text'>failing builds</p>
 		<ul class='fail-list'> {{#data}}<li>{{.}}</li>{{/data}} </ul>"])
 
 (defn configure [{:keys [url username password program-name]}]
-  (brainiac/schedule
-    60000
-    (brainiac/simple-http-plugin
-      {:method :get :url url :basic-auth [username password]}
-      transform program-name)))
+  (brainiac/simple-http-plugin
+    {:method :get :url url :basic-auth [username password]}
+    transform program-name))
 

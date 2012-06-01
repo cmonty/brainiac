@@ -31,8 +31,6 @@
 
 (defn configure [{:keys [host username password program-name]}]
   (binding [brainiac/*debug* true]
-    (brainiac/schedule
-      5000
-      (brainiac/simple-http-plugin
-         {:method :get :url (url host) :basic-auth [username password]}
-         transform program-name))))
+    (brainiac/simple-http-plugin
+      {:method :get :url (url host) :basic-auth [username password]}
+      transform program-name)))

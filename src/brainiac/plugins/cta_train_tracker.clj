@@ -56,9 +56,7 @@
   (format "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?mapid=%s&key=%s" map-id api-key))
 
 (defn configure [{:keys [program-name map-id api-key]}]
-  (brainiac/schedule
-    20000
-    (brainiac/simple-http-plugin
-      {:method :get :url (url map-id api-key)}
-      transform program-name)))
+  (brainiac/simple-http-plugin
+    {:method :get :url (url map-id api-key)}
+    transform program-name))
 

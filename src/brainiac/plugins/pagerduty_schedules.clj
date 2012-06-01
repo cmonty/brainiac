@@ -54,6 +54,4 @@
 (defn configure [{:keys [program-name organization username password schedule_ids]}]
   (let [urls (map #(url organization %) (clojure.string/split schedule_ids #","))
         requests (map #(hash-map :method :get :url-callback % :basic-auth [username password]) urls)]
-  (brainiac/schedule
-    5000
-    (brainiac/multiple-url-http-plugin requests transform program-name))))
+  (brainiac/multiple-url-http-plugin requests transform program-name)))

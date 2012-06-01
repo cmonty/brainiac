@@ -47,8 +47,6 @@
    "<h3>{{title}}</h3> <h5>Top-ranked Players</h5> <ul> {{#rank-data}}<li>{{.}}</li>{{/rank-data}} </ul> <h5>Recent Results</h5> <ul> {{#result-data}}<li>{{.}}</li>{{/result-data}} </ul>"])
 
 (defn configure [{:keys [url game-id username password program-name]}]
-  (brainiac/schedule
-    15000
-    (brainiac/simple-http-plugin
-      {:url (game-url url game-id) :basic-auth [username password]}
-      transform program-name)))
+  (brainiac/simple-http-plugin
+    {:url (game-url url game-id) :basic-auth [username password]}
+    transform program-name))

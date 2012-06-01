@@ -27,8 +27,6 @@
   (format "http://www.google.com/ig/api?weather=%s" city))
 
 (defn configure [{:keys [city program-name]}]
-  (brainiac/schedule
-    60000
-    (brainiac/simple-http-plugin
-       {:url (url city)}
-       transform program-name)))
+  (brainiac/simple-http-plugin
+    {:url (url city)}
+    transform program-name))

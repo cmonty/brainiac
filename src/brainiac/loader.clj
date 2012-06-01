@@ -7,11 +7,16 @@
 (defn read-config-file [file]
   (yaml/parse-string (slurp file)))
 
+(defn timeout-for-plugin [options]
+  (* 1000 (get options :interval 60)))
+
 (defn register [plugin program-name]
   (let [namespace (brainiac/fullname (key plugin))
         options (merge (val plugin) {:program-name program-name})]
     (require (symbol namespace))
-    (eval (list (symbol namespace "configure") options))
+    (brainiac/schedule
+      (timeout-for-plugin options)
+      (eval (list (symbol namespace "configure") options)))
     (swap! loaded conj (str namespace))))
 
 (defn create [program]

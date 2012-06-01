@@ -31,8 +31,6 @@
    "<h3>Now Playing</h3><p>{{artist}}</p><p>{{title}}</p><p><img src=\"{{artwork}}\"/></p><p>{{album}}</p>"])
 
 (defn configure [{:keys [url program-name]}]
-  (brainiac/schedule
-    15000
-    (brainiac/simple-http-plugin
-      {:url (jukebox-url url) :headers {"Accept" "application/json"}}
-      transform program-name)))
+  (brainiac/simple-http-plugin
+    {:url (jukebox-url url) :headers {"Accept" "application/json"}}
+    transform program-name))

@@ -71,8 +71,6 @@
     </table>"])
 
 (defn configure [{:keys [program-name username password organization service-ids]}]
-  (brainiac/schedule
-    20000
-    (brainiac/simple-http-plugin
-      {:method :get :url (url organization service-ids) :basic-auth [username password]}
-      transform program-name)))
+  (brainiac/simple-http-plugin
+    {:method :get :url (url organization service-ids) :basic-auth [username password]}
+    transform program-name))
