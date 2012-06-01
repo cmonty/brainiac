@@ -4,7 +4,12 @@
   (:require [brainiac.plugin :as brainiac]))
 
 (defn format-tweet [tweet]
-  {:name (:from_user_name tweet) :text (:text tweet)})
+  {
+   :name (:from_user_name tweet)
+   :handle (:from_user tweet)
+   :text (:text tweet)
+   :profile_image_url (:profile_image_url_https tweet)
+   })
 
 (defn transform [stream]
   (let [json (read-json (reader stream))]
