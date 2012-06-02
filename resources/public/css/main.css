@@ -102,12 +102,69 @@ div#plugins ul {
 	line-height: 120%;
 	margin: 0px;
 	text-align: center;
+	text-shadow: 2px 2px 4px #333;
 }
 
 .conditions {
 	font-size: 2.8em;
 	margin: 0;
 	text-align: center;
+	text-shadow: 2px 2px 4px #333;
+}
+
+div#plugins > div.panel > div#google-weather {
+	background:url(/images/weather/cloudy.jpg) top left no-repeat;
+}
+
+div#plugins > div.panel > div.sunny,
+div#plugins > div.panel > div.clear {
+	background:url(/images/weather/sunny.jpg) top left no-repeat;
+}
+
+div#plugins > div.panel > div.mostly-sunny,
+div#plugins > div.panel > div.partly-cloudy {
+	background:url(/images/weather/partly_cloudy.jpg) top left no-repeat;
+}
+
+div#plugins > div.panel > div.overcast,
+div#plugins > div.panel > div.partly-sunny,
+div#plugins > div.panel > div.mostly-cloudy,
+div#plugins > div.panel > div.cloudy {
+	background:url(/images/weather/cloudy.jpg) top left no-repeat;
+}
+
+div#plugins > div.panel > div.mist,
+div#plugins > div.panel > div.showers,
+div#plugins > div.panel > div.scattered-showers,
+div#plugins > div.panel > div.chance-of-rain,
+div#plugins > div.panel > div.light-rain,
+div#plugins > div.panel > div.rain,
+div#plugins > div.panel > div.chance-of-tstorm,
+div#plugins > div.panel > div.scattered-thunderstorms,
+div#plugins > div.panel > div.thunderstorm,
+div#plugins > div.panel > div.chance-of-storm,
+div#plugins > div.panel > div.storm {
+	background:url(/images/weather/rain.jpg) top left no-repeat;
+}
+
+div#plugins > div.panel > div.chance-of-snow,
+div#plugins > div.panel > div.rain-and-snow,
+div#plugins > div.panel > div.light-snow,
+div#plugins > div.panel > div.freezing-drizzle,
+div#plugins > div.panel > div.sleet,
+div#plugins > div.panel > div.snow,
+div#plugins > div.panel > div.flurries,
+div#plugins > div.panel > div.icy,
+div#plugins > div.panel > div.snow-showers,
+div#plugins > div.panel > div.hail {
+	background:url(/images/weather/snow.jpg) top left no-repeat;
+}
+
+div#plugins > div.panel > div.dust,
+div#plugins > div.panel > div.fog,
+div#plugins > div.panel > div.smoke,
+div#plugins > div.panel > div.haze {
+	background:url(/images/weather/haze.jpg) top left no-repeat;
 }
 
 /* Jenkins Styles */
