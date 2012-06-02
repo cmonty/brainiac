@@ -118,7 +118,7 @@ div#plugins ul {
 
 .panel > #jenkins-builds.jenkins-success {
 	background:url(/images/jenkins.png) bottom left no-repeat #fff;
-	color:#0D9E00;
+	color: #335061;
 }
 
 .builds {
@@ -141,6 +141,7 @@ div#plugins .fail-list {
 	color: #D33833;
 	margin: 30px 0 0 180px;
 	padding:-left: 0;
+	white-space:nowrap;
 }
 
 /* Jukebox Styles */
