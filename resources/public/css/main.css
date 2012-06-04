@@ -112,10 +112,6 @@ div#plugins ul {
 	text-shadow: 2px 2px 4px #333;
 }
 
-div#plugins > div.panel > div#google-weather {
-	background:url(/images/weather/cloudy.jpg) top left no-repeat;
-}
-
 div#plugins > div.panel > div.sunny,
 div#plugins > div.panel > div.clear {
 	background:url(/images/weather/sunny.jpg) top left no-repeat;

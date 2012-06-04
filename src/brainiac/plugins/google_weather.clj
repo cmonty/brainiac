@@ -1,13 +1,14 @@
 (ns brainiac.plugins.google-weather
   (:require [brainiac.plugin :as brainiac]
             [brainiac.xml-utils :as xml]
+            [clojure.contrib.string :as string]
             [clojure.contrib.zip-filter.xml :as zf]))
 
 (defn parse-conditions [node]
   (assoc {}
     :temp (zf/xml1-> node :temp_f (zf/attr :data))
     :icon (str "http://www.google.com" (zf/xml1-> node :icon (zf/attr :data)))
-    :current-conditions (zf/xml1-> node :condition (zf/attr :data))))
+    :current-conditions (string/ltrim (zf/xml1-> node :condition (zf/attr :data)))))
 
 (defn transform [stream]
   (let [xml-zipper (xml/parse-xml stream)

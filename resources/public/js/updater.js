@@ -55,7 +55,7 @@ var Updater = (function() {
       var data = JSON.parse(event.data),
           name = data.name;
 
-      if ($.inArray(name, registeredPlugins) === 0) {
+      if ($.inArray(name, registeredPlugins) > -1) {
         $("#" + name).trigger(name + ".updated", data);
       } else {
         Updater.renderTemplate(data.name, data);
