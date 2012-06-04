@@ -13,7 +13,4 @@
       (is (= "21" (-> result :data :temp)))
 
     (testing "extracts current conditions"
-      (is (= "Light snow" (-> result :data :current-conditions)))))
-
-    (testing "extracts a cool icon for the weather"
-      (is (= "http://www.google.com/ig/images/weather/flurries.gif" (-> result :data :icon)))))))
+      (is (= "Light snow" (-> result :data :current-conditions))))))))
