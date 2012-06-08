@@ -55,7 +55,12 @@
    :url-callback url
    :basic-auth [username password]})
 
-(defn configure [{:keys [program-name organization username password schedule_ids]}]
-  (let [urls (map (partial url organization) (string/split schedule_ids #","))
+(defn configure [{:keys [program-name organization username password schedule-ids]}]
+  (let [urls (map (partial url organization) (string/split schedule-ids #","))
         requests (map (partial request username password) urls)]
   (brainiac/multiple-url-http-plugin requests transform program-name)))
+
+(defn requests [organization username password schedule-ids]
+  (let [urls (map (partial url organization) (string/split schedule-ids #","))]
+    (map (partial request username password) urls)))
+

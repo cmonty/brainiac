@@ -70,7 +70,10 @@
      </tbody>
     </table>"])
 
+(defn request [organization username password service-ids]
+  {:method :get :url (url organization service-ids) :basic-auth [username password]})
+
 (defn configure [{:keys [program-name username password organization service-ids]}]
   (brainiac/simple-http-plugin
-    {:method :get :url (url organization service-ids) :basic-auth [username password]}
+    (request organization username password service-ids)
     transform program-name))
