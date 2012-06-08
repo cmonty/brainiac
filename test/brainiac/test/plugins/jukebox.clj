@@ -2,7 +2,7 @@
   (:use [brainiac.plugins.jukebox]
         [clojure.test]))
 
-(def track-json (java.io.ByteArrayInputStream. (.getBytes "{\"isRequester\":false,\"progress\":459,\"duration\":482,\"playing\":true,\"artist\":\"Sufjan Stevens\",\"owner\":\"cory\",\"title\":\"Too Much\",\"album\":\"The Age of Adz\",\"playCount\":9,\"skipCount\":1,\"artwork\":\"http://userserve-ak.last.fm/serve/174s/50938467.png\",\"id\":\"a24826c1-8cd6-4d31-9005-e3b742714f4f\",\"requester\":\"(randomizer)\"}")))
+(def track-json (java.io.ByteArrayInputStream. (.getBytes "{\"isRequester\":false,\"progress\":459,\"duration\":482,\"playing\":true,\"artist\":\"Sufjan Stevens\",\"owner\":\"cory\",\"title\":\"Too Much\",\"album\":\"The Age of Adz\",\"playCount\":9,\"skipCount\":1,\"artwork\":{\"extra-large\":\"http://userserve-ak.last.fm/serve/174s/50938467.png\"},\"id\":\"a24826c1-8cd6-4d31-9005-e3b742714f4f\",\"requester\":\"(randomizer)\"}")))
 
 (deftest test-transform
   (let [result (transform track-json)]

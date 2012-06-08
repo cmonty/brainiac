@@ -12,23 +12,27 @@
         album (:album json)
         title (:title json)
         requester (:requester json)
-        artwork (:artwork json)]
-  (assoc {}
-    :name "jukebox"
+        artwork (-> json :artwork :extra-large)]
+  { :name "jukebox"
     :type "jukebox"
     :artist artist
     :album album
     :title title
     :requester requester
-    :artwork artwork
-         )))
+    :artwork artwork }))
 
 (defn jukebox-url [base-url]
   (format "%s/playlist/current-track" base-url))
 
 (defn html []
   [:script#jukebox-template {:type "text/mustache"}
-   "<h3>Now Playing</h3><p>{{artist}}</p><p>{{title}}</p><p><img src=\"{{artwork}}\"/></p><p>{{album}}</p>"])
+    "<div class=\"track-info\">
+       <ul>
+         <li class=\"title\">{{title}}</li>
+         <li>{{artist}}</li>
+         <li>{{album}}</li>
+       </ul>
+     </div>"])
 
 (defn configure [{:keys [url program-name]}]
   (brainiac/simple-http-plugin

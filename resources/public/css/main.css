@@ -199,9 +199,33 @@ div#plugins .fail-list {
 
 /* Jukebox Styles */
 
-#jukebox p {
-  text-align: center;
-  font-size: 30px;
+#jukebox {
+  background-position: 50% 50%;
+  background-size: 100% auto;
+}
+
+#jukebox div.track-info {
+  margin: 5px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+#jukebox div.track-info ul {
+  list-style: none;
+}
+
+#jukebox div.track-info ul li {
+  font-size: 25px;
+}
+
+#jukebox div.track-info ul li.title {
+  font-weight: bold;
+  font-size: 28px;
 }
 
 /*Twitter Styles */
