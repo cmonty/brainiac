@@ -1,0 +1,10 @@
+devs:
+  google-weather:
+    city: "Chicago"
+
+  twitter-search:
+    term: "@braintree"
+
+  cta-bus-tracker:
+    route-number: 8
+    stop-id: 5933
