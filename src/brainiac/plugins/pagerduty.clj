@@ -2,8 +2,8 @@
   (:import [java.util Calendar TimeZone]
            [java.text SimpleDateFormat])
   (:require [brainiac.plugin :as brainiac]
-            [brainiac.plugins.pagerduty-schedules :as pagerduty-schedules]
-            [brainiac.plugins.pagerduty-last-week :as pagerduty-last-week]
+            [brainiac.helpers.pagerduty-schedules :as pagerduty-schedules]
+            [brainiac.helpers.pagerduty-last-week :as pagerduty-last-week]
 						[clojure.string :as string]
             [clojure.contrib.json :as json]
             [clojure.java.io :as io]))

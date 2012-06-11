@@ -1,4 +1,4 @@
-(ns brainiac.plugins.pagerduty-last-week
+(ns brainiac.helpers.pagerduty-last-week
   (:import [java.util Calendar TimeZone]
            [java.text SimpleDateFormat])
   (:use [clojure.contrib.json :only (read-json)]
@@ -58,22 +58,5 @@
       :type "week-calendar"
       :data (doall (map build-data parsed-incidents)))))
 
-(defn html []
-  [:script#week-calendar-template {:type "text/mustache" :data-class "band"}
-   "<table class=\"calendar\">
-     <tbody>
-       <tr>
-         {{#data}}
-           <td class=\"{{impact}}\"><span class=\"date\">{{date}}</span><span class=\"count\">{{count}}</span></td>
-         {{/data}}
-       </tr>
-     </tbody>
-    </table>"])
-
 (defn request [organization username password service-ids]
   {:method :get :url (url organization service-ids) :basic-auth [username password]})
-
-(defn configure [{:keys [program-name username password organization service-ids]}]
-  (brainiac/simple-http-plugin
-    (request organization username password service-ids)
-    transform program-name))

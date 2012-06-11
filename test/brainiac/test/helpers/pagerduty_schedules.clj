@@ -1,5 +1,5 @@
-(ns brainiac.test.plugins.pagerduty-schedules
-  (:use [brainiac.plugins.pagerduty-schedules]
+(ns brainiac.test.helpers.pagerduty-schedules
+  (:use [brainiac.helpers.pagerduty-schedules]
         [clojure.test]
         [clojure.contrib.mock]))
 

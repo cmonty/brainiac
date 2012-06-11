@@ -1,9 +1,9 @@
-(ns brainiac.test.plugins.pagerduty-last-week
+(ns brainiac.test.helpers.pagerduty-last-week
   (:import [java.text SimpleDateFormat])
   (:require [brainiac.clock :as clock])
   (:use [clojure.test]
         [clojure.contrib.mock]
-        [brainiac.plugins.pagerduty-last-week]))
+        [brainiac.helpers.pagerduty-last-week]))
 
 (defn- parse-date [s]
   (.parse (SimpleDateFormat. "yyyy-MM-dd") s))

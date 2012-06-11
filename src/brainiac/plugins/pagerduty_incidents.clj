@@ -19,7 +19,7 @@
   [:script#alert-template {:type "text/mustache"}
    "<h3>Alert</h3>{{#data}}<p>{{trigger_summary_data.subject}}</p>{{/data}}"])
 
-(defn configure [{:keys [program-name username password organization service_ids schedule]}]
+(defn configure [{:keys [program-name username password organization service-ids]}]
   (brainiac/simple-http-plugin
-    {:method :get :url (url organization service_ids) :basic-auth [username password]}
+    {:method :get :url (url organization service-ids) :basic-auth [username password]}
     transform program-name))
