@@ -1,10 +1,46 @@
 devs:
   google-weather:
+		order: 1
     city: "Chicago"
 
   twitter-search:
+		order: 2
     term: "@braintree"
 
+	github-commits:
+		order: 3
+		username: "cmonty"
+		repository: "brainiac"
+		
   cta-bus-tracker:
+		order: 4
     route-number: 8
     stop-id: 5933
+
+	#cta-train-tracker:
+		#order: 5
+	  #map-id: "12345"
+	  #api-key: "abc123"
+
+  #nagios-problems:
+		#order: 6
+    #host: "https://url.example.com"
+    #username: "yourusername"
+    #password: "yourpassword"
+
+  #jenkins-builds:
+		#order: 7
+    #url: "https://url.example.com"
+    #username: "yourusername"
+    #password: "yourpassword"
+
+	#elovation-game:
+		#order: 8
+    #url: "http://url.example.com"
+    #game-id: "3"
+    #username: "yourusername"
+    #password: "yourpassword"
+
+	#jukebox:
+		#order: 9
+		#url: "http://url.example.com"
