@@ -10,7 +10,18 @@
 
 (defn html []
   [:script#pagerduty-template {:type "text/mustache"}
-   "<table class=\"calendar\">
+   "<img class=\"header\" src=\"http://www.pagerduty.com/images/logos/pagerduty_logo_dark.png?1337996052\" />
+   <div class=\"people clearfix\">
+     <div class='on-call'>
+       <img src='https://www.braintreepayments.com/assets/team/{{ primary_name_image }}.jpg'/>
+       <p class=\"name\">{{ primary_name }}</p>
+     </div>
+     <div class='on-call'>
+       <img src='https://www.braintreepayments.com/assets/team/{{ backup_name_image }}.jpg'/>
+       <p class=\"name\">{{ backup_name }}</p>
+     </div>
+   </div>
+   <table class=\"calendar\">
      <tbody>
        <tr>
          {{#data}}
@@ -18,17 +29,7 @@
          {{/data}}
        </tr>
      </tbody>
-   </table>
-   <h3 style='margin-top: 20px'>On Call Now</h3>
-   <p class='on-call'>
-     <img src='https://www.braintreepayments.com/assets/team/{{ primary_name_image }}.jpg'/>
-     {{ primary_name }}
-   </p>
-   <div style='clear:both'/>
-   <p class='on-call'>
-     <img src='https://www.braintreepayments.com/assets/team/{{ backup_name_image }}.jpg'/>
-     {{ backup_name }}
-   </p>"])
+   </table>"])
 
 (defn transform [streams]
   (let [last-week-stream (first streams)

@@ -12,6 +12,9 @@ body {
   background: url(/images/background.png);
 }
 
+img.header {
+  margin-top: 5px;
+}
 
 div#plugins > div.band {
   width: 80%;
@@ -32,9 +35,27 @@ div#plugins > div.band {
   background: linear-gradient(top, #444444 0%,#262626 100%); /* W3C */
 }
 
+.clearfix:after{
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  font-size: 0;
+}
+
+div#plugins table.calendar {
+  margin: 30px 0 0 0;
+  width: 100%;
+  box-shadow: 5px 5px 10px black;
+}
+
 div#plugins table.calendar td {
+  padding: 2px 5px;
   width: 13%;
   height: 100%;
+  background: rgba(1, 1, 1, 0.2);
+  border-radius: 3px;
 }
 div#plugins table.calendar td.wake-up {
   background-color: red;
@@ -45,15 +66,19 @@ div#plugins table.calendar td.outside-business-hours {
 
 div#plugins table.calendar span.date {
   display: block;
-  float: left
+  float: left;
+  text-align: center;
   width: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+  border-color: rgba(1, 1, 1, 0.2);
 }
 
 div#plugins table.calendar span.count {
   display: block;
   float: left;
   width: 100%;
-  font-size: 200%;
+  font-size: 56px;
   text-align: center;
 }
 
@@ -343,15 +368,39 @@ div#plugins #cta-bus-tracker ul li span.time {
   float: right;
 }
 
+div#plugins .people {
+  width: 100%;
+  margin: 15px 0 0 0;
+  padding: 0;
+}
+
+div#plugins .on-call:first-child {
+  float: left;
+}
+div#plugins .on-call:last-child {
+  float: right;
+}
+
 div#plugins .on-call {
-	font-size: 55px;
-	line-height:70%;
-	font-weight: bold;
+  width: 47%;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 div#plugins .on-call img {
-	float:left;
-	margin-right: 15px;
+  width: 100%;
+  display: block;
+  box-shadow: 5px 5px 10px black;
+}
+
+div#plugins .on-call p.name {
+  display: none;
+  font-size: 40px;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
 .panel > div {
