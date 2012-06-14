@@ -4,6 +4,7 @@
   (:use [clojure.contrib.json :only (read-json)]
         [clojure.java.io :only (reader)])
   (:require [brainiac.plugin :as brainiac]
+            [brainiac.helpers.gravatar :as gravatar]
             [brainiac.pages.templates :as templates]))
 
 (def parse-time-format
@@ -21,7 +22,11 @@
     (.format display-time-format game-time)))
 
 (defn format-rating [rating]
-  (format "%s - %s" (:value rating) (:name (:player rating))))
+  {
+     :rating (:value rating)
+     :name (get-in rating [:player :name])
+     :gravatar (gravatar/email->gravatar (get-in rating [:player :email]))
+   })
 
 (defn format-result [result]
   (let [time-string (format-time-string (:created_at result))]
@@ -44,7 +49,7 @@
 
 (defn html []
   [:script#elovation-game-template {:type "text/mustache"}
-   "<h3>{{title}}</h3> <h5>Top-ranked Players</h5> <ul> {{#rank-data}}<li>{{.}}</li>{{/rank-data}} </ul> <h5>Recent Results</h5> <ul> {{#result-data}}<li>{{.}}</li>{{/result-data}} </ul>"])
+   "<h3>{{title}}</h3> <h5>Top-ranked Players</h5> <ul> {{#rank-data}}<li>{{rating}} - {{name}}</li>{{/rank-data}} </ul> <h5>Recent Results</h5> <ul> {{#result-data}}<li>{{.}}</li>{{/result-data}} </ul>"])
 
 (defn configure [{:keys [url game-id username password program-name]}]
   (brainiac/simple-http-plugin
