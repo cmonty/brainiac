@@ -123,11 +123,11 @@ div#plugins ul {
 
 /* Google Weather Styles */
 .temperature {
-	font-size: 290px;
-	line-height: 120%;
-	margin: 0px;
-	text-align: center;
-	text-shadow: 2px 2px 4px #333;
+  font-size: 290px;
+  line-height: 120%;
+  margin: 0px;
+  text-align: center;
+  text-shadow: 2px 2px 4px #333;
 }
 
 .conditions {
@@ -439,4 +439,26 @@ div#plugins .on-call p.name {
 .panel.flip .back {
   -webkit-transform: rotateX(0deg);
   -moz-transform: rotateX(0deg);
+}
+
+/* Elovation Styles */
+#elovation-game > h5 {
+  clear:both;
+}
+
+.elovation-rank > li {
+  float:left;
+  list-style-type: none;
+  width: 110px;
+  padding-right:5px;
+}
+
+.rank-data {
+  margin-top: -24px;
+  line-height: 1em;
+}
+
+.rank-score {
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #333;
 }

@@ -49,7 +49,19 @@
 
 (defn html []
   [:script#elovation-game-template {:type "text/mustache"}
-   "<h3>{{title}}</h3> <h5>Top-ranked Players</h5> <ul> {{#rank-data}}<li>{{rating}} - {{name}}</li>{{/rank-data}} </ul> <h5>Recent Results</h5> <ul> {{#result-data}}<li>{{.}}</li>{{/result-data}} </ul>"])
+    "<h3>{{title}}</h3>
+    <h2>Top-ranked Players</h5> 
+    <ul class='elovation-rank'>{{#rank-data}}
+      <li><img src='{{gravatar}}?s=100' />
+        <div class='rank-data'>
+          <div class='rank-score'>{{rating}}</div>
+          {{name}}
+        </div>        
+      </li>{{/rank-data}}
+      <div style='clear:both'></div>
+    </ul>
+   <h2>Recent Results</h5> 
+   <ul> {{#result-data}}<li>{{.}}</li>{{/result-data}} </ul>"])
 
 (defn configure [{:keys [url game-id username password program-name]}]
   (brainiac/simple-http-plugin
