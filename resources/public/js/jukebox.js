@@ -10,7 +10,11 @@ var Jukebox = (function () {
     render: function (e, data) {
       var content = $.mustache(template.html(), data),
              name = data.name;
-       $("div#" + name).css('backgroundImage', "url(" + data.artwork + ")").html(content);
+       $("div#" + name).
+         css('background-size', '100% auto').
+         css('background-position', '50% 50%').
+         css('backgroundImage', "url(" + data.artwork + ")").
+         html(content);
     }
   };
 })();
