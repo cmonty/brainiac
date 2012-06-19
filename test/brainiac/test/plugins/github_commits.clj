@@ -11,6 +11,6 @@
     (testing "sets name"
       (is (= "github-commits" (:name result))))
     (testing "sets type"
-      (is (= "list" (:type result))))
+      (is (= "github-commits" (:type result))))
     (testing "sets data"
-      (is (= "4e48424030 - mikepilat - Forgot to add test file for cta-bus-tracker plugin in previous commit" (first (:data result)))))))
+      (is (= "mikepilat - Forgot to add test file for cta-bus-tracker plugin in previous commit" (first (:data result)))))))
