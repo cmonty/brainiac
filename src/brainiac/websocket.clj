@@ -18,4 +18,5 @@
   (lamina/receive ch
     (fn [program]
       (lamina/siphon (lamina/fork broadcast-channel) ch)
+      (lamina/ground broadcast-channel)
       (doseq [m (vals @recent-updates)] (broadcast-json m program)))))
