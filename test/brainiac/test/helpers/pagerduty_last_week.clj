@@ -11,7 +11,7 @@
 (deftest build-url
   (testing "sets since to 7 days ago"
     (expect [clock/today (returns (parse-date "2012-02-03"))]
-      (is (= "https://acme.pagerduty.com/api/v1/incidents?service=a,b,c&since=2012-01-27&fields=created_on&sort_by=created_on:asc" (url "acme" "a,b,c"))))))
+      (is (= "https://acme.pagerduty.com/api/v1/incidents?service=a,b,c&since=2012-01-27&fields=created_on&sort_by=created_on:asc" ((url "acme" "a,b,c")))))))
 
 (deftest test-classify-calls
   (testing "middle of night is a wake up"

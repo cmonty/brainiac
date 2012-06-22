@@ -26,12 +26,6 @@
       (str "Basic "(base64/encode-str (s/str-join ":" (:basic-auth request)))))
     {}))
 
-(defn munge-request [request]
-  (let [url-callback (:url-callback request)
-        url (if (nil? url-callback) (:url request) (url-callback))
-        headers (merge {} (build-basic-auth request))]
-    [url :headers headers]))
-
 (defn build-url [request]
   (let [url-callback (:url-callback request)]
     (if (nil? url-callback) (:url request) (url-callback))))
