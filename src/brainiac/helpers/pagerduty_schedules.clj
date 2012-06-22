@@ -30,9 +30,7 @@
         [primary-json backup-json] json-responses
         primary-name (json->name primary-json)
         backup-name (json->name backup-json)]
-    {:name "pagerduty-schedules"
-     :type "schedule"
-     :primary_name primary-name
+    {:primary_name primary-name
      :primary_name_image (name->image primary-name)
      :backup_name backup-name
      :backup_name_image (name->image backup-name)}))

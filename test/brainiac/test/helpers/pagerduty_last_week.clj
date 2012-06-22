@@ -25,9 +25,5 @@
 
 (deftest test-transform
   (let [result (transform example-json)]
-    (testing "sets name"
-      (is (= "pagerduty-last-week" (:name result))))
-    (testing "sets type"
-      (is (= "week-calendar" (:type result))))
     (testing "sets data"
       (is (= {:date "Feb 3" :count 5 :impact "wake-up"} (first (:data result)))))))

@@ -54,8 +54,6 @@
   (let [json (read-json (reader stream))
         parsed-incidents (parse-incidents (:incidents json))]
     (assoc {}
-      :name "pagerduty-last-week"
-      :type "week-calendar"
       :data (doall (map build-data parsed-incidents)))))
 
 (defn request [organization username password service-ids]
