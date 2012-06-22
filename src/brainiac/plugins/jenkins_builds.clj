@@ -1,6 +1,5 @@
 (ns brainiac.plugins.jenkins-builds
   (:require [brainiac.plugin :as brainiac]
-            [brainiac.pages.templates :as templates]
             [clojure.xml :as xml]
             [clojure.zip :as zip]
             [clojure.contrib.zip-filter.xml :as zf]))
@@ -29,12 +28,6 @@
       :type "jenkins"
 			:fail_count (count failures)
       :data (map #(:name %) failures)}))
-
-(defn html []
-  [:script#jenkins-template {:type "text/mustache"}
-    [:div {:class "build_info"}
-      [:div {:class "build_count"}]
-      [:div {:class "build_text"}]]])
 
 (defn configure [{:keys [url username password program-name]}]
   (brainiac/simple-http-plugin

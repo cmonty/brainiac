@@ -19,11 +19,6 @@
       :title "Right now, outside..."
       :data current)))
 
-(defn html []
-  [:script#weather-template {:type "text/mustache"}
-   "<h3>{{title}}</h3> <h2 class='temperature'>{{data.temp}}&deg;</h2>
-		<h4 class='conditions'>{{data.current-conditions}}</h4>"])
-
 (defn url [city]
   (format "http://www.google.com/ig/api?weather=%s" city))
 

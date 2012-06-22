@@ -2,7 +2,6 @@
   (:import [java.text SimpleDateFormat]
            [java.util TimeZone])
   (:require [brainiac.plugin :as brainiac]
-            [brainiac.pages.templates :as templates]
             [brainiac.xml-utils :as xml]
             [clojure.contrib.zip-filter.xml :as zf]))
 
@@ -47,10 +46,6 @@
       :type "cta-train-tracker"
       :station stop
       :data (vec (take 7 (sort-by :due-in-millis (zf/xml-> xml-zipper :eta parse-eta)))))))
-
-(defn html []
-  [:script#cta-train-tracker-template {:type "text/mustache"}
-   "<h3>CTA Trains at {{station}}</h3><ul>{{#data}}<li class=\"{{line}}\">{{destination}}<span class=\"time\">{{arrival-time}}</span></li>{{/data}}</ul>"])
 
 (defn url [map-id api-key]
   (format "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?mapid=%s&key=%s" map-id api-key))

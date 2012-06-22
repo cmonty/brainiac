@@ -3,8 +3,7 @@
            [java.util TimeZone])
   (:use [clojure.contrib.json :only (read-json)]
         [clojure.java.io :only (reader)])
-  (:require [brainiac.plugin :as brainiac]
-            [brainiac.pages.templates :as templates]))
+  (:require [brainiac.plugin :as brainiac]))
 
 (defn fix-default-artwork [artwork-url jukebox-url]
   (if (re-matches #"^/.*" artwork-url)
@@ -28,16 +27,6 @@
 
 (defn current-track-url [base-url]
   (format "%s/playlist/current-track" base-url))
-
-(defn html []
-  [:script#jukebox-template {:type "text/mustache"}
-    "<div class=\"track-info\">
-       <ul>
-         <li class=\"title\">{{title}}</li>
-         <li>{{artist}}</li>
-         <li>{{album}}</li>
-       </ul>
-     </div>"])
 
 (defn configure [{:keys [url program-name]}]
   (brainiac/simple-http-plugin

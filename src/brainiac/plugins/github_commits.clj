@@ -1,8 +1,7 @@
 (ns brainiac.plugins.github-commits
   (:use [clojure.contrib.json :only (read-json)]
         [clojure.java.io :only (reader)])
-  (:require [brainiac.plugin :as brainiac]
-            [brainiac.pages.templates :as templates]))
+  (:require [brainiac.plugin :as brainiac]))
 
 (defn format-commit [commit]
   (format "%s - %s" (:login (:author commit)) (:message (:commit commit))))
@@ -17,13 +16,6 @@
 
 (defn url [username repository]
   (format "https://api.github.com/repos/%s/%s/commits" username repository))
-
-(defn html [] 
-  [:script#github-commits-template {:type "text/mustache"}
-    "<div id='octobox'>
-      <h2>{{title}}</h2>
-      <ul> {{#data}}<li>{{.}}</li>{{/data}} </ul>
-      </div>"])
 
 (defn configure [{:keys [username repository program-name]}]
   (brainiac/simple-http-plugin

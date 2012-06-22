@@ -1,0 +1,20 @@
+<img class="header" src="http://www.pagerduty.com/images/logos/pagerduty_logo_dark.png?1337996052">
+<div class="people clearfix">
+ <div class='on-call'>
+   <img src='https://www.braintreepayments.com/assets/team/{{ primary_name_image }}.jpg'>
+   <p class="name">{{ primary_name }}</p>
+ </div>
+ <div class='on-call'>
+   <img src='https://www.braintreepayments.com/assets/team/{{ backup_name_image }}.jpg'>
+   <p class="name">{{ backup_name }}</p>
+ </div>
+</div>
+<table class="calendar">
+ <tbody>
+   <tr>
+     {{#data}}
+       <td class="{{impact}}"><span class="date">{{date}}</span><span class="count">{{count}}</span></td>
+     {{/data}}
+   </tr>
+ </tbody>
+</table>

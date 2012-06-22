@@ -1,0 +1,13 @@
+<h3>{{title}}</h3>
+<h2>Top-ranked Players</h5>
+<ul class='elovation-rank'>{{#rank-data}}
+  <li><img src='{{gravatar}}?s=100' />
+    <div class='rank-data'>
+      <div class='rank-score'>{{rating}}</div>
+      {{name}}
+    </div>
+  </li>{{/rank-data}}
+  <div style='clear:both'></div>
+</ul>
+<h2>Recent Results</h5>
+<ul> {{#result-data}}<li>{{.}}</li>{{/result-data}} </ul>

@@ -1,6 +1,5 @@
 (ns brainiac.plugins.rss-feed
   (:require [brainiac.plugin :as brainiac]
-            [brainiac.pages.templates :as templates]
             [clojure.xml :as xml]
             [clojure.zip :as zip]
             [clojure.contrib.zip-filter.xml :as zf]))
@@ -17,8 +16,6 @@
       :type "content"
       :title (zf/xml1-> xml :channel :title zf/text)
       :data (zf/xml-> xml :channel :item parse-item))))
-
-(defn html [] (templates/content))
 
 (defn configure [{:keys [url program-name]}]
   (brainiac/simple-http-plugin

@@ -3,7 +3,7 @@ var GoogleWeather = (function () {
 
   return {
     initialize: function () {
-      template = $('#weather-template');
+      template = $('#google-weather-template');
       Updater.addListener("google-weather", this.render);
     },
 

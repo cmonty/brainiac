@@ -3,7 +3,8 @@ var Jenkins = (function () {
 
   return {
     initialize: function () {
-      template = $('#jenkins-template');
+      template = $('#jenkins-builds-template');
+      console.log(template);
       Updater.addListener("jenkins-builds", this.render);
     },
 

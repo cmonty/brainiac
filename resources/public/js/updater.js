@@ -12,7 +12,7 @@ var Updater = (function() {
     },
 
     renderTemplate: function(name, data) {
-      var template = $("#" + data.type + "-template");
+      var template = $("#" + name + "-template");
       var content = $.mustache(template.html(), data)
       if ($("div#" + name).length == 0) {
         var plugin = $('<div/>', {'id': name}).html(content);

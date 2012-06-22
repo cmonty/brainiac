@@ -10,6 +10,7 @@
             [overtone.at-at :as at-at]))
 
 (def *debug* false)
+(def *templates-path* (. (java.io.File. "." "src/brainiac/templates") getCanonicalPath))
 (defn tap [s] (if *debug* (prn s)) s)
 
 (defn fullname [plugin]
@@ -54,9 +55,10 @@
     [:div {:id id :class side} ""]))
 
 (defn render-template [plugin]
-  (let [namespace (name plugin)]
-    (require (symbol namespace))
-    (eval (list (symbol namespace "html")))))
+  (let [plugin-name (shortname plugin)
+        filename (str *templates-path* "/" plugin-name ".html")]
+    [:script {:type "text/mustache", :id (str plugin-name "-template")}
+      (slurp filename)]))
 
 (defn agent-handler [transformer program-name]
   (fn [agnt]
