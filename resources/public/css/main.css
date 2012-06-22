@@ -199,27 +199,26 @@ div#plugins > div.panel > div.haze {
 	color: #335061;
 }
 
-.builds {
-	font-size: 290px;
-	font-weight: bold;
-	margin: 0 0 0 140px;
-	padding:0px;
-  line-height: 80%;
-	text-align: center;
+#jenkins-builds div.build_info {
+  padding: 50px 0 0 40%;
 }
-.fail-text {
-	font-size: 50px;
+
+#jenkins-builds .build_count {
+  font-size: 290px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 80%;
+}
+#jenkins-builds .build_text {
+  text-align: center;
+  text-transform: uppercase;
+	font-size: 75px;
 	font-weight: bold;
 	line-height: 100%;
-	margin: 0 0 0 140px;
-	padding: 0px;
-	text-align: center;
+  margin-top: 20px;
 }
-div#plugins .fail-list {
-	color: #D33833;
-	margin: 30px 0 0 180px;
-	padding:-left: 0;
-	white-space:nowrap;
+#jenkins-builds .build_text .passing {
+  margin-top: 150px;
 }
 
 /* Jukebox Styles */

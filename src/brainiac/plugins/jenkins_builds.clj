@@ -23,19 +23,18 @@
 
 (defn transform [stream]
   (let [xml (zip/xml-zip (xml/parse stream))
-        build-data (zf/xml-> xml :Project parse-project)]
-    (assoc {}
-      :name "jenkins-builds"
+        build-data (zf/xml-> xml :Project parse-project)
+        failures (filter-status build-data "Failure")]
+    { :name "jenkins-builds"
       :type "jenkins"
-      :title (str "Jenkins: " (build-status-string build-data))
-			:fail_count (count (filter-status build-data "Failure"))
-      :data (map #(:name %) (filter-status build-data "Failure")))))
+			:fail_count (count failures)
+      :data (map #(:name %) failures)}))
 
 (defn html []
-[:script#jenkins-template {:type "text/mustache"}
-  "<p class='builds'>{{fail_count}}<p>
-		<p class='fail-text'>failing builds</p>
-		<ul class='fail-list'> {{#data}}<li>{{.}}</li>{{/data}} </ul>"])
+  [:script#jenkins-template {:type "text/mustache"}
+    [:div {:class "build_info"}
+      [:div {:class "build_count"}]
+      [:div {:class "build_text"}]]])
 
 (defn configure [{:keys [url username password program-name]}]
   (brainiac/simple-http-plugin

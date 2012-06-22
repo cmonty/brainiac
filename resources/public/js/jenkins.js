@@ -10,13 +10,17 @@ var Jenkins = (function () {
     render: function (e, data) {
       var content = $.mustache(template.html(), data),
              name = data.name,
-       html_class = data.fail_count > 0 ? "jenkins-failure" : "jenkins-success";
+       fail_count = data.fail_count,
+       html_class = fail_count > 0 ? "jenkins-failure" : "jenkins-success";
 
-      if ($("div#" + name).length == 0) {
-        var plugin = $('<div/>', {'id': name, 'class': html_class}).html(content);
-        $("#plugins").append(plugin);
+      plugin = $("div#" + name);
+      plugin.html(content).addClass(html_class);
+
+      if (fail_count > 0) {
+        plugin.find("div.build_count").html(fail_count);
+        plugin.find("div.build_text").html("failing build" + (data.fail_count == 1 ? "" : "s"));
       } else {
-        $("div#" + name).attr('class', html_class).html(content);
+        plugin.find("div.build_text").html("all builds passing").addClass("passing");
       }
     }
   };
