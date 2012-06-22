@@ -8,8 +8,6 @@
   (let [result (transform example-feed)]
     (testing "name"
       (is (= "rss-feed" (:name result))))
-    (testing "type"
-      (is (= "content" (:type result))))
     (testing "title"
       (is (= "test blog" (:title result))))
     (testing "article title"

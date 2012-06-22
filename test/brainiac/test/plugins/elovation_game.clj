@@ -10,8 +10,6 @@
       (is (= "Ping Pong" (:title result))))
     (testing "sets name"
       (is (= "elovation-game" (:name result))))
-    (testing "sets type"
-      (is (= "elovation-game" (:type result))))
     (testing "sets rank-data"
       (is (= {
                 :rating 1267

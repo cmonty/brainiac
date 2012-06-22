@@ -21,7 +21,6 @@
         status-rows (html/nodes-at html "//body/p/table[@class='status']/tbody/tr")]
     (assoc {}
       :name "nagios-problems"
-      :type "nagios-problems"
       :title "Nagios Problems"
       :data (remove empty? (map map-row (rest status-rows))))))
 

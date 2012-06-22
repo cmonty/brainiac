@@ -10,7 +10,5 @@
       (is (= "Recent commits to cmonty/brainiac" (:title result))))
     (testing "sets name"
       (is (= "github-commits" (:name result))))
-    (testing "sets type"
-      (is (= "github-commits" (:type result))))
     (testing "sets data"
       (is (= "mikepilat - Forgot to add test file for cta-bus-tracker plugin in previous commit" (first (:data result)))))))

@@ -38,7 +38,6 @@
         results (:results json)]
   (assoc {}
     :name "elovation-game"
-    :type "elovation-game"
     :title game-name
     :rank-data (map format-rating (take 5 ratings))
     :result-data (map format-result (take 5 results)))))

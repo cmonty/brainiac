@@ -17,7 +17,6 @@
         direction (zf/xml1-> xml-zipper :sri :dd zf/text)]
     (assoc {}
       :name "cta-bus-tracker"
-      :type "cta-bus-tracker"
       :route route
       :direction direction
       :stop stop

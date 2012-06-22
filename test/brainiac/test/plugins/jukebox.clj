@@ -10,8 +10,6 @@
   (let [result (transform "http://jukebox" track-json)]
     (testing "sets name"
       (is (= "jukebox" (:name result))))
-    (testing "sets type"
-      (is (= "jukebox" (:type result))))
     (testing "sets artist"
       (is (= "Sufjan Stevens" (:artist result))))
     (testing "sets title"

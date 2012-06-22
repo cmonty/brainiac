@@ -15,7 +15,6 @@
   (let [json (read-json (reader stream))]
   (assoc {}
     :name "twitter-search"
-    :type "ticker"
     :data (map format-tweet (:results json)))))
 
 (defn url [term]

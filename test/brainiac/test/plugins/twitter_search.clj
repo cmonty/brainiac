@@ -8,8 +8,6 @@
   (let [result (transform twitter-json)]
     (testing "sets name"
       (is (= "twitter-search" (:name result))))
-    (testing "sets type"
-      (is (= "ticker" (:type result))))
     (testing "sets data"
       (is (= (first (:data result))
            {

@@ -8,9 +8,6 @@
 (deftest test-transform
   (expect [now (returns 1338310719000)]
     (let [parse-result (transform sample-xml)]
-      (testing "sets type"
-        (is (= "cta-train-tracker" (:type parse-result))))
-
         (testing "sets name"
           (is (="cta-train-tracker" (:name parse-result))))
 

@@ -18,7 +18,6 @@
         requester (:requester json)
         artwork (-> json :artwork :extra-large (fix-default-artwork jukebox-url))]
   { :name "jukebox"
-    :type "jukebox"
     :artist artist
     :album album
     :title title

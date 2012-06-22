@@ -15,7 +15,6 @@
         current (zf/xml1-> xml-zipper :weather :current_conditions parse-conditions)]
     (assoc {}
       :name "google-weather"
-      :type "weather"
       :title "Right now, outside..."
       :data current)))
 

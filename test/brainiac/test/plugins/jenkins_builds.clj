@@ -10,8 +10,6 @@
   (let [result (transform example-xml-with-failures)]
     (testing "sets name"
       (is (= "jenkins-builds" (:name result))))
-    (testing "sets type"
-      (is (= "jenkins" (:type result))))
     (testing "sets data"
       (is (= ["project3" "project5"])))))
 
@@ -19,7 +17,5 @@
   (let [result (transform example-xml-no-failures)]
     (testing "sets name"
       (is (= "jenkins-builds" (:name result))))
-    (testing "sets type"
-      (is (= "jenkins" (:type result))))
     (testing "sets data"
       (is (= [])))))

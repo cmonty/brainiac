@@ -13,7 +13,6 @@
   (let [xml (zip/xml-zip (xml/parse stream))]
     (assoc {}
       :name "rss-feed"
-      :type "content"
       :title (zf/xml1-> xml :channel :title zf/text)
       :data (zf/xml-> xml :channel :item parse-item))))
 

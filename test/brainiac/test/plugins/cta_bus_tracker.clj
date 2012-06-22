@@ -7,9 +7,6 @@
 
 (deftest test-transform
   (let [parse-result (transform sample-xml)]
-    (testing "sets type"
-      (is (= "cta-bus-tracker" (:type parse-result))))
-
     (testing "sets name"
       (is (= "cta-bus-tracker" (:name parse-result))))
 

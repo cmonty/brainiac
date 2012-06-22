@@ -25,7 +25,6 @@
         build-data (zf/xml-> xml :Project parse-project)
         failures (filter-status build-data "Failure")]
     { :name "jenkins-builds"
-      :type "jenkins"
 			:fail_count (count failures)
       :data (map #(:name %) failures)}))
 

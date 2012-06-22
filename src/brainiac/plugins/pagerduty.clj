@@ -14,7 +14,7 @@
     (merge (pagerduty-last-week/transform last-week-stream)
            (pagerduty-incidents/transform incidents-stream)
            (pagerduty-schedules/transform schedules-streams)
-           {:name "pagerduty" :type "pagerduty"})))
+           {:name "pagerduty"})))
 
 (defn configure [{:keys [program-name organization username password schedule-ids service-ids]}]
   (let [last-week-request (pagerduty-last-week/request organization username password service-ids)

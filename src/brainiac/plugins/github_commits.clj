@@ -10,7 +10,6 @@
   (let [json (read-json (reader stream))]
   (assoc {}
     :name "github-commits"
-    :type "github-commits"
     :title (format "Recent commits to %s/%s" username repository)
     :data (map format-commit (take 5 json)))))
 

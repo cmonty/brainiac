@@ -7,7 +7,6 @@
 (defn message [data]
   (assoc {}
      :name "broadcast"
-     :type "simple"
      :title "Broadcasted"
      :data data))
 

@@ -43,7 +43,6 @@
         route (zf/xml1-> xml-zipper :eta :rt zf/text)]
     (assoc {}
       :name "cta-train-tracker"
-      :type "cta-train-tracker"
       :station stop
       :data (vec (take 7 (sort-by :due-in-millis (zf/xml-> xml-zipper :eta parse-eta)))))))
 
