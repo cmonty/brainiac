@@ -1,4 +1,5 @@
 <img class="header" src="http://www.pagerduty.com/images/logos/pagerduty_logo_dark.png?1337996052">
+<h3>Incidents: {{ incidents-count }}</h3>{{#incidents}}<p>{{trigger_summary_data.subject}}</p>{{/incidents}}
 <div class="people clearfix">
  <div class='on-call'>
    <img src='https://www.braintreepayments.com/assets/team/{{ primary_name_image }}.jpg'>
