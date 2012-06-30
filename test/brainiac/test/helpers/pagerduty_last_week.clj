@@ -17,13 +17,16 @@
   (testing "middle of night is a wake up"
     (is (= "wake-up" (classify-calls [1 1]))))
   (testing "dinner time is a bother"
-    (is (= "outside-business-hours" (classify-calls [20 20])))) 
+    (is (= "outside-business-hours" (classify-calls [20 20]))))
   (testing "noon is none"
     (is (= "none" (classify-calls [12 12])))))
 
 (def example-json (java.io.ByteArrayInputStream. (.getBytes (slurp "test/brainiac/test/data/pagerduty_last_week.json"))))
 
 (deftest test-transform
-  (let [result (transform example-json)]
-    (testing "sets data"
-      (is (= {:date "Feb 3" :count 5 :impact "wake-up"} (first (:data result)))))))
+  (expect [clock/today (returns (parse-date "2012-02-03"))]
+    (let [result (transform example-json)]
+      (testing "sets data"
+        (is (= {:date "Feb 3" :count 5 :impact "wake-up"} (last (:data result)))))
+      (testing "includes days with zero count"
+        (is (= {:date "Jan 29" :count 0, :impact "none"} (nth (:data result) 2)))))))
