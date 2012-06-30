@@ -63,6 +63,9 @@ div#plugins table.calendar td.wake-up {
 div#plugins table.calendar td.outside-business-hours {
   background-color: orange;
 }
+div#plugins table.calendar td.none {
+  background-color: green;
+}
 
 div#plugins table.calendar span.date {
   display: block;
