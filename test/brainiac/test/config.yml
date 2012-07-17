@@ -10,3 +10,8 @@ test:
     host: http://nagios-problems.com
     username: user
     password: secret
+  dark-sky:
+    order: 4
+    api-key: secret
+    lat: 37.826
+    long: -122.423

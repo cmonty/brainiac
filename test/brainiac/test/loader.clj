@@ -19,4 +19,5 @@
         (is (= @loaded [
                     "brainiac.plugins.google-weather",
                     "brainiac.plugins.nagios-problems",
-                    "brainiac.plugins.jenkins-builds"])))))
+                    "brainiac.plugins.jenkins-builds"
+                    "brainiac.plugins.dark-sky"])))))
