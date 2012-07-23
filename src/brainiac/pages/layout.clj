@@ -25,6 +25,7 @@
      (include-js "/js/vendor/jquery.vticker.js")
      (include-js "/js/widgets.js")
      (include-js "/js/updater.js")
+     (include-js "/js/clock.js")
      (include-js "/js/jenkins.js")
      (include-js "/js/jukebox.js")
      (include-js "/js/google-weather.js")

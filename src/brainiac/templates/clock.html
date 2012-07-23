@@ -1,0 +1,19 @@
+<div class="clock">
+  <div class="date">
+    <div class="day_of_week"><span>{{day_of_week}}</span></div>
+    <div class="day">{{day}}</div>
+    <div class="month"><span>{{month}}</span></div>
+  </div>
+  <div class="times">
+    {{#times}}
+    <div class="time">
+      <div class="face">
+        {{hour}}<span class="colon">:</span>{{minute}}
+      </div>
+      <div class="location">
+        {{name}}
+      </div>
+    </div>
+    {{/times}}
+  </div>
+</div>

@@ -11,13 +11,13 @@
   (* 1000 (get options :interval 60)))
 
 (defn register [plugin program-name]
-  (let [namespace (brainiac/fullname (key plugin))
+  (let [plugin-ns (brainiac/fullname (key plugin))
         options (merge (val plugin) {:program-name program-name})]
-    (require (symbol namespace))
+    (require (symbol plugin-ns))
     (brainiac/schedule
       (timeout-for-plugin options)
-      (eval (list (symbol namespace "configure") options)))
-    (swap! loaded conj (str namespace))))
+      (apply (ns-resolve (the-ns (symbol plugin-ns)) (symbol "configure")) [options]))
+    (swap! loaded conj (str plugin-ns))))
 
 (defn create [program]
   (let [program-name (name (key program))
