@@ -13,11 +13,11 @@ var Clock = (function () {
   return {
     render: function () {
       var local_date = new Date(current_time);
-      var local_offset = -1 * local_date.getTimezoneOffset();
+      var local_offset = local_date.getTimezoneOffset();
 
       var timestamps = [];
       $.each(timezones, function (index, timezone) {
-        var date = new Date(current_time + timezone.offset - local_offset * 60000);
+        var date = new Date(current_time + timezone.offset + local_offset * 60000);
 
         var minute = new String(date.getMinutes());
         if (minute.length == 1) minute = "0" + minute;
@@ -39,10 +39,9 @@ var Clock = (function () {
         day: local_date.getDate(),
         times: timestamps
       };
-      var content = $.mustache(template.html(), time_data);
 
+      var content = $.mustache(template.html(), time_data);
       $("div#clock").html(content);
-      // $("div#clock .colon").toggleClass("blink", date.getSeconds() % 2 == 0);
     },
 
     updateTime: function() {
@@ -53,7 +52,7 @@ var Clock = (function () {
     initialize: function () {
       template = $('#clock-template');
       Updater.addListener("clock", Clock.update);
-      // window.setInterval(Clock.updateTime, 1000);
+      window.setInterval(Clock.updateTime, 1000);
     },
 
     update: function(e, data) {
