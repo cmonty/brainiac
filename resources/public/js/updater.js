@@ -40,7 +40,8 @@ var Updater = (function() {
     },
 
     attachWidget: function(template, plugin) {
-      var widget = template.data('widget');
+      var children = plugin.children("[data-widget]");
+      var widget = children.data('widget');
       if (widget) {
         Widgets[widget](plugin);
       }
