@@ -10,18 +10,17 @@ var Jenkins = (function () {
     render: function (e, data) {
       var content = $.mustache(template.html(), data),
              name = data.name,
-       fail_count = data.fail_count,
-       html_class = fail_count > 0 ? "jenkins-failure" : "jenkins-success";
+       fail_count = data.fail_count;
 
-      plugin = $("div#" + name);
-      plugin.html(content).addClass(html_class);
-
-      if (fail_count > 0) {
-        plugin.find("div.build_count").html(fail_count);
-        plugin.find("div.build_text").html("failing build" + (data.fail_count == 1 ? "" : "s"));
-      } else {
-        plugin.find("div.build_text").html("all builds passing").addClass("passing");
-      }
+       plugin = $("div#" + name);
+       if (fail_count > 0) {
+         plugin.html(content).addClass("failing");
+         plugin.find("div.build_count").html(fail_count);
+         plugin.find("div.build_text").html("failing build" + (fail_count == 1 ? "" : "s"));
+       } else {
+         plugin.html(content).removeClass("failing");
+         plugin.find("div.build_text").html("all builds passing").addClass("passing");
+       }
     }
   };
 })();

@@ -193,14 +193,14 @@ div#plugins > div.panel > div.haze {
 }
 
 /* Jenkins Styles */
-.panel > #jenkins-builds.jenkins-failure {
-	background:url(/images/jenkins_frowny.png) bottom left no-repeat #fff;
-	color:#D33833;
+div#plugins > div.panel > div#jenkins-builds {
+	background: url(/images/jenkins.png) bottom left no-repeat #fff;
+	color: #335061;
 }
 
-.panel > #jenkins-builds.jenkins-success {
-	background:url(/images/jenkins.png) bottom left no-repeat #fff;
-	color: #335061;
+div#plugins > div.panel > div#jenkins-builds.failing {
+	background: url(/images/jenkins_frowny.png) bottom left no-repeat #fff;
+	color:#D33833;
 }
 
 #jenkins-builds div.build_info {
