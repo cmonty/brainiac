@@ -47,7 +47,7 @@
     "wake-up"))
 
 (defn- default-data []
-  (map days-ago (vec (range -7 1))))
+  (map days-ago (vec (range -6 1))))
 
 (defn- same-day? [date grouped_dates]
   (= (.format mmm-d-format date) (.format mmm-d-format (first grouped_dates))))

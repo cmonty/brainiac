@@ -403,6 +403,15 @@ div#plugins #pagerduty-schedule {
 
 }
 
+div#plugins #pagerduty div.incident-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 8px 10px 0 0 ;
+  text-transform: uppercase;
+  font-size: 25px;
+}
+
 /* CTA Train Tracker styles */
 
 div#plugins #cta-train-tracker ul {
