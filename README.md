@@ -5,7 +5,7 @@ Brainiac is a company dashboard, optimized for a display on large monitors - so 
 
 It can display information from a variety of sources, including: Jenkins, Nagios, Pager Duty, Github, Google Weather, Twitter, Chicago Transit Authority, Elovation, Jukebox2 and RSS feeds. 
 
-Brainiac is a Leinigen app, written in Clojure. It is currently optimized for display on a 1920x1080 monitor, on Webkit browsers.
+Brainiac is a Leinigen app, written in Clojure. It is currently optimized for display on an HDTV (1920x1080 resolution), on recent Webkit and Firefox browsers.
 
 ## Usage
 
