@@ -9,7 +9,7 @@ Brainiac is a Leinigen app, written in Clojure. It is currently optimized for di
 
 ## Usage
 
-Install Clojure and Leinigen on your server (Brew makes this easy on Mac). Check out the source from Github. Copy config.yml.example to config.yml. Edit config.yml to choose the panels you would like to display, and to configure logins and locations for various data sources. Go the directory that contains the app and run `lein deps` to bring in any dependencies, and then `lein run` to start the server on localhost:8080.
+Install Clojure and Leinigen on your server (Homebrew makes this easy on Mac). Check out the source from Github. Copy config.yml.example to config.yml. Edit config.yml to choose the panels you would like to display, and to configure logins and locations for various data sources. Go the directory that contains the app and run `lein deps` to bring in any dependencies, and then `lein run` to start the server on localhost:8080.
 
 ## License
 
