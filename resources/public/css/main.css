@@ -380,6 +380,7 @@ div#plugins .twitter-name {
 div#plugins .twitter-pic {
 	float:left;
 	margin-right:10px;
+  width:48px;
 }
 
 div#plugins .twitter-handle {
