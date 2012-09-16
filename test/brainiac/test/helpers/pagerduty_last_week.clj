@@ -29,4 +29,4 @@
       (testing "sets data"
         (is (= {:date "Feb 3" :count 5 :impact "wake-up"} (last (:data result)))))
       (testing "includes days with zero count"
-        (is (= {:date "Jan 29" :count 0, :impact "none"} (nth (:data result) 2)))))))
+        (is (= {:date "Jan 29" :count 0, :impact "none"} (second (:data result))))))))
