@@ -15,3 +15,9 @@ test:
     api-key: secret
     lat: 37.826
     long: -122.423
+  graphite:
+    order: 5
+    graphite-url: https://graphite.com
+    username: user
+    password: secret
+    target: sumSeries(test.data)
