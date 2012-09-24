@@ -4,19 +4,20 @@
             [clojure.java.io :as io :only (reader)]
             [clojure.contrib.string :as string]))
 
+(defn- split-values [payload]
+  (apply map vector (:datapoints (first payload))))
 
 (defn format-data [payload]
-  {:datapoints (:datapoints payload)})
+  {:valuesx (second (split-values payload)) :valuesy (first (split-values payload))})
 
 (defn transform [stream]
   (let [json (json/read-json (io/reader stream))]
-    (assoc {}
-      :name "graphite"
-      :title "Graphite Graph"
-      :data (format-data json))))
+    {:name "graphite"
+    :title "Graphite Graph"
+    :data (format-data json)}))
 
 (defn url [graphite-url target]
-  (format "%s/render?format=json&from=today&target=%s" graphite-url target))
+  (format "%s/render?format=json&from=-1hour&target=%s" graphite-url target))
 
 (defn configure [{:keys [target graphite-url username password program-name]}]
   (brainiac/simple-http-plugin

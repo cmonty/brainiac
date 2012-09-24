@@ -7,6 +7,7 @@
             [lamina.core :as lamina]
             [clojure.contrib.str-utils :as s]
             [clojure.contrib.base64 :as base64]
+            [clojure.contrib.json :as json]
             [overtone.at-at :as at-at]))
 
 (def *debug* false)
@@ -37,7 +38,7 @@
     tap))
 
 (defn send-message [message program]
-  (let [json-message (formats/encode-json->string message)]
+  (let [json-message (json/json-str message)]
     (websocket/broadcast-json json-message program)))
 
 (defn receive-message [program plugin content]
