@@ -6,9 +6,31 @@ var Graphite = (function () {
     },
 
     render: function (e, payload) {
-      $('#graphite').html('')
-      var paper = Raphael(document.getElementById("graphite"), 600, 500)
-      paper.linechart(0, 0, 600, 500, payload.data["valuesx"], payload.data["valuesy"], {smooth:true, shade: true})
+      var template = $("#graphite-template");
+      var content = $.mustache(template.html(), payload)
+
+      $("#graphite").html(content)
+      $('#graphite-graph', content).html('')
+
+      var paper = Raphael(document.getElementById("graphite-graph"), 575, 450),
+      chart = paper.linechart(
+        20,
+        0,
+        575,
+        450,
+        payload.data["valuesx"],
+        payload.data["valuesy"],
+        {axis: "0 0 0 1", colors: ["orange", "orange", "orange"], axisystep: 10, smooth:true, shade: true}
+      )
+
+      for( var i = 0, l = chart.axis.length; i < l; i++ ) {
+        chart.axis[i].attr("stroke", "orange");
+
+        var axisItems = chart.axis[i].text.items
+        for( var ii = 0, ll = axisItems.length; ii < ll; ii++ ) {
+          axisItems[ii].attr("fill", "orange");
+        }
+      }
     }
   };
 })();

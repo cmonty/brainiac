@@ -4,6 +4,8 @@
             [clojure.java.io :as io :only (reader)]
             [clojure.contrib.string :as string]))
 
+(def title (atom ""))
+
 (defn- split-values [payload]
   (apply map vector (:datapoints (first payload))))
 
@@ -13,13 +15,14 @@
 (defn transform [stream]
   (let [json (json/read-json (io/reader stream))]
     {:name "graphite"
-    :title "Graphite Graph"
+    :title @title
     :data (format-data json)}))
 
 (defn url [graphite-url target]
-  (format "%s/render?format=json&from=-1hour&target=%s" graphite-url target))
+  (format "%s/render?format=json&from=-24hours&target=summarize(%s,\"1h\")" graphite-url target))
 
-(defn configure [{:keys [target graphite-url username password program-name]}]
+(defn configure [{:keys [target custom-title graphite-url username password program-name]}]
+  (swap! title str custom-title)
   (brainiac/simple-http-plugin
     {:method :get :url (url graphite-url target) :basic-auth [username password]}
     transform program-name))

@@ -9,7 +9,7 @@
 (deftest test-url
   (testing "sets correct url"
     (let [url-request (url "https://graphite.com" "sumSeries(test.data)")]
-      (is (= "https://graphite.com/render?format=json&from=-1hour&target=sumSeries(test.data)" url-request)))))
+      (is (= "https://graphite.com/render?format=json&from=-24hours&target=summarize(sumSeries(test.data),\"1h\")" url-request)))))
 
 (deftest test-transform
   (let [result (transform example-json)]
