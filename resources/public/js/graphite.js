@@ -19,8 +19,11 @@ var Graphite = (function () {
         575,
         450,
         payload.data["valuesx"],
-        payload.data["valuesy"],
-        {axis: "0 0 0 1", colors: ["orange", "orange", "orange"], axisystep: 10, smooth:true, shade: true}
+        [
+          payload.data["valuesy"],
+          [0],
+        ],
+        {axis: "0 0 0 1", colors: ["orange", "orange", "orange"], axisystep:10, smooth:true, shade:true}
       )
 
       for( var i = 0, l = chart.axis.length; i < l; i++ ) {

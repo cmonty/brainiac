@@ -4,7 +4,7 @@
 
 (def example-json (java.io.ByteArrayInputStream. (.getBytes "[{
   \"target\": \"test.target\",
-  \"datapoints\": [[1234, 1347849960], [5678, 1347849961]]}]")))
+  \"datapoints\": [[1234, 1347849960], [5678, 1347849961], [null, 1347849961]]}]")))
 
 (deftest test-url
   (testing "sets correct url"
@@ -17,6 +17,10 @@
       (is (= "graphite" (:name result))))
 
     (testing "extracts valuesy"
+      (is (= [1234, 5678] (-> result :data :valuesy))))
+
+    (testing "ignores tuples which have a null y value"
+      (is (= [1347849960, 1347849961] (-> result :data :valuesx)))
       (is (= [1234, 5678] (-> result :data :valuesy))))
 
     (testing "extracts valuesx"

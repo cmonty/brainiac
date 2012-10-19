@@ -6,8 +6,11 @@
 
 (def title (atom ""))
 
+(defn- remove-nil-tuples [datapoints]
+  (remove #(nil? (first %)) datapoints))
+
 (defn- split-values [payload]
-  (apply map vector (:datapoints (first payload))))
+  (apply map vector (remove-nil-tuples (:datapoints (first payload)))))
 
 (defn format-data [payload]
   {:valuesx (second (split-values payload)) :valuesy (first (split-values payload))})
