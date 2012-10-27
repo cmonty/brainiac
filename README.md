@@ -3,7 +3,8 @@
 
 Brainiac is a company dashboard, optimized for a display on large monitors - so really more of a billboard. It's aimed at software development organizations, but can definitely be used more generally. 
 
-It can display information from a variety of sources, including: Jenkins, Nagios, Pager Duty, Github, Google Weather, Twitter, Chicago Transit Authority, Elovation, Jukebox2 and RSS feeds. 
+It can display information from a variety of sources, including: Jenkins, Nagios, Pager Duty, Github, Google Weather, Twitter, Chicago Transit Authority, Elovation, Jukebox2 and RSS feeds.
+<img src="https://raw.github.com/cmonty/brainiac/master/resources/public/images/example_screen_1.jpg" />
 
 Brainiac is a Leiningen app, written in Clojure. It is currently optimized for display on an HDTV (1920x1080 resolution), on recent Webkit and Firefox browsers.
 
