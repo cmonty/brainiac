@@ -1,21 +1,28 @@
 devs:
-  google-weather:
-    order: 1
-    city: "Chicago"
-
   twitter-search:
-    order: 2
+    order: 1
     term: "@braintree"
 
   github-commits:
-    order: 3
+    order: 2
     username: "cmonty"
     repository: "brainiac"
 
   cta-bus-tracker:
-    order: 4
+    order: 3
     route-number: 8
     stop-id: 5933
+
+  clock:
+    interval: 30
+    order: 4
+    timezones:
+      - timezone: "America/Chicago"
+        name: "Chicago"
+      - timezone: "America/Los_Angeles"
+        name: "Menlo Park"
+      - timezone: "UTC"
+        name: "UTC"
 
   #cta-train-tracker:
     #order: 5
@@ -44,3 +51,10 @@ devs:
   #jukebox:
     #order: 9
     #url: "http://url.example.com"
+  #dark-sky:
+    #order: 10
+    #api-key: api-key
+    #lat: lat
+    #lon: lon
+    #interval: 60
+
