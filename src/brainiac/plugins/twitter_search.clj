@@ -17,11 +17,11 @@
 (defn time->time-ago-words [time]
   (let [delta (quot (- (now) (.getTime (.parse time-format time))) 60000)]
     (cond
-      (= delta 0) "less than 1 minute ago"
+      (= delta 0) "less than a minute ago"
       (= delta 1) "a minute ago"
       (<= delta 44) (str delta " minutes ago")
       (<= delta 89) (str "about 1 hour ago")
-      (<= delta 1439) (str "about " (quot delta 60) " minutes ago")
+      (<= delta 1439) (str (quot delta 60) " hours ago")
       (<= delta 2519) "1 day ago"
       (<= delta 43199) (str (quot delta 1440) " days ago")
       (<= delta 86399) "about 1 month ago"
