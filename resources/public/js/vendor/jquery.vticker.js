@@ -84,7 +84,6 @@ $.fn.vTicker = function(options) {
 
 		obj.css({overflow: 'hidden', position: 'relative'})
 			.children('ul').css({position: 'absolute', margin: 0, padding: 0})
-			.children('li').css({margin: 30, padding: 0});
 
 		if(options.height == 0)
 		{
@@ -128,3 +127,4 @@ $.fn.vTicker = function(options) {
 	});
 };
 })(jQuery);
+

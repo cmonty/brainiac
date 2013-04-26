@@ -13,6 +13,7 @@
            {
               :name "T A Y. R O Z A Y\u2640\u2640"
               :handle "RumorIS_TayGAY"
+              :time "a year ago"
               :text "I'm such a maniac let me get some brainiac"
               :profile_image_url "https://si0.twimg.com/profile_images/1751308844/15_normal.jpg"
             }
