@@ -1,13 +1,13 @@
-<img class="header" src="http://www.pagerduty.com/images/logos/pagerduty_logo_dark.png?1337996052">
+<img class="header" src="http://www.pagerduty.com/images/logo.png">
 <div class="incident-count">{{ incidents-count }} Incidents</div>
 {{#incidents}}<p>{{trigger_summary_data.subject}}</p>{{/incidents}}
 <div class="people clearfix">
  <div class='on-call'>
-   <img src='https://www.braintreepayments.com/assets/team/{{ primary_name_image }}.png'>
+   <img src='{{ primary_gravatar }}?s=300'>
    <p class="name">{{ primary_name }}</p>
  </div>
  <div class='on-call'>
-   <img src='https://www.braintreepayments.com/assets/team/{{ backup_name_image }}.png'>
+   <img src='{{ backup_gravatar }}?s=300'>
    <p class="name">{{ backup_name }}</p>
  </div>
 </div>

@@ -4,7 +4,8 @@
   (:require [brainiac.plugin :as brainiac]
 						[clojure.string :as string]
             [clojure.contrib.json :as json]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io])
+  (:use [brainiac.helpers.gravatar :only [email->gravatar]]))
 
 (defn now []
   (.getTime (Calendar/getInstance)))
@@ -22,6 +23,9 @@
 (defn- json->name [json]
   (-> json :entries first :user :name))
 
+(defn- json->email [json]
+  (-> json :entries first :user :email))
+
 (defn- name->image [name]
   (string/replace name #" " "_"))
 
@@ -29,11 +33,15 @@
   (let [json-responses (map (comp json/read-json io/reader) streams)
         [primary-json backup-json] json-responses
         primary-name (json->name primary-json)
-        backup-name (json->name backup-json)]
+        backup-name (json->name backup-json)
+        primary-email (json->email primary-json)
+        backup-email (json->email backup-json)]
     {:primary_name primary-name
-     :primary_name_image (name->image primary-name)
+     :primary_email primary-email
+     :primary_gravatar (email->gravatar primary-email)
      :backup_name backup-name
-     :backup_name_image (name->image backup-name)}))
+     :backup_email backup-email
+     :backup_gravatar (email->gravatar backup-email)}))
 
 (defn- request [username password url]
   {:method :get
