@@ -75,4 +75,4 @@
     {:data (build-data parsed-incidents)}))
 
 (defn request [organization username password service-ids]
-  {:method :get :url-callback (url organization service-ids) :basic-auth [username password]})
+  {:method "GET" :url-callback (url organization service-ids) :basic-auth [username password]})

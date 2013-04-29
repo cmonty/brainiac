@@ -30,6 +30,6 @@
 
 (defn configure [{:keys [url username password program-name]}]
   (brainiac/simple-http-plugin
-    {:method :get :url url :basic-auth [username password]}
+    {:method "GET" :url url :basic-auth [username password]}
     transform program-name))
 

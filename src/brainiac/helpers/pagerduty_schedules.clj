@@ -44,7 +44,7 @@
      :backup_gravatar (email->gravatar backup-email)}))
 
 (defn- request [username password url]
-  {:method :get
+  {:method "GET" 
    :url-callback url
    :basic-auth [username password]})
 

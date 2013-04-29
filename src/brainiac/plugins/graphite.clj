@@ -27,5 +27,5 @@
 (defn configure [{:keys [target custom-title graphite-url username password program-name]}]
   (swap! title str custom-title)
   (brainiac/simple-http-plugin
-    {:method :get :url (url graphite-url target) :basic-auth [username password]}
+    {:method "GET" :url (url graphite-url target) :basic-auth [username password]}
     transform program-name))

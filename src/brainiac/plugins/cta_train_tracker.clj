@@ -51,6 +51,6 @@
 
 (defn configure [{:keys [program-name map-id api-key]}]
   (brainiac/simple-http-plugin
-    {:method :get :url (url map-id api-key)}
+    {:method "GET" :url (url map-id api-key)}
     transform program-name))
 

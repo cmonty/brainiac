@@ -15,4 +15,4 @@
      :incidents incidents}))
 
 (defn request [organization username password service-ids]
-  {:method :get :url (url organization service-ids) :basic-auth [username password]})
+  {:method "GET" :url (url organization service-ids) :basic-auth [username password]})

@@ -29,6 +29,6 @@
   (brainiac/schedule
     20000
     (brainiac/simple-http-plugin
-      {:method :get :url (url route-number stop-id)}
+      {:method "GET" :url (url route-number stop-id)}
       transform program-name)))
 
