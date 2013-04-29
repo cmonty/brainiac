@@ -61,9 +61,11 @@
 
 (defn- http-agent-for-request [request]
   (let [url (build-url request)
+        method (get request :method "GET")
+        body (:body request)
         headers (merge (:headers request) (build-basic-auth request))]
-    (info "fetching" url)
-    (http-agent url :headers headers)))
+    (info "fetching" url " - " method)
+    (http-agent url :headers headers :method method :body body)))
 
 (defn simple-http-plugin [request transformer program-name]
   (fn []

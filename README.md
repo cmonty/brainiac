@@ -17,3 +17,5 @@ Install Clojure and Leiningen on your server (Homebrew makes this easy on Mac). 
 Copyright (C) 2012 FIXME
 
 Distributed under the Eclipse Public License, the same as Clojure.
+
+CSIRO Radio Observatory image by Flickr user amandabhslater, used under Creative Commons BY-SA

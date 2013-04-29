@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:600italic,600,800);
 @import url(http://fonts.googleapis.com/css?family=Aldrich);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
 
 .nocursor { cursor:none; }
 
@@ -616,5 +617,37 @@ div#plugins div.panel div#github-commits {
 }
 
 #octobox > h2, #octobox > ul {
+}
 
+/* HP Access Point */
+div#plugins div.panel div#hp-access-point {
+  background: url(http://images.cdn.fotopedia.com/flickr-3447759011-original.jpg) no-repeat; 
+  background-size: auto 525px;
+  color: rgb(216,255,10);
+  font-size: 40px;
+}
+
+div#hp-access-point h1 {
+  margin: 0 0 0 10px;
+}
+
+div#hp-access-point .box {
+  margin-top: 100px;
+  border-radius: 7px;
+  background: rgba(0,0,0,0.25)
+}
+
+
+div#hp-access-point div.network {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+}
+
+div#hp-access-point div.passphrase {
+  color: white;
+  margin-top: 25px;
+  font-size: 50px;
+  font-family: 'Source Code Pro', monospace;
+  text-align: center;
 }
