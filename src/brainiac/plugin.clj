@@ -76,7 +76,7 @@
         (if (success? agnt)
           (send-message (transform agnt transformer) program-name)
           (warn "URL " url "failed with" (status agnt))))
-      (catch Exception e (warn "caught exception fetching " url " - " (.getMessage e))))))
+      (catch Exception e (warn "caught exception " (.getMessage e))))))
 
 (defn multiple-url-http-plugin [requests transformer program-name]
   (fn []
