@@ -9,6 +9,6 @@
     (testing "sets name"
       (is (= "hp-access-point" (:name result))))
     (testing "sets network"
-      (is (= "FBI Van")))
+      (is (= "FBI Van" (:network result))))
     (testing "sets passphrase"
-      (is (= "super_secret")))))
+      (is (= "super secret" (:passphrase result))))))
