@@ -1,0 +1,10 @@
+<h3>BART {{station}} Departures</h3>
+
+{{#data}}
+<div class="departures">
+  <div class="destination">{{destination}}</div>
+  {{#estimates}}
+  <div class="departure {{color}}">{{minutes}} - {{length}}</div>
+  {{/estimates}}
+</div>
+{{/data}}

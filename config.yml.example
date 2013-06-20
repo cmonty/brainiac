@@ -13,6 +13,10 @@ devs:
     route-number: 8
     stop-id: 5933
 
+  bart-tracker:
+    api-key: "MW9S-E7SL-26DU-VV8V"
+    station-id: "powl"
+
   clock:
     interval: 30
     order: 4

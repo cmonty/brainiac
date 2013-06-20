@@ -508,6 +508,52 @@ div#plugins #cta-bus-tracker ul li span.time {
   float: right;
 }
 
+/* BART tracker styles */
+
+div#plugins #bart-tracker h3 {
+  padding-bottom: 10px;
+}
+
+div#plugins #bart-tracker div.departures {
+  clear: left;
+  height: 45px;
+}
+
+div#plugins #bart-tracker div.destination {
+  width: 225px;
+  float: left;
+  padding: 5px;
+}
+
+div#plugins #bart-tracker div.departure {
+  float: left;
+  padding: 2px;
+  border-width: 5px;
+  border-style: solid;
+  width: 95px;
+  margin-right: 5px;
+}
+
+div#plugins #bart-tracker .blue {
+  border-color: #0099cc;
+}
+
+div#plugins #bart-tracker .green {
+  border-color: #339933;
+}
+
+div#plugins #bart-tracker .yellow {
+  border-color: #ffff33;
+}
+
+div#plugins #bart-tracker .orange {
+  border-color: #ff9933;
+}
+
+div#plugins #bart-tracker .red {
+  border-color: #ff0000;
+}
+
 div#plugins .people {
   width: 100%;
   margin: 15px 0 0 0;
