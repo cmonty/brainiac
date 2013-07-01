@@ -6,7 +6,7 @@
   (:require [brainiac.plugin :as brainiac]))
 
 (def time-format
-  (let [date-format (SimpleDateFormat. "EEE, dd MMM yyyy HH:mm:ss ZZZZZ")]
+  (let [date-format (SimpleDateFormat. "EEE MMM dd HH:mm:ss ZZZZZ yyyy")]
     (.setTimeZone date-format (TimeZone/getTimeZone "America/Chicago"))
     date-format))
 
@@ -32,23 +32,26 @@
 
 (defn format-tweet [tweet]
   {
-   :name (:from_user_name tweet)
-   :handle (:from_user tweet)
+   :name (:name (:user tweet))
+   :handle (:screen_name (:user tweet))
    :time (time->time-ago-words (:created_at tweet))
    :text (:text tweet)
-   :profile_image_url (:profile_image_url_https tweet)
+   :profile_image_url (:profile_image_url_https (:user tweet))
    })
 
 (defn transform [stream]
   (let [json (read-json (reader stream))]
   (assoc {}
     :name "twitter-search"
-    :data (map format-tweet (:results json)))))
+    :data (map format-tweet (:statuses json)))))
 
 (defn url [term]
-  (format "http://search.twitter.com/search.json?q=%s" term))
+  (format "https://api.twitter.com/1.1/search/tweets.json?q=%s" term))
 
-(defn configure [{:keys [term program-name]}]
+(defn auth-header [bearer-token]
+  {"Authorization" (format "Bearer %s" bearer-token)})
+
+(defn configure [{:keys [term program-name bearer-token]}]
   (brainiac/simple-http-plugin
-    {:url (url term)}
+    {:url (url term) :headers (auth-header bearer-token)}
     transform program-name))

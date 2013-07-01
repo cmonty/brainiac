@@ -2,6 +2,9 @@ devs:
   twitter-search:
     order: 1
     term: "@braintree"
+    # Note that twitter now requires a bearer token for auth
+    # For more information see: https://dev.twitter.com/docs/auth/application-only-auth
+    bearer-token: BEARER-TOKEN
 
   github-commits:
     order: 2

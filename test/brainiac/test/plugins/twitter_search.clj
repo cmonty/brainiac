@@ -11,10 +11,10 @@
     (testing "sets data"
       (is (= (first (:data result))
            {
-              :name "T A Y. R O Z A Y\u2640\u2640"
-              :handle "RumorIS_TayGAY"
+              :name "hav u seen ?"
+              :handle "Rutzen__"
               :time "a year ago"
-              :text "I'm such a maniac let me get some brainiac"
-              :profile_image_url "https://si0.twimg.com/profile_images/1751308844/15_normal.jpg"
+              :text "o Brainiac \u00e9 meio babac\u00e3o"
+              :profile_image_url "https://si0.twimg.com/profile_images/378800000060004493/527b88a6db7d7d7e7975953a99666984_normal.png"
             }
        )))))
