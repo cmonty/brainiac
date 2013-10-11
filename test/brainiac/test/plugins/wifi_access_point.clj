@@ -2,10 +2,10 @@
   (:use [brainiac.plugins.wifi-access-point]
         [clojure.test]))
 
-(def example-xml (java.io.ByteArrayInputStream. (.getBytes "super secret")))
+(def example-web-page (java.io.ByteArrayInputStream. (.getBytes "super secret")))
 
-(deftest test-transfor
-  (let [result (transform "FBI Van" example-xml)]
+(deftest test-transform
+  (let [result (transform "FBI Van" example-web-page)]
     (testing "sets name"
       (is (= "wifi-access-point" (:name result))))
     (testing "sets network"
