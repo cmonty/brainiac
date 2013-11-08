@@ -667,7 +667,7 @@ div#plugins div.panel div#github-commits {
 
 /* HP Access Point */
 div#plugins div.panel div#hp-access-point {
-  background: url(http://images.cdn.fotopedia.com/flickr-3447759011-original.jpg) no-repeat; 
+  background: url(http://images.cdn.fotopedia.com/flickr-3447759011-original.jpg) no-repeat;
   background-size: auto 525px;
   color: rgb(216,255,10);
   font-size: 40px;
@@ -700,7 +700,7 @@ div#hp-access-point div.passphrase {
 
 /* Wifi Access Point */
 div#plugins div.panel div#wifi-access-point {
-  background: url(http://images.cdn.fotopedia.com/flickr-3447759011-original.jpg) no-repeat; 
+  background: url(http://images.cdn.fotopedia.com/flickr-3447759011-original.jpg) no-repeat;
   background-size: auto 525px;
   color: rgb(216,255,10);
   font-size: 40px;
@@ -730,3 +730,61 @@ div#wifi-access-point div.passphrase {
   font-family: 'Source Code Pro', monospace;
   text-align: center;
 }
+h2.kudotron {
+  font: Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+ul#kudotron {
+  font-size: 12pt;
+  margin: 20px;
+}
+ul#kudotron li {
+  background: #fff;
+  color: black;
+  border: 2px solid #f66;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  float: left;
+  position: relative;
+  list-style-type: none;
+  width: 200px;
+  height: 180px;
+  overflow: none;
+  max-height: 180px;
+}
+ul#kudotron p.message_header {
+  background: #f66;
+  border: 1px solid #f66;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  margin: -11px;
+  padding: 11px;
+  max-height: 120px;
+  text-align: left;
+}
+ul#kudotron span.field_label {
+  width: 60px;
+  font-weight: bold;
+  display: inline-block;
+}
+ul#kudotron p.timestamp {
+  font-size: 8pt;
+  color: #888;
+  position: absolute;
+  left: 20px;
+  bottom: 0px;
+}
+ul#kudotron p.message_body {
+  background: white;
+  color: black;
+  max-height: 130px;
+  overflow: hidden;
+}
+
