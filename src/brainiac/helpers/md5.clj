@@ -10,4 +10,4 @@
             (doto (MessageDigest/getInstance "MD5")
               (.reset)
               (.update (clojure.contrib.io/to-byte-array string)))]
-      (format "%x" (new java.math.BigInteger 1 (.digest hash-bytes))))))
+      (format "%032x" (new java.math.BigInteger 1 (.digest hash-bytes))))))
