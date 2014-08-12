@@ -667,7 +667,7 @@ div#plugins div.panel div#github-commits {
 
 /* HP Access Point */
 div#plugins div.panel div#hp-access-point {
-  background: url(http://images.cdn.fotopedia.com/flickr-3447759011-original.jpg) no-repeat;
+  background: url(/images/wifi_bg.jpg) no-repeat;
   background-size: auto 525px;
   color: rgb(216,255,10);
   font-size: 40px;
@@ -700,7 +700,7 @@ div#hp-access-point div.passphrase {
 
 /* Wifi Access Point */
 div#plugins div.panel div#wifi-access-point {
-  background: url(http://images.cdn.fotopedia.com/flickr-3447759011-original.jpg) no-repeat;
+  background: url(/images/wifi_bg.jpg) no-repeat;
   background-size: auto 525px;
   color: rgb(216,255,10);
   font-size: 40px;
