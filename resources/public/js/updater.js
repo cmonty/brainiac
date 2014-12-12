@@ -8,7 +8,7 @@ var Updater = (function() {
     },
 
     socket: function() {
-      new WebSocket("ws://" + location.host + "/async");
+      new WebSocket(('https:' == document.location.protocol ? 'wss://' : 'ws://') + location.host + "/async");
     },
 
     renderTemplate: function(name, data) {
@@ -76,7 +76,7 @@ var Updater = (function() {
 
     subscribe: function() {
       var self = this;
-      socket = new WebSocket("ws://" + location.host + "/async");
+      socket = new WebSocket(('https:' == document.location.protocol ? 'wss://' : 'ws://') + location.host + "/async");
       socket.onmessage = function (e) {
         self.update(e);
         self.startTimer();
