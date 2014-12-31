@@ -21,3 +21,9 @@ test:
     username: user
     password: secret
     target: sumSeries(test.data)
+  elovation-game:
+    order: 6
+    url: "http://http://elovation.herokuapp.com/"
+    game-id: "3,10,11"
+    username: "user"
+    password: "secret"
