@@ -210,7 +210,7 @@ div#plugins > div.panel > div#jenkins-builds.failing {
 }
 
 #jenkins-builds .build_count {
-  font-size: 290px;
+  font-size: 180px;
   font-weight: bold;
   text-align: center;
   line-height: 80%;
