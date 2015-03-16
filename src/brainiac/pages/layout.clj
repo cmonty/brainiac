@@ -23,6 +23,7 @@
      (include-js "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
      (include-js "/js/vendor/jquery.mustache.js")
      (include-js "/js/vendor/jquery.vticker.js")
+     (include-js "/js/vendor/jquery.textfill.js")
      (include-js "/js/raphael-min.js")
      (include-js "/js/g.raphael-min.js")
      (include-js "/js/g.line-min.js")

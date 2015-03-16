@@ -213,7 +213,9 @@ div#plugins > div.panel > div#jenkins-builds.failing {
   font-size: 290px;
   font-weight: bold;
   text-align: center;
-  line-height: 80%;
+  line-height: 232px;
+  height: 232px;
+  width: 354px;
 }
 #jenkins-builds .build_text {
   text-align: center;
