@@ -215,11 +215,6 @@ div#plugins > div.panel > div#jenkins-builds.failing {
   text-align: center;
   line-height: 80%;
 }
-#jenkins-builds .build_count.triple {
-  position:relative;
-  left: -110;
-}
-
 #jenkins-builds .build_text {
   text-align: center;
   text-transform: uppercase;

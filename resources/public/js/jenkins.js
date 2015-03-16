@@ -16,9 +16,6 @@ var Jenkins = (function () {
        if (fail_count > 0) {
          plugin.html(content).addClass("failing");
          plugin.find("div.build_count").html(fail_count);
-         if (fail_count > 99) {
-          plugin.find("div.build_count").addClass("triple")
-         }
          plugin.find("div.build_text").html("failing build" + (fail_count == 1 ? "" : "s"));
        } else {
          plugin.html(content).removeClass("failing");
