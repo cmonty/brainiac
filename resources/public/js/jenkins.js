@@ -15,8 +15,12 @@ var Jenkins = (function () {
        plugin = $("div#" + name);
        if (fail_count > 0) {
          plugin.html(content).addClass("failing");
-         plugin.find("div.build_count").html(fail_count);
+         plugin.find("div.build_count").html("<span>" + fail_count + "</span>");
          plugin.find("div.build_text").html("failing build" + (fail_count == 1 ? "" : "s"));
+         $(".build_count").textfill({
+           maxFontPixels: 290,
+           widthOnly: true
+         });
        } else {
          plugin.html(content).removeClass("failing");
          plugin.find("div.build_text").html("all builds passing").addClass("passing");
