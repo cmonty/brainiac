@@ -21,4 +21,5 @@
                     "brainiac.plugins.nagios-problems",
                     "brainiac.plugins.jenkins-builds",
                     "brainiac.plugins.dark-sky",
-                    "brainiac.plugins.graphite"])))))
+                    "brainiac.plugins.graphite",
+                    "brainiac.plugins.elovation-game"])))))

@@ -4,7 +4,8 @@
   (:use [clojure.contrib.json :only (read-json)]
         [clojure.java.io :only (reader)])
   (:require [brainiac.plugin :as brainiac]
-            [brainiac.helpers.gravatar :as gravatar]))
+            [brainiac.helpers.gravatar :as gravatar]
+            [clojure.string :as string]))
 
 (def parse-time-format
   (let [date-format (SimpleDateFormat. "yyyy-MM-dd HH:mm:ss zzz")]
@@ -47,5 +48,5 @@
 
 (defn configure [{:keys [url game-id username password program-name]}]
   (brainiac/simple-http-plugin
-    {:url (game-url url game-id) :basic-auth [username password]}
+    {:url (game-url url (rand-nth (string/split game-id #","))) :basic-auth [username password]}
     transform program-name))
