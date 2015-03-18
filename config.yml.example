@@ -31,6 +31,9 @@ devs:
       - timezone: "UTC"
         name: "UTC"
 
+  stock-price:
+    ticker: EBAY
+
   #cta-train-tracker:
     #order: 5
     #map-id: "12345"

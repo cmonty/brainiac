@@ -790,3 +790,50 @@ ul#kudotron p.message_body {
   overflow: hidden;
 }
 
+
+div#stock-price h1 {
+  text-align: center
+}
+
+div#stock-price div.trend {
+  padding: 15px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+div#stock-price div.up {
+  background: green;
+}
+
+div#stock-price div.down {
+  background: #800;
+}
+
+div#stock-price div.price {
+  text-align: center;
+  font-size: 150px;
+  font-weight: 900;
+}
+
+div#stock-price div.change {
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  font-size: 50pt;
+  margin-left: 10px;
+}
+
+div#stock-price div.percent {
+  display: inline-block;
+  float: right;
+  color: white;
+  font-weight: bold;
+  font-size: 50pt;
+  margin-right: 10px;
+}
+
+div#stock-price div.volume {
+  color: #ddd;
+  font-size: 30px;
+  align: center;
+}

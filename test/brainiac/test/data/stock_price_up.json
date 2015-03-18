@@ -1,0 +1,25 @@
+{
+  "query": {
+    "count": 1,
+    "created": "2015-03-12T03:48:53Z",
+    "lang": "en-US",
+    "results": {
+      "quote": {
+        "symbol": "ebay",
+        "AverageDailyVolume": "8770020",
+        "Change": "+0.465",
+        "DaysLow": "59.320",
+        "DaysHigh": "60.200",
+        "YearLow": "46.340",
+        "YearHigh": "60.930",
+        "MarketCapitalization": "72.21B",
+        "LastTradePriceOnly": "59.675",
+        "DaysRange": "59.320 - 60.200",
+        "Name": "eBay Inc.",
+        "Symbol": "ebay",
+        "Volume": "10799886",
+        "StockExchange": "NMS"
+      }
+    }
+  }
+}
