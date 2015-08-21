@@ -1,0 +1,58 @@
+
+<RTT>
+<AgencyList>
+<Agency Name="SF-MUNI" HasDirection="True" Mode="Bus">
+<RouteList>
+<Route Name="Embarcadero" Code="E">
+<RouteDirectionList>
+<RouteDirection Code="Outbound" Name="Outbound to King and 4th">
+<StopList>
+<Stop name="Townsend and 4th" StopCode="17235">
+  <DepartureTimeList/>
+</Stop>
+</StopList>
+</RouteDirection>
+</RouteDirectionList>
+</Route>
+<Route Name="30-Stockton" Code="30">
+<RouteDirectionList>
+<RouteDirection Code="Outbound" Name="Outbound to The Marina District">
+<StopList>
+<Stop name="Townsend and 4th" StopCode="17235">
+<DepartureTimeList>
+<DepartureTime>5</DepartureTime>
+<DepartureTime>8</DepartureTime>
+<DepartureTime>11</DepartureTime>
+</DepartureTimeList>
+</Stop>
+
+</StopList>
+</RouteDirection>
+
+</RouteDirectionList>
+</Route>
+
+<Route Name="45-Union Stockton" Code="45">
+<RouteDirectionList>
+<RouteDirection Code="Outbound" Name="Outbound to The Presidio">
+<StopList>
+<Stop name="Townsend and 4th" StopCode="17235">
+<DepartureTimeList>
+<DepartureTime>2</DepartureTime>
+<DepartureTime>14</DepartureTime>
+<DepartureTime>27</DepartureTime>
+</DepartureTimeList>
+</Stop>
+
+</StopList>
+</RouteDirection>
+
+</RouteDirectionList>
+</Route>
+
+</RouteList>
+</Agency>
+
+</AgencyList>
+</RTT>
+
