@@ -3,6 +3,17 @@
 <AgencyList>
 <Agency Name="SF-MUNI" HasDirection="True" Mode="Bus">
 <RouteList>
+<Route Name="Embarcadero" Code="E">
+<RouteDirectionList>
+<RouteDirection Code="Outbound" Name="Outbound to King and 4th">
+<StopList>
+<Stop name="Townsend and 4th" StopCode="17235">
+  <DepartureTimeList/>
+</Stop>
+</StopList>
+</RouteDirection>
+</RouteDirectionList>
+</Route>
 <Route Name="30-Stockton" Code="30">
 <RouteDirectionList>
 <RouteDirection Code="Outbound" Name="Outbound to The Marina District">

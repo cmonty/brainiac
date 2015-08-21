@@ -58,6 +58,10 @@ devs:
     #username: "yourusername"
     #password: "yourpassword"
 
+  #muni-tracker:
+    #stop-id: 15237
+    #api-key: 511.ORG-API-KEY
+
   #jukebox:
     #order: 9
     #url: "http://url.example.com"

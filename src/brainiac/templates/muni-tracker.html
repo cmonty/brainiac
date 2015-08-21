@@ -1,0 +1,10 @@
+<h3>{{stop}}</h3>
+
+{{#routes}}
+  <h4>{{name}}: {{direction}}</h4>
+  <ul><li>
+  {{#departures}}
+    <span class="time">{{.}}</span> minutes
+  {{/departures}}
+  </ul></li>
+{{/routes}}
